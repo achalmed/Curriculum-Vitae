@@ -1,76 +1,76 @@
 YAAC: Another Awesome CV [![CircleCI](https://circleci.com/gh/darwiin/yaac-another-awesome-cv.svg?style=svg)](https://circleci.com/gh/darwiin/yaac-another-awesome-cv) [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://github.com/darwiin/yaac-another-awesome-cv/releases/download/v1.8.0/cv.pdf)
 =================
 
-## Quick start
+## Inicio rápido
 
-You can edit online **YAAC: Another Awesome CV** template on [Overleaf](https://www.overleaf.com/latex/templates/awesome-source-cv/wrdjtkkytqcw). Feel free to use my [referal link](https://www.overleaf.com/signup?ref=54c221604cd6) if you want to create your account.
+Puede editar en línea **YAAC: otra plantilla de CV impresionante** en [Overleaf](https://www.overleaf.com/latex/templates/awesome-source-cv/wrdjtkkytqcw). No dude en utilizar mi [enlace de referencia](https://www.overleaf.com/signup?ref=54c221604cd6) si desea crear su cuenta.
 
-## About
+## Acerca de
 
-**YAAC: Another Awesome CV** was first based on a CV template from Alessandro Plasmati. This template used _XeLaTeX_ engine and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font. 
+**YAAC: Another Awesome CV** se basó primero en una plantilla de CV de Alessandro Plasmati. Esta plantilla usó el motor _XeLaTeX_ y la fuente _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_.
 
-**Personal data** has moved on top of the first page just before the position and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font has been replaced by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ from Adobe. _[Font Awesome](http://fontawesome.io/)_ icons highlight important elements.
+**Datos personales** se movió a la parte superior de la primera página justo antes de la posición y la fuente _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ se reemplazó por _[Source Sans Pro Fuente](https://github.com/adobe-fonts/source-sans-pro)_ de Adobe. Los íconos _[Font Awesome](http://fontawesome.io/)_ resaltan elementos importantes.
 
-Unlike _Alessandro Plasmati_ CV template, all layout stuff in **YAAC: Another Awesome CV** has moved in the Latex class file _yaac-another-awesome-cv.cls_ to improve source code readability and style reusability.
+A diferencia de la plantilla de CV _Alessandro Plasmati_, todo el diseño en **YAAC: Another Awesome CV** se ha trasladado al archivo de clase de Latex _documentMETADATA.cls_ para mejorar la legibilidad del código fuente y la reutilización del estilo.
 
-More informations about the original Alessandro Plasmati template can be found here :
+Puede encontrar más información sobre la plantilla original de Alessandro Plasmati aquí:
 
-   -  [ Scribd ](http://fr.scribd.com/doc/16335667/Writing-your-Professional-CV-with-LaTeX)
-   -  [ LaTeX Templates ](http://www.latextemplates.com/template/plasmati-graduate-cv)
-   -  [ ShareLatex ](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
+- [Scribd](http://fr.scribd.com/doc/16335667/Writing-your-Professional-CV-with-LaTeX)
+- [LaTeX Templates](http://www.latextemplates.com/template/plasmati-graduate-cv)
+- [ShareLatex](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
 
-## Preview
+## Vista previa
 
-### Normal style
-
-| Page. 1 | Page. 2 |
-|:---:|:---:|
-| ![Résumé](example/preview/cv1.jpeg) | ![Résumé](example/preview/cv2.jpeg) |
-
-### Alternative style
+### Estilo normal
 
 | Page. 1 | Page. 2 |
 |:---:|:---:|
-| ![Résumé](example/preview/cv1-alternative.jpeg) | ![Résumé](example/preview/cv2-alternative.jpeg) |
+| ![Résumé](cv/preview/cv_page-0001.jpg) | ![Résumé](cv/preview/cv_page-0002.jpg) |
 
-## How to use **YAAC: Another Awesome CV** latex class
+### Estilo alternativo
 
-### Use the **YAAC: Another Awesome CV** options
+| Page. 1 | Page. 2 |
+|:---:|:---:|
+| ![Résumé](cv/preview/cv_page-0001-alternative.jpg) | ![Résumé](cv/preview/cv_page-0002-alternative.jpg) |
 
-When declaring the `\documentclass` you can use option(s) to customize your CV rendering.
-1. **localFont** to use the fonts included in the _fonts_ folder
-2. **alternative** to use the _alternative header_ layout
-3. **10pt** or **11pt** or **12pt** to change the font size
-4. **compact** to reduce vertical space between you experience entries
+## Cómo usar **YAAC: Otra clase impresionante de látex CV**
 
+### Usa las opciones de **YAAC: Otro Currículum Impresionante**
+
+Al declarar `\documentclass`, puede usar la(s) opción(es) para personalizar la representación de su CV.
+
+1. **localFont** para usar las fuentes incluidas en la carpeta _fonts_
+2. **alternativa** para usar el diseño de _encabezado alternativo_
+3. **10pt** o **11pt** o **12pt** para cambiar el tamaño de fuente
+4. **compacto** para reducir el espacio vertical entre las entradas de su experiencia
 
 ```latex
-% Used with no option, the template will use the 'traditional' 
-% header layout your system fonts and the default color scheme ie. blue
+% Usado sin opción, la plantilla usará el'traditional' 
+% diseño de encabezado las fuentes de su sistema y el esquema de color predeterminado, es decir. azul
 \documentclass{yaac-another-awesome-cv}
 
-% Used with localFont option the template will use the 'traditional' 
-% header layout, fonts included in the fonts directory and the default color scheme
+% Usado con la opción localFont, la plantilla usará el 'traditional'
+% diseño de encabezado, fuentes incluidas en el directorio de fuentes y el esquema de color predeterminado
 \documentclass[localFont]{yaac-another-awesome-cv}
 
-% Used with alternative option, the template will use the 'alternative' 
-% header layout, your system fonts and the default color scheme
+% Usado con la opción alternative, la plantilla usará la 'alternative'
+% diseño de encabezado, las fuentes de su sistema y el esquema de color predeterminado
 \documentclass[alternative]{yaac-another-awesome-cv}
 
-% Used with localFont, alternative and 10pt options the template will use the 'alternative' 
-% header layout, fonts included in the fonts directory, the default color scheme and the '10pt' font size.
-% Based on the article document class, size options are 10pt, 11pt and 12pt
+% Usado con localFont, alternative  y opciones de 10pt, la plantilla usará la 'alternative'
+% diseño de encabezado, fuentes incluidas en el directorio de fuentes, el esquema de color predeterminado y el tamaño de fuente '10pt'.
+% Basado en la clase de documento del artículo, las opciones de tamaño son 10pt, 11pt y 12pt
 \documentclass[localFont,alternative,10pt]{yaac-another-awesome-cv}
 
-% Used with 'compact' option the template will use the compact experience layout 
-% Feel free to use this option with the others that are available
+% Usado con la opción 'compact', la plantilla usará el diseño de experiencia compacto
+% Siéntete libre de usar esta opción con las otras que están disponibles
 \documentclass[compact]{yaac-another-awesome-cv}
 
 ```
 
-### Construct the header
+### Construye el encabezado
 
-Outside of the `\socialinfo` wrapper you have to define the mandatory parameters `\name` and `\tagline`.
+Fuera del envoltorio `\socialinfo`, debe definir los parámetros obligatorios `\name` y `\tagline`.
 
 ```latex
 % Define author's name
@@ -89,7 +89,7 @@ Outside of the `\socialinfo` wrapper you have to define the mandatory parameters
 \tagline{Chef de projet IT}
 ```
 
-Most social network have their command to render a clickable link or a simple text entry.
+La mayoría de las redes sociales tienen su comando para mostrar un enlace en el que se puede hacer clic o una entrada de texto simple.
 
 ```latex
 % Render author's linked-in (optional)
@@ -117,7 +117,7 @@ Most social network have their command to render a clickable link or a simple te
 \email{christophe.roger@mail.com}
 ```
 
-Put these command in the `\socialinfo` wrapper. Feel free to add `\\` when you want to force a new line.
+Pon estos comandos en el envoltorio `\socialinfo`. Siéntase libre de agregar `\\` cuando quiera forzar una nueva línea.
 
 ```latex
 \socialinfo{
@@ -131,15 +131,15 @@ Put these command in the `\socialinfo` wrapper. Feel free to add `\\` when you w
 }
 ```
 
-Use the `\makecvheader`command to generate the header.
+Use el comando `\makecvheader` para generar el encabezado.
 
 ```latex
 \makecvheader
 ```
 
-### Set the left column size
+### Establecer el tamaño de la columna izquierda
 
-Sections share the left column size (2.5cm by default). You can change this default size using the `\setleftcolumnlength` command.
+Las secciones comparten el tamaño de la columna izquierda (2,5 cm por defecto). Puede cambiar este tamaño predeterminado usando el comando `\setleftcolumnlength`.
 
 ```latex
 % Override default left column length of (2.5cm) (optional)
@@ -148,10 +148,9 @@ Sections share the left column size (2.5cm by default). You can change this defa
 \setleftcolumnlength{1.5cm}
 ```
 
+### Construye la sección de _comptences_ o _skills_
 
-### Construct the _comptences_ or _skills_ section
-
-To list your awesome skills as keyword lists you first have to declare the `keywords` environment and then fill it with a list of keywordsentry
+Para enumerar sus increíbles habilidades como listas de palabras clave, primero debe declarar el entorno de `keywords` y luego completarlo con una lista de palabras clave.
 
 ```latex
 % Begin a new keywords environment to show us your awesome keywords
@@ -162,9 +161,9 @@ To list your awesome skills as keyword lists you first have to declare the `keyw
   \end{keywords}
 ```
 
-### Construct the _experiences_ section
+### Construye la sección _experiences_
 
-To describe your experiences you have first to declare the `experiences` environment
+Para describir sus experiencias, primero debe declarar el entorno `experiences`
 
 ```latex
 % Begin a new experiences environment to use experience and consultantexperience macro
@@ -176,7 +175,7 @@ To describe your experiences you have first to declare the `experiences` environ
 ```
 
 Then you can describe your experiences using **\experience** and **\consultantexperience** entries. Each
-entry must be separated by the **\emptyseparator** 
+entry must be separated by the **\emptyseparator**
 
 ```latex
 % Begin a new experiences environment to use experience and consultantexperience macro
@@ -186,7 +185,7 @@ entry must be separated by the **\emptyseparator**
   \experience
     {End date}      {Experience title}{Enterprise}{Country}
     {Begin date}    {
-    				  experience details
+          experience details
                       \begin{itemize}
                         \item Item 1: _Item 1 description_
                         \item Item 2: _Item 2 description_
@@ -217,7 +216,7 @@ entry must be separated by the **\emptyseparator**
 
 ### Construct the _languages_ section
 
-The _languages_ section use the **skills** environment. 
+The _languages_ section use the **skills** environment.
 
 ```latex
 % Begin a new skills environment and fill it with skill entries
@@ -296,29 +295,27 @@ Then you can list your references as follow:
   \begin{referees}
 ```
 
+### Construya la sección _publicaciones_
 
-### Construct the _publications_ section
-
-The _publications_ section use the **publications** environment.
+La sección _publicaciones_ utiliza el entorno de **publicaciones**.
 
 ```latex
   \begin{publications}
 
-    % Here's go your references
+    % Aquí van sus referencias
 
   \end{publications}
 ```
 
-Then you can list your references as follow:
+Entonces puede enumerar sus referencias de la siguiente manera:
 
 ```latex
-  % Splits the bibliography per citation type (here Journal Aricles)
+  % Divide la bibliografía por tipo de cita (aquí artículos de revistas)
   \printbibliography[heading=subbibliography,title={Journal Articles},type=article]
 
-  % Or for the full list without separating by type
+  % O para la lista completa sin separar por tipo
   \printbibliography[heading={none}]
 ```
-
 
 ## License
 
