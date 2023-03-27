@@ -1,4 +1,4 @@
-YAAC: Another Awesome CV [![CircleCI](https://circleci.com/gh/darwiin/yaac-another-awesome-cv.svg?style=svg)](https://circleci.com/gh/darwiin/yaac-another-awesome-cv) [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://github.com/darwiin/yaac-another-awesome-cv/releases/download/v1.8.0/cv.pdf)
+YAAC: Another Awesome CV [![CircleCI](https://circleci.com/gh/darwiin/yaac-another-awesome-cv.svg?style=svg)](https://circleci.com/gh/darwiin/yaac-another-awesome-cv) [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://github.com/achalmed/Curriculum-Vitae/blob/master/cv/cv.pdf)
 =================
 
 ## Inicio rápido
@@ -40,9 +40,9 @@ Puede encontrar más información sobre la plantilla original de Alessandro Plas
 Al declarar `\documentclass`, puede usar la(s) opción(es) para personalizar la representación de su CV.
 
 1. **localFont** para usar las fuentes incluidas en la carpeta _fonts_
-2. **alternativa** para usar el diseño de _encabezado alternativo_
+2. **alternative** para usar el diseño de _encabezado alternativo_
 3. **10pt** o **11pt** o **12pt** para cambiar el tamaño de fuente
-4. **compacto** para reducir el espacio vertical entre las entradas de su experiencia
+4. **compact** para reducir el espacio vertical entre las entradas de su experiencia
 
 ```latex
 % Usado sin opción, la plantilla usará el'traditional' 
@@ -73,61 +73,61 @@ Al declarar `\documentclass`, puede usar la(s) opción(es) para personalizar la 
 Fuera del envoltorio `\socialinfo`, debe definir los parámetros obligatorios `\name` y `\tagline`.
 
 ```latex
-% Define author's name
-% Usage: \name{<firstname>}{<lastname>}
-% Mandatory
-\name{Christophe}{ROGER}
+% Definir el nombre del autor
+% de uso: \name{<nombre>}{<apellido>}
+% Obligatorio
+\name{Elmer Edison}{Achalma Mendoza}
 
-% Define author's photo (optional)
-% Usage: \photo[<shape: circular, square, roundedsquare, squircle>]{<diameter>}{<photo>}
-% The shape of the author's photo is circular by default.
-\photo{2.5cm}{darwiin}
+% Definir foto del autor (opcional)
+% de uso:  \photo[<shape: circular, square, roundedsquare, squircle>]{<diameter>}{<photo>}
+% La forma de la foto del autor es circular por defecto.
+\photo{2.6cm}{profile_picture}
 
-% Define author's tagline
-% Usage: \tagline{<tag line>} 
-% Mandatory
-\tagline{Chef de projet IT}
+% Definir lema del autor
+% de uso:  \tagline{<tag line>} 
+% Obligatorio
+\tagline{Economía | Pre Grado}
 ```
 
 La mayoría de las redes sociales tienen su comando para mostrar un enlace en el que se puede hacer clic o una entrada de texto simple.
 
 ```latex
-% Render author's linked-in (optional)
+% Procesar enlace del autor (opcional)
 % Usage: \linkedin{<linked-in-nick>}
-\linkedin{christopheroger}
+\linkedin{achalmaedison}
 
-% Render author's viadeo(optional)
+% Render viadeo del autor (opcional)
 % Usage: \viadeo{<viadeo-nick>}
 \viadeo{christopheroger}
 
-% Render author's github (optional)
+% Renderizar github del autor (opcional)
 % Usage: \github{<github-nick>}
-\github{darwiin}
+\github{achalmed}
 
-% Render author's stackoverflow profile (optional)
+% Renderizar el perfil de stackoverflow del autor (opcional)
 % Usage: \stackoverflow{<stackoverflow-user-id>}
 \stackoverflow{759643}
 
-% Render author's stackexchange profile (optional)
+% Procesar el perfil de intercambio de pila del autor (opcional)
 % Usage: \stackexchange{<stackexchange-user-id>}
 \stackexchange{396216}
 
-% Render author's email (optional)
+% Enviar correo electrónico del autor (opcional)
 % Usage: \email{<email adress>}
-\email{christophe.roger@mail.com}
+\email{achalmed.18@gmail.com}
 ```
 
 Pon estos comandos en el envoltorio `\socialinfo`. Siéntase libre de agregar `\\` cuando quiera forzar una nueva línea.
 
 ```latex
 \socialinfo{
-  \linkedin{christopheroger}
-  \viadeo{christopheroger}
-  \github{darwiin}\\
-  \smartphone{+687 123 456}
-  \email{christophe.roger@mail.com}\\
-  \address{2 Rue du quartier, 98765 Ville, Pays}\\
-  \infos{Né le 23 septembre 1982 (35 ans) à Nouméa, Nouvelle-Calédonie}
+	\linkedin{achalmaedison}
+	\github{achalmed}\\
+	\personalLink{achalmaedison.netlify.app}
+	\smartphone{+51 934 179 301}\\
+	\email{achalmed.18@gmail.com}\\
+	\address{Asoc Micaela Bastidas Mzna D1 - N° 06, Jesús Nazareno}
+	\infos{Ayacucho - Perú}
 }
 ```
 
@@ -142,9 +142,9 @@ Use el comando `\makecvheader` para generar el encabezado.
 Las secciones comparten el tamaño de la columna izquierda (2,5 cm por defecto). Puede cambiar este tamaño predeterminado usando el comando `\setleftcolumnlength`.
 
 ```latex
-% Override default left column length of (2.5cm) (optional)
-% Usage: \setleftcolumnlength{1.5cm} to change the left column lengtyh to 1.5cm
-% I recommend to use a size between 1.5cm to 2.5cm
+% Anular la longitud predeterminada de la columna izquierda de (2,5 cm) (opcional)
+% de uso: \setleftcolumnlength{1.5cm} para cambiar la longitud de la columna izquierda a 1.5cm
+% Recomiendo usar un tamaño entre 1.5cm a 2.5cm
 \setleftcolumnlength{1.5cm}
 ```
 
@@ -153,10 +153,10 @@ Las secciones comparten el tamaño de la columna izquierda (2,5 cm por defecto).
 Para enumerar sus increíbles habilidades como listas de palabras clave, primero debe declarar el entorno de `keywords` y luego completarlo con una lista de palabras clave.
 
 ```latex
-% Begin a new keywords environment to show us your awesome keywords
+% Inicie un nuevo entorno de palabras clave para mostrarnos sus increíbles palabras clave
   \begin{keywords}
     
-    % Here's go your keyword lists group by categories
+    % Aquí están sus listas de palabras clave agrupadas por categorías
     \keywordsentry{Frameworks}{Spring, Spring Boot, \textbf{Ionic 3}, Angular 2, Angular 4, ZK, JBoss RichFaces}
   \end{keywords}
 ```
