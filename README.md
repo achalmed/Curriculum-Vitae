@@ -158,6 +158,9 @@ Para enumerar sus increíbles habilidades como listas de palabras clave, primero
     
     % Aquí están sus listas de palabras clave agrupadas por categorías
     \keywordsentry{Frameworks}{Spring, Spring Boot, \textbf{Ionic 3}, Angular 2, Angular 4, ZK, JBoss RichFaces}
+    \keywordsentry{Programación}{Fundamentos de programación, Machine learning con R, MATLAB, Python, Visual Basic}
+    \keywordsentry{Microsoft Office}{Word Intermedio, Excel Intermedio}
+    \keywordsentry{Software}{EViews, LáTex, Stata}
   \end{keywords}
 ```
 
@@ -166,19 +169,19 @@ Para enumerar sus increíbles habilidades como listas de palabras clave, primero
 Para describir sus experiencias, primero debe declarar el entorno `experiences`
 
 ```latex
-% Begin a new experiences environment to use experience and consultantexperience macro
+% Comience un nuevo entorno de experiencias para usar la experiencia y la macro de experiencia del consultor
 \begin{experiences}
 
-% Here's go your experiences
+% Aquí van sus experiencias
 
 \end{experiences}
 ```
 
-Then you can describe your experiences using **\experience** and **\consultantexperience** entries. Each
-entry must be separated by the **\emptyseparator**
+Luego puede describir sus experiencias utilizando las entradas **\experience** y **\consultantexperience**. Cada
+la entrada debe estar separada por **\emptyseparator**
 
 ```latex
-% Begin a new experiences environment to use experience and consultantexperience macro
+% Comience un nuevo entorno de experiencias para usar la experiencia y la macro de experiencia del consultor
 \begin{experiences}
 
 % The experience entry work as below and can be used to describe a job experience
@@ -194,11 +197,11 @@ entry must be separated by the **\emptyseparator**
                     }
                     {Technology highlights}
 
-% The emptyseparator macro is used to create white space in your experience
+% La macro de separador vacío se usa para crear espacios en blanco en su experiencia
   \emptySeparator
 
-% The consultantexperience macro is very similar to the experience macro, but offer you 
-% the possibility tu put client details
+% La macro de experiencia del consultor es muy similar a la macro de experiencia, pero le ofrece
+% la posibilidad de poner los datos del cliente
   \consultantexperience
     {End date}        {Experience title}{Enterprise}{Country}
     {Begin date}      {Client job title}{Clent enterprise}
@@ -214,31 +217,32 @@ entry must be separated by the **\emptyseparator**
 \end{experiences}
 ```
 
-### Construct the _languages_ section
+### Construya la sección _languages_
 
-The _languages_ section use the **skills** environment.
+La sección _languages_ utiliza el entorno de **skills**.
 
 ```latex
-% Begin a new skills environment and fill it with skill entries
+% Comience un nuevo entorno de habilidades y llénelo con entradas de habilidades
   \begin{skills}
 
-% Render a skill in the skills environment
+% Representar una habilidad en el entorno de habilidades
 % Usage: \skill{<skill>}{<level between 1 and 5>}
-    \skill{Français}{5}
-    \skill{Anglais}{4}
+		\skill{Quechua}{5}
+		\skill{Español}{5}
+		\skill{Ingles}{3}
 
-% End the skills environment    
+% Acabar con el entorno de habilidades  
   \end{skills}
 ```
 
-### Construct the _scolarship_ section
+### Construya la sección _scolarship_
 
-The _scolarship_ section use the **scolarship** environment.
+La sección _scolarship_ utiliza el entorno de **scolarship**.
 
 ```latex
 \begin{scholarship}
 
-  % Render a scholarshipentry in the scolarship environment
+  % Representar una entrada de beca en el entorno de becas
   % Usage: \scholarshipentry{<date>}{<description>}
   \scholarshipentry{2007}
     {Master STIC Professionel filière MBDS de l'Université de Nice Sophia Antipolis (Master Informatique spécialité Multimédia, Base de Données et intégration de Systèmes)}
