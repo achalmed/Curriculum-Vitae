@@ -1,27 +1,36 @@
 %% Copyright 2016 Christophe Roger
 %
-% Author: 
+% Author:
 % Christophe Roger (Darwiin)
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3c
 % of this license or (at your option) any later version.
 % The latest version of this license is in
-%   http://www.latex-project.org/lppl.txt
+%   https://www.latex-project.org/lppl.txt
 % and version 1.3 or later is part of all distributions of LaTeX
 % version 2005/12/01 or later.
 %
 % This work has the LPPL maintenance status `maintained'.
-% 
+%
 % The Current Maintainer of this work is M. C. Roger.
 %
-% This work consists of the files awesome-source-cv.cls 
+% This work consists of the files awesome-source-cv.cls
 
-\ProvidesClass{documentMETADATA}[2018/07/19  v1.9.2 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2020/03/24  v2.3.1 'YAAC: Another Awesome CV' Class]
 
-\LoadClass[letterpaper]{article}
+\def\@@ptsize{10pt}
+
+\DeclareOption{10pt}{\def\@@ptsize{10pt}}
+\DeclareOption{11pt}{\def\@@ptsize{11pt}}
+\DeclareOption{12pt}{\def\@@ptsize{12pt}}
+
+\ProcessOptions\relax
+
+\LoadClass[a4paper,\@@ptsize]{article}
 
 \newif\if@showLinks   \@showLinksfalse
+\newif\if@isCompact   \@isCompactfalse
 
 \DeclareOption{green}{
   \def\@green{green}
@@ -51,6 +60,7 @@
 }
 
 \DeclareOption{showLinks}{ \@showLinkstrue}
+\DeclareOption{compact}{ \@isCompacttrue}
 
 \ProcessOptions
 
@@ -63,7 +73,7 @@
 \RequirePackage[usenames,dvipsnames]{xcolor}
 \RequirePackage{fullpage}
 \RequirePackage[margin=1.5cm]{geometry}
-\RequirePackage{fontawesome}
+\RequirePackage[fixed]{fontawesome5}
 \RequirePackage{hyperref}
 \RequirePackage{titlesec}
 \RequirePackage{array}
@@ -73,6 +83,7 @@
 \RequirePackage{tikz}
 \RequirePackage[skins]{tcolorbox}
 \RequirePackage{fancyhdr}
+\RequirePackage{ifthen}
 
 
 \DeclareUnicodeCharacter{00E9}{\'{e}}
@@ -159,21 +170,39 @@
 }
 
 %New length definition
-\newlength{\rightcolumnlength}
-\setlength{\rightcolumnlength}{14.8cm}
+\newlength{\fulllength}
+\setlength{\fulllength}{17.8cm}
 
-\newlength{\leftcolumn}
-\setlength{\leftcolumn}{2.5cm}
+\newlength{\leftcolumnlength}
+\setlength{\leftcolumnlength}{2.5cm}
+
+\newlength{\rightcolumnlength}
+%\setlength{\rightcolumnlength}{15.3cm minus 1cm}
+%\setlength{\rightcolumnlength}{\dimexpr(\fulllength-\leftcolumnlength)\relax}
+\setlength{\rightcolumnlength}{\dimexpr(\fulllength-\leftcolumnlength)\relax}
+
+% Override default left column length of (2.5cm)
+% Usage: \setleftcolumnlength{<length>}
+\newcommand{\setleftcolumnlength}[1]{
+  \setlength{\leftcolumnlength}{#1}
+  \setlength{\rightcolumnlength}{\dimexpr(\fulllength-\leftcolumnlength)\relax}
+}
 
 % Font Awesome icons aliases
 \newcommand{\mailSymbol}{\faAt}
-\newcommand{\locationSymbol}{\faMapMarker}
+\newcommand{\locationSymbol}{\faMapMarker*}
 \newcommand{\infoSymbol}{\faInfo}
-\newcommand{\linkedinSymbol}{\faLinkedin}
+\newcommand{\linkedinSymbol}{\faLinkedinIn}
 \newcommand{\viadeoSymbol}{\faViadeo}
-\newcommand{\mobileSymbol}{\faMobilePhone}
+\newcommand{\mobileSymbol}{\faMobile*}
 \newcommand{\githubSymbol}{\faGithub}
+\newcommand{\stackoverflowSymbol}{\faStackOverflow}
+\newcommand{\stackexchangeSymbol}{\faStackExchange}
+\newcommand{\mediumSymbol}{\faMedium}
+\newcommand{\bitbucketSymbol}{\faBitbucket}
+\newcommand{\websiteSymbol}{\faLink}
 \newcommand{\linkSymbol}{\faLink}
+
 
 \newcommand\link[2]{\color{linkcolor}\href{#1}{#2}\color{Black} }
 \newcommand\important[1]{\textbf #1}
@@ -190,11 +219,11 @@
 
 % Render a text with its symbol
 % Usage; \socialtext{<icon>}{<label>}
-\newcommand{\socialtext}[2]{\mbox{\textcolor{symbolcolor}{#1}\hspace{0.5em}#2\hspace{1em}}}
+\newcommand{\socialtext}[2]{\mbox{\textcolor{symbolcolor}{#1}#2\hspace{0.8em}}}
 
 % Render a link with its symbol
 % Usage; \sociallink{<icon>}{<label>}
-\newcommand{\sociallink}[3]{\mbox{\textcolor{symbolcolor}{#1}\hspace{0.5em}\link{#2}{#3}\hspace{1em}}}
+\newcommand{\sociallink}[3]{\mbox{\textcolor{symbolcolor}{#1}\link{#2}{#3}\hspace{0.8em}}}
 
 % Define author's name
 % Usage: \name{<firstname>}{<lastname>}
@@ -212,8 +241,9 @@
 \newcommand*{\tagline}[1]{\def\@tagline{#1}}
 
 % Define author's photo
-% Usage \photo{<diameter>}{<photo>}
-\newcommand{\photo}[2]{\def\@photo{#2}\def\@photodiameter{#1}}
+% Usage: \photo[<shape: circular, square, roundedsquare, squircle>]{<diameter>}{<photo>}
+% The shape of the author's photo is circular by default.
+\newcommand{\photo}[3][circular]{\def\@photo{#3}\def\@photodiameter{#2}\def\@photoshape{#1}}
 
 % Render author's address
 % Usage: \address{<address>}
@@ -225,28 +255,42 @@
 
 % Render author's linked-in (optional)
 % Usage: \linkedin{<linked-in-nick>}
-\newcommand*{\linkedin}[1]{\sociallink{\linkedinSymbol}{http://www.linkedin.com/in/#1/fr}{linkedin.com/in/#1}}
+\newcommand*{\linkedin}[1]{\sociallink{\linkedinSymbol}{https://www.linkedin.com/in/#1/fr}{linkedin.com/in/#1}}
 
 % Render author's personal website (optional)
 % Usage: \personalLink{<website-without-http://>}
 \newcommand*{\personalLink}[1]{\sociallink{\linkSymbol}{http://#1}{#1}}
-
-
 % Render author's viadeo(optional)
 % Usage: \viadeo{<viadeo-nick>}
-\newcommand*{\viadeo}[1]{\sociallink{\viadeoSymbol}{http://www.viadeo.com/fr/profile/#1}{viadeo.com/fr/profile/#1}}
+\newcommand*{\viadeo}[1]{\sociallink{\viadeoSymbol}{https://www.viadeo.com/fr/profile/#1}{viadeo.com/fr/profile/#1}}
 
 % Render author's github (optional)
 % Usage: \github{<github-nick>}
 \newcommand*{\github}[1]{\sociallink{\githubSymbol}{https://www.github.com/#1}{github.com/#1}}           % Github icon + URL
+
+% Render author's stackoverflow profile (optional)
+% Usage: \stackoverflow{<stackoverflow-user-id>}
+\newcommand*{\stackoverflow}[1]{\sociallink{\stackoverflowSymbol}{https://www.stackoverflow.com/u/#1}{stackoverflow.com/u/#1}}
+
+% Render author's stackexchange profile (optional)
+% Usage: \stackexchange{<stackexchange-user-id>}
+\newcommand*{\stackexchange}[1]{\sociallink{\stackexchangeSymbol}{https://stackexchange.com/users/#1}{stackexchange.com/users/#1}}
+
+% Render author's medium (optional)
+% Usage: \medium{<medium-nick>}
+\newcommand*{\medium}[1]{\sociallink{\mediumSymbol}{https://www.medium.com/@#1}{medium.com/#1}}
+
+% Render author's bitbucket (optional)
+% Usage: \bitbucket{<bitbucket-account-name>}
+\newcommand*{\bitbucket}[1]{\sociallink{\bitbucketSymbol}{https://bitbucket.com/#1}{bitbucket.com/#1}}
 
 % Render author's email (optional)
 % Usage: \email{<email adress>}
 \newcommand*{\email}[1]{\sociallink{\mailSymbol}{mailto:#1}{#1}}
 
 % Render a website link (optional)
-% Usage: \email{<email adress>}
-\newcommand*{\website}[2]{\sociallink{\faExternalLink}{#1}{#2}}
+% Usage: \website{<website name>}{<website adress>}
+\newcommand*{\website}[2]{\sociallink{\websiteSymbol}{#1}{#2}}
 
 % Render author's mobile phone (optional)
 % Usage: \smartphone{<mobile phone number>}
@@ -265,8 +309,24 @@
 }
 
 \newcommand\idphoto{
-  \tikz\path[fill overzoom image={\@photo}]rectangle (\linewidth,1.2\linewidth);
-  %  \tikz\path[fill overzoom image={\@photo}]circle(radius = 0.5\linewidth);
+\ifthenelse{\equal{\@photoshape}{square}}{
+% Draw square photo
+\tikz\path[fill overzoom image={\@photo}]rectangle(\linewidth,\linewidth);
+}{
+\ifthenelse{\equal{\@photoshape}{roundedsquare}}{
+% Draw square photo with rounded corners
+\tikz\path[fill overzoom image={\@photo}][rounded corners=2mm]rectangle(\linewidth,\linewidth);
+}{
+\ifthenelse{\equal{\@photoshape}{squircle}}{
+% Draw squircle photo
+\tikz\path[fill overzoom image={\@photo}][rounded corners=8mm]rectangle(\linewidth,\linewidth);
+}{
+% Draw circular photo
+\tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+}
+}
+
+}
 }
 
 % Define social entries to print in header
@@ -338,7 +398,7 @@
 }
 
 % Define a new column type for the scholarship environment
-\newcolumntype{Y}{>{\raggedleft}p{\leftcolumn}}
+\newcolumntype{Y}{>{\raggedleft}p{\leftcolumnlength}}
 
 % Define the 'scholarship' environment
 \newenvironment{scholarship}{%
@@ -355,7 +415,7 @@
 
 % Define the 'skills' environment
 \newenvironment{skills}{%
-  \begin{longtable}{R{\leftcolumn}p{\rightcolumnlength}}
+  \begin{longtable}{R{\leftcolumnlength}p{\rightcolumnlength}}
     }{%
   \end{longtable}
 }
@@ -363,20 +423,20 @@
 % Render a skill in the skills environment
 % Usage: \skill{<skill>}{<level>}
 \newcommand\skill[2]{
-  \textbf{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircleThin}{\faCircle}}\enspace } \\
+  \textbf{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircle[regular]}{\faCircle}}\enspace } \\
 }
 
 \newcolumntype{E}{>{\raggedright\arraybackslash}p{\rightcolumnlength}}
 
 % Define the 'experiences' environment
 \newenvironment{experiences}{%
-  \begin{longtable}{R{\leftcolumn}|E}
+  \begin{longtable}{R{\leftcolumnlength}|E}
     }{%
   \end{longtable}
 }
 
 % Render an experience in the experiences environment
-% Usage: 
+% Usage:
 % \experience
 %  {<End date>}      {<Title>}{<Enterprise>}{<Country>}
 %  {<Start date}     {
@@ -392,7 +452,7 @@
 }
 
 % Render a consultant experience in the experiences environment
-% Usage: 
+% Usage:
 % \consultantexperience
 %  {<End date>}      {<Consultant title>}{<Consulting Enterprise>}{<Country>}
 %  {<Start date}     {<Client title>}{<Client business unit>}
@@ -403,13 +463,20 @@
 \newcommand\consultantexperience[9]{
   \textbf{#1}    & \textbf{#2, \textsc{#3}, #4}   								\\*
   \textbf{#5}    & \emph{#6} pour \textsc{#7}                       				\\*
-  & 	\begin{minipage}[t]{\rightcolumnlength}
+  & \begin{minipage}[t]{\rightcolumnlength}
     #8
   \end{minipage}										\\*
   & \footnotesize{\foreach \n in {#9}{\cvtag{\n}}} 	\\
 }
 
-\newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
+% Define the empty separator macro with different spacing according to document class option 'compact'
+\if@isCompact
+  \newcommand\emptySeparator{\multicolumn{2}{c}{}\\[-0.6em]}
+\else
+  \newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
+\fi
+
+
 
 % Define the 'projects' environment
 \newenvironment{projects}{%
@@ -465,3 +532,40 @@
   \end{minipage}%
 }
 
+\newcommand*\refereeMailOnly[4]{
+  \hspace{1em}
+  \begin{minipage}[t]{\dimexpr(\linewidth/3) - 3em}
+    \begin{tabular}{>{}l >{}l}
+      \multicolumn{2}{l}{\textbf{#1}}            \\
+      \multicolumn{2}{l}{\emph{#2}, \textsc{#3}} \\
+      \quad \mailSymbol & \href{mailto:#4}{#4}   \\
+    \end{tabular}
+  \end{minipage}%
+}
+
+% Define the 'publications' environment
+\newenvironment{publications}{%
+  \vspace{5pt}
+}
+
+%% Bibliography
+\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex}
+
+\newcounter{bibitem}
+\AtBeginBibliography{\setcounter{bibitem}{1}}
+\AtEveryBibitem{\hspace{1em}\makebox[1.5em][l]{{\thebibitem}\stepcounter{bibitem}.}}
+
+\setlength{\bibitemsep}{1.5ex}
+\setlength{\bibhang}{2.7em}
+\NewBibliographyString{retrieved}
+\NewBibliographyString{from}
+
+\urlstyle{tt}
+
+\def\@subbibfont{\large\color{accentcolor}}
+\newcommand\subbibfont[1]{\gdef\@subbibfont{#1}}
+\defbibheading{subbibliography}{\vskip 5pt {\@subbibfont\hspace{0pt}#1}\par}
+
+\defbibfilter{booksandchapters}{%
+  ( type=book or type=incollection )
+}
