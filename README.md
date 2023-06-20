@@ -6,10 +6,10 @@
 
 |                      Page. 1                       |                      Page. 2                       |
 | :------------------------------------------------: | :------------------------------------------------: |
-| ![Résumé](cv/preview/cv_page-0001-alternative.jpg) | ![Résumé](cv/preview/cv_page-0002-alternative.jpg) |
+| ![Resumen](cv/preview/cv_page-0001.jpg) | ![Resumen](cv/preview/cv_page-0002.jpg) |
 
 ### Estilo alternativo
 
 |                Page. 1                 |                Page. 2                 |
 | :------------------------------------: | :------------------------------------: |
-| ![Résumé](cv/preview/cv_page-0001.jpg) | ![Résumé](cv/preview/cv_page-0002.jpg) |
+| ![Resumen](cv/preview/cv_page-0001-alternative.jpg) | ![Resumen](cv/preview/cv_page-0002-alternative.jpg) |
