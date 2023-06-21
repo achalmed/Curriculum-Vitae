@@ -1,0 +1,73 @@
+% !TEX TS-program = luatex
+% Awesome Source CV LaTeX Template
+%
+% This template has been downloaded from:
+% https://github.com/darwiin/awesome-neue-latex-cv
+%
+% Author:
+% Edison Achalma (achalmaedison)
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+% Indicar que el programa a utilizar es luatex
+% Esto puede ser útil si se requiere una configuración específica para el programa LaTeX utilizado
+% Por ejemplo, si el documento necesita ser compilado con luatex en lugar de pdflatex
+\documentclass[localFont,alternative,10pt]{yaac-another-awesome-cv}
+% Utilizar las opciones localFont, alternative y 10pt en la clase de documento 'yaac-another-awesome-cv'
+% Estas opciones permiten utilizar la versión "alternative" de la plantilla con las fuentes locales y un tamaño de fuente de 10pt.
+
+% Definir el nombre del autor
+\name{Elmer Edison}{Achalma Mendoza}
+% Definir el lema del autor
+\tagline{Economía | Pre Grado}
+% Definir foto del autor
+\photo{2.5cm}{profile1}
+% Configurar las redes sociales y la información de contacto del autor
+\socialinfo{
+	\linkedin{achalmaedison}
+	\github{achalmed}\\
+	\personalLink{achalmaedison.netlify.app}
+	\smartphone{+51 934 179 301}\\
+	\email{achalmed.18@gmail.com}\\
+	\address{Asoc Micaela Bastidas Mzna D1 - N° 06, Jesús Nazareno}
+	\infos{Ayacucho - Perú}
+}
+
+% Descomentar para agregar la bibliografía
+\addbibresource{my_publications.bib}
+
+\begin{document}
+
+	\makecvheader
+
+	\makecvfooter
+		{\textsc{\today}}
+		{\textsc{Elmer Edison Achalma Mendoza - CV}}
+		{\thepage}
+		
+	% Incluir el archivo que contiene el apartado "Research Statement"
+	\input{1_declaracion_cv}
+	% Incluir el archivo que contiene el apartado "Section compétence"
+	\input{2_competencias}
+	% Incluir el archivo que contiene el apartado "Section expérience"
+	\input{3_experiencias_corta}
+	%\input{3_experiencias_larga}
+	% Incluir el archivo que contiene el apartado "Sección formación académica"
+	\input{4_formacion_academica}
+	% Incluir el archivo que contiene el apartado "Section langues"
+	\input{5_idiomas_habilidades}
+	% Incluir el archivo que contiene el apartado "Section scolarité"
+	\input{6_logros}
+	% Incluir el archivo que contiene el apartado "Section projets"
+	\input{7_proyectos}
+	% Voluntariado
+	\input{8_voluntariado}
+	% Cursos y/o estudios complementarios
+	\input{9_certificados}
+	% Incluir el archivo que contiene el apartado "Section références"
+	\input{10_referencias}
+	% Incluir el archivo que contiene el apartado "Section publications"
+	\input{11_publicaciones}
+	
+\end{document}
