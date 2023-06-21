@@ -1,19 +1,21 @@
-%Section: Languages
-\sectionTitle{Publicaciones}{\faBook} 
+% Section publicaciones
+\sectionTitle{Publicaciones}{\faBook}
 
 \begin{publications}
-% PRECAUCIÓN: \addbibresource{my_publications.bib} no debe estar comentado en el archivo principal cv.tex
-\nocite{*}
+    % PRECAUCIÓN: \addbibresource{my_publications.bib} no debe estar comentado en el archivo principal cv.tex
+    % Asegúrate de descomentar esta línea en el archivo principal
 
-%% Si solo quiere todo en una lista, descomente la siguiente línea y comente todas las demás
-%\printbibliography[heading={none}]
+    \nocite{*} % Incluir todas las publicaciones sin citarlas explícitamente
 
-\printbibliography[heading=subbibliography,title={Journal Articles},type=article]
+    %% Si solo quieres mostrar una lista de publicaciones sin títulos de sección, descomenta la siguiente línea y comenta todas las demás
+    %\printbibliography[heading={none}]
 
-\printbibliography[heading=subbibliography,title={Conference Proceedings},type=inproceedings]
+    \printbibliography[heading=subbibliography,title={Artículos de Revistas},type=article]
 
-\printbibliography[heading=subbibliography,title={Books and Chapters},filter={booksandchapters}]
+    \printbibliography[heading=subbibliography,title={Actas de Conferencias},type=inproceedings]
 
-%\printbibliography[heading=subbibliography]
+    \printbibliography[heading=subbibliography,title={Libros y Capítulos},filter={booksandchapters}]
+
+    %\printbibliography[heading=subbibliography]
 
 \end{publications}
