@@ -66,7 +66,7 @@
 
 % Dependences
 %A Few Useful Packages
-\RequirePackage[english,french]{babel}
+\RequirePackage[english,spanish]{babel}
 \RequirePackage[utf8]{luainputenc}
 \RequirePackage{fontspec} 					                 % for loading fonts
 \RequirePackage{url,parskip} 	    % other packages for formatting
@@ -548,24 +548,39 @@
   \vspace{5pt}
 }
 
-%% Bibliography
-\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex}
+%% Configuración de Bibliografía
 
-\newcounter{bibitem}
-\AtBeginBibliography{\setcounter{bibitem}{1}}
-\AtEveryBibitem{\hspace{1em}\makebox[1.5em][l]{{\thebibitem}\stepcounter{bibitem}.}}
+% Utilizamos el paquete biblatex para gestionar la bibliografía. Aquí configuramos algunas opciones.
 
+\usepackage[backend=bibtex,style=numeric,natbib=true]{biblatex}
+
+% Definimos un contador 'bibitem' para numerar los elementos de la bibliografía.
+%\newcounter{bibitem}
+%\AtBeginBibliography{\setcounter{bibitem}{1}} % Comenzar numeración desde 1 al inicio.
+%\AtEveryBibitem{\hspace{1em}\makebox[1.5em][l]{{\thebibitem}\stepcounter{bibitem}.}} % Personalizamos la etiqueta de cada elemento.
+
+% Configuramos el espacio entre elementos de la bibliografía y la sangría de cada elemento.
 \setlength{\bibitemsep}{1.5ex}
 \setlength{\bibhang}{2.7em}
+
+% Definimos nuevas cadenas de texto para las entradas bibliográficas.
 \NewBibliographyString{retrieved}
 \NewBibliographyString{from}
 
+% Establecemos el estilo de URL para los enlaces web.
 \urlstyle{tt}
 
+% Definimos el estilo de fuente para los títulos de subbibliografías.
 \def\@subbibfont{\large\color{accentcolor}}
+
+% Creamos un comando para cambiar el estilo de fuente de las subbibliografías.
 \newcommand\subbibfont[1]{\gdef\@subbibfont{#1}}
+
+% Definimos el formato de los títulos de las subbibliografías.
 \defbibheading{subbibliography}{\vskip 5pt {\@subbibfont\hspace{0pt}#1}\par}
 
+% Creamos un filtro para seleccionar las entradas bibliográficas de tipo 'book' o 'incollection'.
 \defbibfilter{booksandchapters}{%
   ( type=book or type=incollection )
 }
+

@@ -8,9 +8,10 @@
 % CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 % Indicar que el programa a utilizar es luatex
-% Esto puede ser útil si se requiere una configuración específica para el programa LaTeX utilizado
-% Por ejemplo, si el documento necesita ser compilado con luatex en lugar de pdflatex
+
+
 \documentclass[localFont,alternative,10pt]{yaac-another-awesome-cv}
+
 % Utilizar las opciones localFont, alternative y 10pt en la clase de documento 'yaac-another-awesome-cv'
 % Estas opciones permiten utilizar la versión "alternative" de la plantilla con las fuentes locales y un tamaño de fuente de 10pt.
 
@@ -27,7 +28,7 @@
 	\personalLink{achalmaedison.netlify.app}
 	\smartphone{+51 934 179 301}\\
 	\email{achalmed.18@gmail.com}\\
-	\address{Asoc Micaela Bastidas Mzna D1 - N° 06, Jesús Nazareno}
+	%\address{Asoc Micaela Bastidas Mzna D1 - N° 06, Jesús Nazareno}
 	\infos{Ayacucho - Perú}
 }
 
@@ -45,26 +46,26 @@
 		
 	% Incluir el archivo que contiene el apartado "Section declaración"
 	\input{1_declaracion_cv}
-	% Incluir el archivo que contiene el apartado "Section competencias"
-	\input{2_competencias}
 	% Incluir el archivo que contiene el apartado "Section experiencia corta"
 	\input{3_experiencias_corta}
 	%\input{3_experiencias_larga}
 	% Incluir el archivo que contiene el apartado "Section formación académica"
 	\input{4_formacion_academica}
+	% Incluir el archivo que contiene el apartado "Section Cursos y/o estudios complementarios"
+	\input{9_certificados}
 	% Incluir el archivo que contiene el apartado "Section idiomas y habilidades"
 	\input{5_idiomas_habilidades}
 	% Incluir el archivo que contiene el apartado "Section logros"
-	\input{6_logros}
+	%\input{6_logros}
+	% Incluir el archivo que contiene el apartado "Section competencias"
+	\input{2_competencias}
 	% Incluir el archivo que contiene el apartado "Section proyectos"
 	\input{7_proyectos}
 	% Incluir el archivo que contiene el apartado "Section voluntariado"
-	\input{8_voluntariado}
-	% Incluir el archivo que contiene el apartado "Section Cursos y/o estudios complementarios"
-	\input{9_certificados}
+	%\input{8_voluntariado}
 	% Incluir el archivo que contiene el apartado "Section referencias"
 	\input{10_referencias}
 	% Incluir el archivo que contiene el apartado "Section publicaciones"
-	\input{11_publicaciones}
+	%\input{11_publicaciones}
 	
 \end{document}
