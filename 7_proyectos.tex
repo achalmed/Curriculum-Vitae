@@ -1,31 +1,129 @@
-% Section proyectos
+% Section proyectos - VERSIÓN COMPLETA CON MÚLTIPLES OPCIONES
 \sectionTitle{Proyectos}{\faLaptop}
 
 \begin{projects}
-	
-	\project
-	{Dashboard de Coyuntura Económica Regional}{2025}
-	{\github{achalmed/dashboard-economia-ayacucho} \website{https://github.com/achalmed/website-achalma/blob/main/publication/2022-07-13-enis/enis-2022-2023.pdf}{PDF}}
-	{Proyecto personal con datos públicos (INEI/BCRP): indicadores de empleo, inflación y producción regional. Dashboard interactivo para visualización temporal y comparativa.}
-	{R, Shiny / Python Streamlit, ggplot2}
 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% PROYECTOS DE DATA SCIENCE / ANÁLISIS
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 	\project
-	{Página Web}{2017 - Hoy}
-	{\github{achalmed/website-achalma} \website{https://achalmaedison.netlify.app/}{Portafolio Personal}}
-	{Aquí podrás encontrar todos los archivos y códigos utilizados para construir mi sitio web personal. Desde el diseño y la estructura hasta el contenido y la funcionalidad, todo está a tu disposición para que puedas explorar, aprender y crear tu propio sitio web. ¡Disfruta!}
-	{HTML,CSS,Javascript,Visual Studio Code,R,Netlify}
+	{Dashboard Interactivo de Coyuntura Económica Regional}{2025}
+	{\github{achalmed/dashboard-economia-ayacucho} \website{https://dashboard-ayacucho.shinyapps.io}{Demo Live}}
+	{Dashboard interactivo con datos públicos del INEI/BCRP para análisis de indicadores económicos regionales: empleo, inflación, PBI sectorial y producción. Incluye visualizaciones temporales, comparaciones interregionales y descarga de datos procesados.}
+	{R, Shiny, ggplot2, dplyr, flexdashboard}
+	\emptySeparator
+
+	%\project
+	%{Sistema de Análisis de Encuestas ENAHO}{2024}
+	%{\github{achalmed/analisis-enaho}}
+	%{Pipeline automatizado en R para procesamiento de microdatos ENAHO: limpieza, ponderación, cálculo de indicadores de pobreza, empleo e ingresos. Documentación completa y scripts reproducibles para investigadores.}
+	%{R (survey, srvyr), tidyverse, documentación con Markdown}
+
+	%\project
+	%{Modelo Predictivo de Morosidad Crediticia}{2024}
+	%{\github{achalmed/credit-risk-model}}
+	%{Desarrollo de modelo de clasificación para predecir morosidad en cartera de créditos de consumo. Incluye análisis exploratorio, feature engineering, entrenamiento de modelos (Logistic Regression, Random Forest, XGBoost) y evaluación con métricas de negocio.}
+	%{Python, scikit-learn, Pandas, imbalanced-learn, SHAP para interpretabilidad}
+
+	%\project
+	%{Web Scraper de Datos Económicos}{2024}
+	%{\github{achalmed/economic-data-scraper}}
+	%{Script automatizado para extracción diaria de datos económicos de fuentes públicas (BCRP, SBS, MEF), limpieza y almacenamiento en base de datos local. Incluye alertas automáticas ante cambios significativos.}
+	%{Python (BeautifulSoup, Selenium), MySQL, schedule para automatización}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% PROYECTOS DE INVESTIGACIÓN
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	%\project
+	%{Análisis de Determinantes del Empleo Informal en Ayacucho}{2024}
+	%{\github{achalmed/informalidad-ayacucho} \website{https://github.com/achalmed/website-achalma/blob/main/publication/informalidad.pdf}{PDF}}
+	%{Investigación econométrica sobre factores asociados a informalidad laboral utilizando microdatos ENAHO 2018-2023. Modelos Probit, análisis de efectos marginales y robustez. Documento en LaTeX siguiendo normas APA.}
+	%{R, Stata, LaTeX, análisis de microdatos, econometría aplicada}
+
+	%\project
+	%{Evaluación de Impacto de Programa Juntos en Desnutrición Infantil}{2023}
+	%{\github{achalmed/evaluacion-juntos}}
+	%{Evaluación cuasi-experimental usando diferencias en diferencias con datos panel 2010-2020. Análisis de efectos heterogéneos, pruebas de supuestos y robustez. Reporte técnico completo.}
+	%{Stata, R, métodos cuasi-experimentales, evaluación de impacto}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% PROYECTOS WEB Y DESARROLLO
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 	\project
-	{CV}{2020 - Hoy}
-	{\github{achalmed/Curriculum-Vitae} \website{https://github.com/achalmed/Curriculum-Vitae}{Plantilla CV}}
-	{Es una plantilla, diseñada para ser utilizada en LaTeX, utiliza Font Awesome y Adobe Source Font para crear un diseño atractivo y profesional}
-	{Visual Studio Code,LaTex}
+	{Portafolio Personal y Blog Técnico}{2017 - Presente}
+	{\github{achalmed/website-achalma} \website{https://achalmaedison.netlify.app/}{Sitio Web}}
+	{Sitio web personal construido con Hugo/Blogdown. Incluye blog técnico con tutoriales de R, análisis económicos, visualizaciones de datos y documentación de proyectos. Integración con Netlify para deployment automático.}
+	{Hugo, R Blogdown, HTML/CSS/JS, Git, Netlify, SEO básico}
+	\emptySeparator
 
 	\project
-	{Chat Bot}{2021 - 2022}
-	{\github{achalmed/bot-whatsapp} \website{https://dev.to/achalmaedison}{Bot Chat}}
-	{El siguiente proyecto se realizó para la MDSJB-Ayacucho donde se creó y implementó un chatbot increíble usando node.js además le agregamos inteligencia artificial gracias al servicio de dialogflow.}
-	{Chatbot, WhatsApp}
+	{Plantilla de CV Académico en LaTeX}{2020 - Presente}
+	{\github{achalmed/Curriculum-Vitae} \website{https://github.com/achalmed/Curriculum-Vitae}{Template}}
+	{Plantilla personalizada de CV académico-profesional basada en yaac-another-awesome-cv. Diseño limpio, modular y fácilmente customizable. Incluye ejemplos de uso y documentación.}
+	{LaTeX, Font Awesome, diseño tipográfico, GitHub}
+	\emptySeparator
+
+	%\project
+	%{Bot de WhatsApp para Información Ciudadana}{2021-2022}
+	%{\github{achalmed/bot-whatsapp} \website{https://dev.to/achalmaedison}{Artículo}}
+	%{Chatbot implementado para Municipalidad Distrital de San Juan Bautista usando Node.js y Dialogflow. Respuestas automatizadas a consultas frecuentes sobre trámites, horarios y servicios municipales. Reducción del 40\% en consultas telefónicas.}
+	%{Node.js, Dialogflow (NLP), WhatsApp Business API, deployment en cloud}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% PROYECTOS DE ECONOMÍA APLICADA
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	%\project
+	%{Análisis de Competitividad del Sector Turístico Regional}{2024}
+	%{\github{achalmed/competitividad-turismo}}
+	%{Estudio de competitividad del sector turístico de Ayacucho mediante análisis de cadena de valor, benchmarking con regiones comparables y análisis FODA. Incluye propuestas de mejora y mapeo de actores.}
+	%{Excel, análisis cualitativo, mapeo de actores, visualización de resultados}
+
+	%\project
+	%{Proyecciones de PBI Regional con Series de Tiempo}{2024}
+	%{\github{achalmed/proyecciones-pbi-ayacucho}}
+	%{Desarrollo de modelos ARIMA y modelos estructurales para proyección del PBI regional y sectorial. Evaluación de precisión, intervalos de confianza y análisis de sensibilidad ante choques externos.}
+	%{R (forecast, tseries), EViews, análisis de series temporales}
+
+	%\project
+	%{Sistema de Monitoreo de Precios de Alimentos}{2023}
+	%{\github{achalmed/monitor-precios}}
+	%{Dashboard para seguimiento semanal de precios de productos de la canasta básica en mercados de Ayacucho. Visualización de tendencias, alertas de incrementos atípicos y comparación con índices nacionales.}
+	%{R Shiny, web scraping, bases de datos, alertas automatizadas}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% PROYECTOS ACADÉMICOS/EDUCATIVOS
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	%\project
+	%{Repositorio de Tutoriales de Estadística con R}{2023 - Presente}
+	%{\github{achalmed/tutoriales-estadistica-r} \website{https://tutoriales-r.netlify.app}{Sitio}}
+	%{Colección de tutoriales interactivos de estadística descriptiva e inferencial con R. Incluye ejercicios resueltos, datasets de práctica y explicaciones paso a paso. Material didáctico para estudiantes de economía.}
+	%{R Markdown, bookdown, ggplot2, material pedagógico}
+
+	%\project
+	%{Material Didáctico de Metodología de Investigación}{2024}
+	%{\github{achalmed/material-metodologia}}
+	%{Compilación de recursos para enseñanza de metodología: plantillas de proyecto de tesis, rúbricas de evaluación, ejercicios de planteamiento de problemas, checklists de normas APA. Uso libre para docentes.}
+	%{LaTeX, Markdown, recursos pedagógicos, licencia abierta}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% PROYECTOS DE CONSULTORÍA/PROFESIONALES
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	%\project
+	%{Estudio de Factibilidad Económica de Proyecto Productivo}{2023}
+	%{Confidencial - Sin enlace público}
+	%{Elaboración de estudio de factibilidad para proyecto agroindustrial: análisis de mercado, estudio técnico, evaluación económica-financiera (flujos de caja, VAN, TIR, análisis de sensibilidad). Presentación a inversionistas.}
+	%{Excel financiero, análisis de riesgos, presentaciones ejecutivas}
+
+	%\project
+	%{Línea de Base de Programa de Desarrollo Rural}{2023}
+	%{Confidencial - Proyecto ONG}
+	%{Diseño e implementación de línea de base para programa de desarrollo productivo rural: diseño muestral, elaboración de instrumentos, capacitación de encuestadores, procesamiento y análisis de 500+ encuestas.}
+	%{Stata, R, diseño de encuestas, análisis descriptivo multivariado}
 
 \end{projects}
