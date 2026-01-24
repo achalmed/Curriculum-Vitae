@@ -22,11 +22,11 @@
 % [compact]       - Reducir el espacio vertical entre experiencias
 %
 % Ejemplos de uso:
-% \documentclass{yaac-another-awesome-cv}                           % Diseño tradicional, fuentes del sistema, 10pt
-% \documentclass[localFont]{yaac-another-awesome-cv}                % Diseño tradicional, fuentes locales, 10pt
-% \documentclass[alternative]{yaac-another-awesome-cv}              % Diseño alternativo, fuentes del sistema, 10pt
+% \documentclass{yaac-another-awesome-cv}                              % Diseño tradicional, fuentes del sistema, 10pt
+% \documentclass[localFont]{yaac-another-awesome-cv}                   % Diseño tradicional, fuentes locales, 10pt
+% \documentclass[alternative]{yaac-another-awesome-cv}                 % Diseño alternativo, fuentes del sistema, 10pt
 % \documentclass[localFont,alternative,10pt]{yaac-another-awesome-cv}  % Diseño alternativo, fuentes locales, 10pt
-% \documentclass[compact]{yaac-another-awesome-cv}                  % Diseño compacto (experiencias con menos espacio)
+% \documentclass[compact]{yaac-another-awesome-cv}                     % Diseño compacto (experiencias con menos espacio)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -112,7 +112,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Descomentar para agregar la bibliografía
-\addbibresource{my_publications.bib}
+%\addbibresource{my_publications.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % AJUSTES OPCIONALES DE DISEÑO
@@ -149,10 +149,19 @@
 % usando % al inicio de la línea para comentar
 
 % 1. Declaración / Perfil profesional (Obligatorio)
-\input{1_declaracion_cv}
+%\input{1_declaracion_consultoria}
+%\input{1_declaracion_data_science}
+\input{1_declaracion_docencia}
+%\input{1_declaracion_economia}
+%\input{1_declaracion_sector_financiero}
+%\input{1_declaracion_sector_publico}
+
 
 % 2. Experiencia profesional (Obligatorio)
-\input{3_experiencias_corta}
+%\input{3_experiencias_corta}
+%\input{3_experiencias_data_science}
+\input{3_experiencias_docencia}
+
 % Versión extendida de experiencias (Opcional - usar si necesitas más detalle)
 %\input{3_experiencias_larga}
 
@@ -170,7 +179,11 @@
 %\input{6_logros}
 
 % 7. Competencias técnicas (Obligatorio para perfiles técnicos)
-\input{2_competencias}
+%\input{2_competencias_data_science}
+\input{2_competencias_docencia}
+%\input{2_competencias_economia}
+%\input{2_competencias_sector_financiero}
+%\input{2_competencias_sector_publico}
 
 % 8. Proyectos (Recomendado para perfiles técnicos)
 \input{7_proyectos}
