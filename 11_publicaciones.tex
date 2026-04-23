@@ -1,21 +1,154 @@
 % Section publicaciones
 \sectionTitle{Publicaciones}{\faBook}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INSTRUCCIONES DE USO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% IMPORTANTE: Para que esta sección funcione correctamente:
+% 1. Descomenta \addbibresource{my_publications.bib} en cv.tex
+% 2. Crea/edita el archivo my_publications.bib con tus publicaciones
+% 3. Compila con: lualatex → biber → lualatex → lualatex
+%
+% FORMATOS DE COMPILACIÓN:
+%   lualatex cv.tex
+%   biber cv
+%   lualatex cv.tex
+%   lualatex cv.tex
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{publications}
-    % PRECAUCIÓN: \addbibresource{my_publications.bib} no debe estar comentado en el archivo principal cv.tex
-    % Asegúrate de descomentar esta línea en el archivo principal
-
-    \nocite{*} % Incluir todas las publicaciones sin citarlas explícitamente
-
-    %% Si solo quieres mostrar una lista de publicaciones sin títulos de sección, descomenta la siguiente línea y comenta todas las demás
-    %\printbibliography[heading={none}]
-
-    \printbibliography[heading=subbibliography,title={Artículos de Revistas},type=article]
-
-    \printbibliography[heading=subbibliography,title={Actas de Conferencias},type=inproceedings]
-
-    \printbibliography[heading=subbibliography,title={Libros y Capítulos},filter={booksandchapters}]
-
-    %\printbibliography[heading=subbibliography]
-
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% OPCIÓN 1: LISTA COMPLETA SIN CATEGORÍAS (más simple)
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Usar esta opción si tienes pocas publicaciones (1-5)
+	% o si no quieres separar por tipo
+	
+	% Descomentar la siguiente línea para mostrar todas las publicaciones juntas:
+	%\nocite{*}
+	%\printbibliography[heading={none}]
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% OPCIÓN 2: SEPARADO POR TIPOS DE PUBLICACIÓN (recomendado)
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Usar esta opción si tienes varias publicaciones de diferentes tipos
+	% Permite organizar mejor tu producción académica
+	
+	\nocite{*} % Incluir todas las publicaciones del .bib sin citarlas en el texto
+	
+	% Artículos en revistas científicas (journals)
+	\printbibliography[heading=subbibliography,title={Artículos de Revistas},type=article]
+	
+	% Ponencias en conferencias y congresos
+	\printbibliography[heading=subbibliography,title={Actas de Conferencias},type=inproceedings]
+	
+	% Libros y capítulos de libros
+	\printbibliography[heading=subbibliography,title={Libros y Capítulos},filter={booksandchapters}]
+	
+	% Working papers y documentos de trabajo
+	%\printbibliography[heading=subbibliography,title={Documentos de Trabajo},type=unpublished]
+	
+	% Tesis (maestría, doctorado)
+	%\printbibliography[heading=subbibliography,title={Tesis},type=thesis]
+	
+	% Reportes técnicos
+	%\printbibliography[heading=subbibliography,title={Reportes Técnicos},type=techreport]
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% OPCIÓN 3: PUBLICACIONES SELECCIONADAS (manual)
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Usar esta opción si quieres mostrar solo algunas publicaciones específicas
+	% sin usar archivos .bib
+	
+	%\begin{itemize}
+	%    \item \textbf{Achalma, E.} (2024). ``Determinantes de la informalidad laboral en Ayacucho: Un análisis econométrico 2018-2023''. \emph{Revista de Economía Regional}, 15(2), 45-67. DOI: 10.1234/rer.2024.001
+	%    
+	%    \item \textbf{Achalma, E.}, \& García, J. (2023). ``Evaluación de impacto del Programa Juntos en la desnutrición infantil''. En \emph{Actas del XIX Congreso de Economistas}, 120-135. Lima: CIES.
+	%    
+	%    \item \textbf{Achalma, E.} (2023). ``Machine Learning aplicado a la predicción de morosidad crediticia en microfinanzas''. \emph{Documento de Trabajo No. 45}, Centro de Investigación Económica, UNSCH.
+	%\end{itemize}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% OPCIÓN 4: SEPARADO POR AÑO (orden cronológico inverso)
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Útil si tienes muchas publicaciones y quieres ordenar por año
+	
+	%\nocite{*}
+	%\printbibliography[heading=subbibliography,title={2024},year=2024]
+	%\printbibliography[heading=subbibliography,title={2023},year=2023]
+	%\printbibliography[heading=subbibliography,title={2022},year=2022]
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% OPCIÓN 5: SEPARADO POR ÁREA TEMÁTICA
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Requiere agregar keywords en el archivo .bib
+	% Ejemplo en .bib: keywords = {economia-desarrollo}
+	
+	%\nocite{*}
+	%\printbibliography[heading=subbibliography,title={Economía del Desarrollo},keyword={economia-desarrollo}]
+	%\printbibliography[heading=subbibliography,title={Econometría Aplicada},keyword={econometria}]
+	%\printbibliography[heading=subbibliography,title={Data Science},keyword={data-science}]
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% OPCIÓN 6: PUBLICACIONES REVISADAS POR PARES vs NO REVISADAS
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Útil para distinguir rigor académico
+	
+	%\nocite{*}
+	%\printbibliography[heading=subbibliography,title={Publicaciones Revisadas por Pares},keyword={peer-reviewed}]
+	%\printbibliography[heading=subbibliography,title={Otras Publicaciones},notkeyword={peer-reviewed}]
+	
 \end{publications}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NOTAS ADICIONALES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% FILTROS PERSONALIZADOS:
+% Para crear filtros personalizados (como booksandchapters), 
+% agrega en el preámbulo de cv.tex:
+%
+% \defbibfilter{booksandchapters}{
+	%   type=book or
+	%   type=inbook or
+	%   type=incollection
+	% }
+%
+% ORDENAMIENTO:
+% Por defecto las publicaciones se ordenan por año (más reciente primero)
+% Puedes cambiar esto en las opciones de biblatex
+%
+% ESTILOS DE CITACIÓN:
+% Puedes cambiar el estilo de las referencias:
+% - apa (American Psychological Association)
+% - ieee (Institute of Electrical and Electronics Engineers)
+% - chicago (Chicago Manual of Style)
+% - vancouver (Vancouver system)
+%
+% Para cambiar el estilo, modifica en cv.tex:
+% \usepackage[style=apa]{biblatex}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TIPS PARA ACADÉMICOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% 1. ÍNDICES DE IMPACTO: Menciona si la revista está indexada
+%    Ejemplo: "Publicado en revista indexada en Scopus/WoS"
+%
+% 2. FACTOR DE IMPACTO: Agrega el cuartil si es relevante
+%    Ejemplo: "Revista Q1 en Economics (JCR 2023)"
+%
+% 3. DOI: Siempre incluye el DOI de tus publicaciones
+%    Se puede agregar como url en el archivo .bib
+%
+% 4. ORCID: Asegúrate de tener tu ORCID actualizado con todas tus publicaciones
+%
+% 5. ACCESO ABIERTO: Si el artículo es open access, menciónalo
+%
+% 6. PREPRINTS: Puedes incluir preprints (arXiv, SSRN) en "Documentos de Trabajo"
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
