@@ -40,6 +40,7 @@
 *.rubbercache
 rubber.cache
 latex.out/
+build/
 
 # Package-specific
 *.alg
