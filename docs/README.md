@@ -1,7 +1,7 @@
 # Sistema Modular de CV - Edison Achalma
 
 [![Licencia: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-[![Ejemplo](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://github.com/achalmed/Curriculum-Vitae/blob/master/cv.pdf)
+[![Ejemplo](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://github.com/achalmed/Curriculum-Vitae/blob/master/output/index.pdf)
 
 #readme
 
@@ -39,15 +39,15 @@ Sistema modular y personalizable para generar currículums profesionales en LaTe
 
 ### Estilo normal
 
-|               Page. 1                |               Page. 2                |
-| :----------------------------------: | :----------------------------------: |
-| ![Resumen](preview/cv_page-0001.jpg) | ![Resumen](preview/cv_page-0002.jpg) |
+|                        Page. 1                        |                        Page. 2                        |
+| :---------------------------------------------------: | :---------------------------------------------------: |
+| ![Resumen](../assets/images/preview/cv_page-0001.jpg) | ![Resumen](../assets/images/preview/cv_page-0002.jpg) |
 
 ### Estilo alternativo
 
-|                     Page. 1                      |                     Page. 2                      |
-| :----------------------------------------------: | :----------------------------------------------: |
-| ![Resumen](preview/cv_page-0001-alternative.jpg) | ![Resumen](preview/cv_page-0002-alternative.jpg) |
+|                              Page. 1                              |                              Page. 2                              |
+| :---------------------------------------------------------------: | :---------------------------------------------------------------: |
+| ![Resumen](../assets/images/preview/cv_page-0001-alternative.jpg) | ![Resumen](../assets/images/preview/cv_page-0002-alternative.jpg) |
 
 ---
 
@@ -646,44 +646,85 @@ Si no usas `localFont`, puedes usar fuentes del sistema:
 ## 📁 Estructura del Proyecto
 
 ```
-Curriculum-Vitae/
+doc_cv/
 │
-├── cv.tex                              # Archivo principal del CV
-├── yaac-another-awesome-cv.cls         # Clase LaTeX de la plantilla
+├── 🗂️ assets/                          # Recursos estáticos
+│   ├── anexos/                         # Certificados y constancias (PDF)
+│   │   ├── 20170512 certificado google.pdf
+│   │   ├── 20180407 constancia programa parlamento joven.pdf
+│   │   ├── 20191209 certificado conee ica.pdf
+│   │   ├── 20200819 certificado finanzas basicas y planeamiento estrategico.pdf
+│   │   ├── 20210524 certificado foro regional de alto desarrollo lima y callao.pdf
+│   │   ├── 20220411 constancia curso de redaccion de documentos academicos.pdf
+│   │   ├── 20220429 diploma de especializacion en sistemas gubernamentales.pdf
+│   │   ├── 20220527 diploma de especializacion en ofimatica profesional.pdf
+│   │   ├── 20231118 certificado conectate.pdf
+│   │   ├── 20231119 certificado linux.pdf
+│   │   ├── 20240430 certificado macroeconomia ii ed2.pdf
+│   │   ├── 20240613 constancia perspectivas e impacto logistico (...).pdf
+│   │   ├── 20240817 certificado de trabajo sofia.pdf
+│   │   ├── 20241225 certificado econometria i caf.pdf
+│   │   ├── 20260113 certificado de trabajo sofia.pdf
+│   │   └── 20260123 constancia de trabajo cau unsch.pdf
+│   └── images/
+│       ├── preview/                    # Imágenes de vista previa del CV
+│       └── profile/                    # Fotos de perfil
+│           ├── profile1.jpg
+│           └── profile2.jpg
 │
-├── fonts/                              # Fuentes incluidas
-│   ├── SourceSansPro-Regular.otf
-│   ├── SourceSansPro-Bold.otf
-│   └── SourceCodePro-Regular.otf
+├── 📚 bibliography/                    # Bibliografía académica
+│   └── my_publications.bib
 │
-├── preview/                            # Imágenes de vista previa
+├── 📖 docs/                            # Documentación del proyecto
+│   ├── README.md
+│   ├── INDICE.md
+│   ├── GUIA_PRACTICA.md
+│   ├── GUIA_PUBLICACIONES.md
+│   ├── PLANTILLAS_RAPIDAS.md
+│   └── PULL_REQUEST_TEMPLATE.md
 │
-├── 📄 Archivos de contenido modular
-├── 1_declaracion_*.tex                 # Declaraciones por área (6 versiones)
-├── 2_competencias_*.tex                # Competencias por área (5 versiones)
-├── 3_experiencias_*.tex                # Experiencias por área (3 versiones)
-├── 4_formacion_academica.tex           # Formación académica
-├── 5_idiomas_habilidades.tex           # Idiomas y habilidades
-├── 6_logros.tex                        # Logros y reconocimientos
-├── 7_proyectos.tex                     # Proyectos personales
-├── 8_voluntariado.tex                  # Voluntariado
-├── 9_certificados.tex                  # Certificaciones
-├── 10_referencias.tex                  # Referencias profesionales
-├── 11_publicaciones.tex                # Publicaciones académicas
+├── 🗃️ drafts/                          # Borradores y versiones anteriores
 │
-├── 📚 Documentación
-├── README.md                           # Este archivo
-├── INDICE.md                           # Índice del sistema
-├── GUIA_PRACTICA.md                    # Guía con casos de uso
-├── PLANTILLAS_RAPIDAS.md               # Scripts de automatización
+├── 📝 main/                            # Código fuente principal del CV
+│   ├── index.tex                       # Archivo principal (punto de entrada)
+│   ├── yaac-another-awesome-cv.cls     # Clase LaTeX de la plantilla
+│   ├── fonts/                          # Fuentes locales Source Sans Pro
+│   │   ├── SourceSansPro-Light.otf
+│   │   ├── SourceSansPro-Regular.otf
+│   │   └── ...                         # (12 variantes en total)
+│   └── sections/                       # Secciones modulares del CV
+│       ├── declaraciones/              # Perfil profesional por área (6 versiones)
+│       │   ├── 1_declaracion_consultoria.tex
+│       │   ├── 1_declaracion_data_science.tex
+│       │   ├── 1_declaracion_docencia.tex
+│       │   ├── 1_declaracion_economia.tex
+│       │   ├── 1_declaracion_sector_financiero.tex
+│       │   └── 1_declaracion_sector_publico.tex
+│       ├── competencias/               # Habilidades técnicas por área (5 versiones)
+│       │   ├── 2_competencias_data_science.tex
+│       │   ├── 2_competencias_docencia.tex
+│       │   ├── 2_competencias_economia.tex
+│       │   ├── 2_competencias_sector_financiero.tex
+│       │   └── 2_competencias_sector_publico.tex
+│       ├── experiencias/               # Experiencia profesional (4 versiones)
+│       │   ├── 3_experiencias_corta.tex
+│       │   ├── 3_experiencias_data_science.tex
+│       │   ├── 3_experiencias_docencia.tex
+│       │   └── 3_experiencias_larga.tex
+│       └── otros/                      # Secciones complementarias
+│           ├── 4_formacion_academica.tex
+│           ├── 5_idiomas_habilidades.tex
+│           ├── 6_logros.tex
+│           ├── 7_proyectos.tex
+│           ├── 8_voluntariado.tex
+│           ├── 9_certificados.tex
+│           ├── 10_referencias.tex
+│           ├── 11_publicaciones.tex
+│           └── 12_anexos.tex           # Anexos: certificados completos en PDF
 │
-├── 🖼️ Recursos
-├── profile2.jpg                        # Foto de perfil
-├── my_publications.bib                 # Bibliografía (BibTeX)
-│
-└── 🔧 Herramientas
-    ├── Makefile                        # Automatización de compilación
-    └── .gitignore                      # Archivos ignorados por Git
+└── 📤 output/                          # PDFs generados
+    ├── index.pdf                       # CV compilado más reciente
+    └── versiones/                      # Versiones anteriores guardadas
 ```
 
 ---
