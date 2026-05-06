@@ -27,6 +27,9 @@
 %% =============================================================================
 
 
+%% agregar pdfs
+\RequirePackage{pdfpages}
+
 %% =============================================================================
 %% 1. IDENTIFICACIÓN DE LA CLASE
 %% =============================================================================
@@ -147,10 +150,10 @@
 %%   xelatex   → NO usar inputenc     (fontspec + UTF-8 nativo)
 
 %% Soporte multilingüe: español e inglés
-\RequirePackage[english,spanish]{babel}
+\RequirePackage[spanish,es-nodecimaldot]{babel}
 
 %% ↓↓↓ LÍNEA ELIMINADA — incompatible con fontspec en LuaLaTeX/XeLaTeX ↓↓↓
-%% \RequirePackage[utf8]{luainputenc}
+%\RequirePackage[utf8]{luainputenc}
 %% ↑↑↑ Esta línea causaba el error de conflicto de paquetes ↑↑↑
 
 %% Gestión avanzada de fuentes (requiere LuaLaTeX o XeLaTeX)
@@ -203,13 +206,12 @@
 
 
 %% =============================================================================
-%% 6. COMPATIBILIDAD DE CARACTERES UNICODE
+%% 6. COMPATIBILIDAD DE CARACTERES UNICODE solo para pdfLaTeX
 %% =============================================================================
 %% Declaramos manualmente algunos caracteres especiales para asegurar
 %% compatibilidad en casos donde babel o fontspec puedan tener conflictos.
 
 %\DeclareUnicodeCharacter{00E9}{\'{e}}   % é — letra e con acento agudo
-
 
 %% =============================================================================
 %% 7. DEFINICIÓN DE COLORES
@@ -250,14 +252,14 @@
 %% Según la opción 'showLinks', se muestran o se ocultan los bordes de los links.
 
 \if@showLinks
-\hypersetup{%
-	breaklinks    % Permitir saltos de línea dentro de URLs largas
-}%
+	\hypersetup{%
+		breaklinks    % Permitir saltos de línea dentro de URLs largas
+	}%
 \else
-\hypersetup{%
-	pdfborder = {0 0 0},   % Sin borde visible en los hipervínculos
-	breaklinks             % Permitir saltos de línea dentro de URLs largas
-}%
+	\hypersetup{%
+		pdfborder = {0 0 0},   % Sin borde visible en los hipervínculos
+		breaklinks             % Permitir saltos de línea dentro de URLs largas
+	}%
 \fi
 
 
@@ -337,7 +339,7 @@
 %%   - Con localFont  → carga la fuente desde la carpeta fonts/ del proyecto
 
 %% Características tipográficas globales (mapeo de ligaduras y caracteres especiales)
-\defaultfontfeatures{Mapping=tex-text}
+\defaultfontfeatures{Ligatures=TeX}
 
 \ifundef{\@local}
 {
@@ -346,16 +348,16 @@
 	%% \setmainfont[BoldFont=Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic,
 	%%              SmallCapsFont=Helvetica Neue Light]{Helvetica Neue Thin}
 	\setmainfont{Source Sans Pro Light}[
-	BoldFont  = SourceSansPro-Regular,
-	ItalicFont = Source Sans Pro Light Italic
+		BoldFont  = SourceSansPro-Regular,
+		ItalicFont = Source Sans Pro Light Italic
 	]
 }
 {
 	%% Fuente local desde la carpeta fonts/ del proyecto
 	\setmainfont{SourceSansPro-Light}[
-	Path       = fonts/,
-	BoldFont   = SourceSansPro-Regular,
-	ItalicFont = SourceSansPro-LightIt
+		Path = fonts/,
+		BoldFont   = SourceSansPro-Regular,
+		ItalicFont = SourceSansPro-LightIt
 	]
 }
 
@@ -375,6 +377,8 @@
 
 %% Ancho de la columna derecha (descripciones): calculado automáticamente
 \newlength{\rightcolumnlength}
+%\setlength{\rightcolumnlength}{15.3cm minus 1cm}
+%\setlength{\rightcolumnlength}{\dimexpr(\fulllength-\leftcolumnlength)\relax}
 \setlength{\rightcolumnlength}{\dimexpr(\fulllength-\leftcolumnlength)\relax}
 
 %% Líneas comentadas con métodos alternativos de cálculo (para referencia):
@@ -441,13 +445,13 @@
 
 \newcommand{\cvtag}[1]{%
 	\tikz[baseline]\node[
-	anchor      = base,
-	draw        = darkGrey!70,        % Borde gris oscuro (70% opacidad)
-	rounded corners = 0.5ex,          % Esquinas redondeadas
-	inner xsep  = 1ex,                % Relleno horizontal interno
-	inner ysep  = 0.55ex,             % Relleno vertical interno
-	text height = 1.3ex,              % Altura del texto (alineación vertical)
-	text depth  = .25ex               % Profundidad del texto
+		anchor      = base,
+		draw        = darkGrey!70,        % Borde gris oscuro (70% opacidad)
+		rounded corners = 0.5ex,          % Esquinas redondeadas
+		inner xsep  = 1ex,                % Relleno horizontal interno
+		inner ysep  = 0.55ex,             % Relleno vertical interno
+		text height = 1.3ex,              % Altura del texto (alineación vertical)
+		text depth  = .25ex               % Profundidad del texto
 	]{#1};
 }
 
@@ -603,21 +607,21 @@
 %% de \photo[forma]{...}{...}. Usa TikZ con el skin 'overzoom' de tcolorbox.
 
 \newcommand\idphoto{
-	\ifthenelse{\equal{\@photoshape}{square}}{
-		%% Foto cuadrada
-		\tikz\path[fill overzoom image={\@photo}]rectangle(\linewidth,\linewidth);
-	}{
-		\ifthenelse{\equal{\@photoshape}{roundedsquare}}{
-			%% Foto cuadrada con esquinas redondeadas (radio: 2mm)
-			\tikz\path[fill overzoom image={\@photo}][rounded corners=2mm]rectangle(\linewidth,\linewidth);
-		}{
-			\ifthenelse{\equal{\@photoshape}{squircle}}{
-				%% Foto cuadrada con esquinas muy redondeadas — aspecto "squircle" (radio: 8mm)
-				\tikz\path[fill overzoom image={\@photo}][rounded corners=8mm]rectangle(\linewidth,\linewidth);
-			}{
-				%% Foto circular (forma por defecto)
-				\tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
-	}}}
+\ifthenelse{\equal{\@photoshape}{square}}{
+%% Foto cuadrada
+\tikz\path[fill overzoom image={\@photo}]rectangle(\linewidth,\linewidth);
+}{
+\ifthenelse{\equal{\@photoshape}{roundedsquare}}{
+%% Foto cuadrada con esquinas redondeadas (radio: 2mm)
+\tikz\path[fill overzoom image={\@photo}][rounded corners=2mm]rectangle(\linewidth,\linewidth);
+}{
+\ifthenelse{\equal{\@photoshape}{squircle}}{
+%% Foto cuadrada con esquinas muy redondeadas — aspecto "squircle" (radio: 8mm)
+\tikz\path[fill overzoom image={\@photo}][rounded corners=8mm]rectangle(\linewidth,\linewidth);
+}{
+%% Foto circular (forma por defecto)
+\tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+}}}
 }
 
 
@@ -630,419 +634,419 @@
 %% Uso en el documento: \makecvheader
 
 \newcommand*{\makecvheader}{
-	\ifundef{\@alternative}{
-		%% -------------------------------------------------------
-		%% Diseño TRADICIONAL: nombre + info de contacto a la izquierda
-		%%                     foto a la derecha (si se definió)
-		%% -------------------------------------------------------
-		\ifundef{\@photodiameter}{
-			%% Sin foto: minipage de ancho completo
-			\begin{minipage}{\linewidth}
-			}{
-				%% Con foto: minipage reducida para dejar espacio a la foto
-				\begin{minipage}{\dimexpr\linewidth-\@photodiameter-2em}
-				}
-				\color{accentcolor}\user{\@firstname}{\@lastname}\color{black}\\
-				\small{\@socialinfo}
-			\end{minipage}
-			%% Foto de perfil (solo si se definió con \photo)
-			\ifdef{\@photodiameter}{
-				\begin{minipage}{\@photodiameter}
-					\idphoto
-				\end{minipage}
-			}{}
-			%% Lema / título profesional centrado debajo
-			\resumetitle{\@tagline}
-		}{
-			%% -------------------------------------------------------
-			%% Diseño ALTERNATIVO: nombre + lema + info a la izquierda
-			%%                     foto a la derecha (si se definió)
-			%% -------------------------------------------------------
-			\ifundef{\@photodiameter}{
-				%% Sin foto: minipage de ancho completo
-				\begin{minipage}{\linewidth}
-				}{
-					%% Con foto: minipage reducida
-					\begin{minipage}{\dimexpr\linewidth-\@photodiameter-2em}
-					}
-					\user{\@firstname}{\@lastname}\\
-					\resumetitle{\@tagline}
-					\smallskip\\
-					\small{\@socialinfo}
-				\end{minipage}
-				%% Foto de perfil (solo si se definió)
-				\ifdef{\@photodiameter}{
-					\begin{minipage}{\@photodiameter}
-						\idphoto
-					\end{minipage}
-				}{}
-				\bigskip
+\ifundef{\@alternative}{
+%% -------------------------------------------------------
+%% Diseño TRADICIONAL: nombre + info de contacto a la izquierda
+%%                     foto a la derecha (si se definió)
+%% -------------------------------------------------------
+\ifundef{\@photodiameter}{
+	%% Sin foto: minipage de ancho completo
+	\begin{minipage}{\linewidth}
+}{
+	%% Con foto: minipage reducida para dejar espacio a la foto
+	\begin{minipage}{\dimexpr\linewidth-\@photodiameter-2em}
+		}
+		\color{accentcolor}\user{\@firstname}{\@lastname}\color{black}\\
+		\small{\@socialinfo}
+	\end{minipage}
+	%% Foto de perfil (solo si se definió con \photo)
+	\ifdef{\@photodiameter}{
+		\begin{minipage}{\@photodiameter}
+			\idphoto
+		\end{minipage}
+	}{}
+	%% Lema / título profesional centrado debajo
+	\resumetitle{\@tagline}
+}{
+	%% -------------------------------------------------------
+	%% Diseño ALTERNATIVO: nombre + lema + info a la izquierda
+	%%                     foto a la derecha (si se definió)
+	%% -------------------------------------------------------
+	\ifundef{\@photodiameter}{
+		%% Sin foto: minipage de ancho completo
+		\begin{minipage}{\linewidth}
+	}{
+		%% Con foto: minipage reducida
+		\begin{minipage}{\dimexpr\linewidth-\@photodiameter-2em}
 			}
-		}
-		
-		
-		%% =============================================================================
-		%% 25. PIE DE PÁGINA DEL CV (\makecvfooter)
-		%% =============================================================================
-		%% Define el contenido del pie de página con tres zonas: izquierda, centro, derecha.
-		%%
-		%% Uso: \makecvfooter{texto izquierda}{texto centro}{texto derecha}
-		%% Ejemplo del documento principal:
-		%%   \makecvfooter{\today}{Elmer Achalma - CV}{\thepage}
-		
-		\newcommand*{\makecvfooter}[3]{%
-			\fancyfoot{}           % Limpiar pie de página previo
-			\fancyfoot[L]{#1}      % Zona izquierda del pie (ej: fecha)
-			\fancyfoot[C]{#2}      % Zona central del pie (ej: nombre del autor)
-			\fancyfoot[R]{#3}      % Zona derecha del pie (ej: número de página)
-		}
-		
-		
-		%% =============================================================================
-		%% 26. TÍTULOS DE SECCIÓN (\sectionTitle)
-		%% =============================================================================
-		%% Renderiza el título de una sección del CV con un icono de Font Awesome
-		%% y el texto en versalitas. El icono aparece a la izquierda del texto.
-		%%
-		%% Uso: \sectionTitle{Experiencia Profesional}{\faBriefcase}
-		
-		\newcommand\sectionTitle[2]{%
-			\section{%
-				\texorpdfstring{%
-					\color{accentcolor}#2\enspace \textsc{#1}%  % Versión visual: icono + texto en color
-				}{#1}%                                         % Versión para PDF/bookmarks: solo texto
-			}%
-		}
-		
-		
-		%% =============================================================================
-		%% 27. ENTORNO 'keywords' — Tabla de palabras clave / resumen
-		%% =============================================================================
-		%% Tabla de dos columnas para presentar categorías y sus valores correspondientes.
-		%% Columna izquierda: etiqueta en negrita (categoría)
-		%% Columna derecha:   valor o descripción
-		
-		\newenvironment{keywords}{%
-			\renewcommand{\arraystretch}{1.1}    % Aumentar ligeramente el espaciado entre filas
-			\begin{tabular}{>{}r>{}p{13cm}}
-			}{%
-			\end{tabular}
-		}
-		
-		%% \keywordsentry{etiqueta}{valor} — Entrada en el entorno keywords
-		%% Uso: \keywordsentry{Área}{Economía del Desarrollo}
-		\newcommand\keywordsentry[2]{
-			\textbf{#1} & #2\\
-		}
-		
-		
-		%% =============================================================================
-		%% 28. ENTORNO 'scholarship' — Formación académica
-		%% =============================================================================
-		%% Tabla de dos columnas para listar títulos académicos, becas, cursos, etc.
-		%% Columna izquierda: fecha o período (alineado a la derecha)
-		%% Columna derecha:   descripción del grado o reconocimiento
-		
-		\newenvironment{scholarship}{%
-			\begin{tabular}{Y p{\rightcolumnlength}}
-			}{%
-			\end{tabular}
-		}
-		
-		%% \scholarshipentry{fecha}{descripción} — Entrada de formación académica
-		%% Uso: \scholarshipentry{2018 -- 2023}{Economía, Universidad Nacional de San Cristóbal de Huamanga}
-		\newcommand\scholarshipentry[2]{
-			#1 & #2 \\
-		}
-		
-		
-		%% =============================================================================
-		%% 29. ENTORNO 'skills' — Habilidades con nivel de dominio
-		%% =============================================================================
-		%% Tabla de dos columnas con longtable (puede abarcar múltiples páginas).
-		%% Columna izquierda: nombre de la habilidad
-		%% Columna derecha:   nivel representado con 5 círculos de Font Awesome
-		
-		\newenvironment{skills}{%
-			\begin{longtable}{R{\leftcolumnlength}p{\rightcolumnlength}}
-			}{%
-			\end{longtable}
-		}
-		
-		%% \skill{nombre}{nivel} — Entrada de habilidad con indicador de nivel (1–5)
-		%% Uso: \skill{Python}{4}   → 4 círculos rellenos + 1 vacío
-		\newcommand\skill[2]{
-			\textbf{#1} &
-			\foreach \x in {1,...,5}{%
-				{\color{accentcolor!80}
+			\user{\@firstname}{\@lastname}\\
+			\resumetitle{\@tagline}
+			\smallskip\\
+			\small{\@socialinfo}
+		\end{minipage}
+		%% Foto de perfil (solo si se definió)
+		\ifdef{\@photodiameter}{
+			\begin{minipage}{\@photodiameter}
+				\idphoto
+			\end{minipage}
+		}{}
+		\bigskip
+	}
+}
+
+
+%% =============================================================================
+%% 25. PIE DE PÁGINA DEL CV (\makecvfooter)
+%% =============================================================================
+%% Define el contenido del pie de página con tres zonas: izquierda, centro, derecha.
+%%
+%% Uso: \makecvfooter{texto izquierda}{texto centro}{texto derecha}
+%% Ejemplo del documento principal:
+%%   \makecvfooter{\today}{Elmer Achalma - CV}{\thepage}
+
+\newcommand*{\makecvfooter}[3]{%
+	\fancyfoot{}           % Limpiar pie de página previo
+	\fancyfoot[L]{#1}      % Zona izquierda del pie (ej: fecha)
+	\fancyfoot[C]{#2}      % Zona central del pie (ej: nombre del autor)
+	\fancyfoot[R]{#3}      % Zona derecha del pie (ej: número de página)
+}
+
+
+%% =============================================================================
+%% 26. TÍTULOS DE SECCIÓN (\sectionTitle)
+%% =============================================================================
+%% Renderiza el título de una sección del CV con un icono de Font Awesome
+%% y el texto en versalitas. El icono aparece a la izquierda del texto.
+%%
+%% Uso: \sectionTitle{Experiencia Profesional}{\faBriefcase}
+
+\newcommand\sectionTitle[2]{%
+	\section{%
+	  \texorpdfstring{%
+		  \color{accentcolor}#2\enspace \textsc{#1}%  % Versión visual: icono + texto en color
+	  }{#1}%                                         % Versión para PDF/bookmarks: solo texto
+	 }%
+}
+
+
+%% =============================================================================
+%% 27. ENTORNO 'keywords' — Tabla de palabras clave / resumen
+%% =============================================================================
+%% Tabla de dos columnas para presentar categorías y sus valores correspondientes.
+%% Columna izquierda: etiqueta en negrita (categoría)
+%% Columna derecha:   valor o descripción
+
+\newenvironment{keywords}{%
+	\renewcommand{\arraystretch}{1.1}    % Aumentar ligeramente el espaciado entre filas
+	\begin{tabular}{>{}r>{}p{13cm}}
+		}{%
+	\end{tabular}
+}
+
+%% \keywordsentry{etiqueta}{valor} — Entrada en el entorno keywords
+%% Uso: \keywordsentry{Área}{Economía del Desarrollo}
+\newcommand\keywordsentry[2]{
+	\textbf{#1} & #2\\
+}
+
+
+%% =============================================================================
+%% 28. ENTORNO 'scholarship' — Formación académica
+%% =============================================================================
+%% Tabla de dos columnas para listar títulos académicos, becas, cursos, etc.
+%% Columna izquierda: fecha o período (alineado a la derecha)
+%% Columna derecha:   descripción del grado o reconocimiento
+
+\newenvironment{scholarship}{%
+	\begin{tabular}{Y p{\rightcolumnlength}}
+		}{%
+	\end{tabular}
+}
+
+%% \scholarshipentry{fecha}{descripción} — Entrada de formación académica
+%% Uso: \scholarshipentry{2018 -- 2023}{Economía, Universidad Nacional de San Cristóbal de Huamanga}
+\newcommand\scholarshipentry[2]{
+	#1 & #2 \\
+}
+
+
+%% =============================================================================
+%% 29. ENTORNO 'skills' — Habilidades con nivel de dominio
+%% =============================================================================
+%% Tabla de dos columnas con longtable (puede abarcar múltiples páginas).
+%% Columna izquierda: nombre de la habilidad
+%% Columna derecha:   nivel representado con 5 círculos de Font Awesome
+
+\newenvironment{skills}{%
+	\begin{longtable}{R{\leftcolumnlength}p{\rightcolumnlength}}
+		}{%
+	\end{longtable}
+}
+
+%% \skill{nombre}{nivel} — Entrada de habilidad con indicador de nivel (1–5)
+%% Uso: \skill{Python}{4}   → 4 círculos rellenos + 1 vacío
+\newcommand\skill[2]{
+	\textbf{#1} &
+	\foreach \x in {1,...,5}{%
+			{\color{accentcolor!80}
 					\ifnumgreater{\x}{#2}{\faCircle[regular]}{\faCircle}%
 					%% Si \x > nivel: círculo vacío; si \x <= nivel: círculo relleno
 				}\enspace
-			} \\
-		}
-		
-		
-		%% =============================================================================
-		%% 30. ENTORNO 'experiences' — Experiencia profesional
-		%% =============================================================================
-		%% Tabla de dos columnas con longtable y línea vertical separadora.
-		%% Columna izquierda: fechas (alineadas a la derecha)
-		%% Columna derecha:   título, empresa, descripción y tecnologías usadas
-		
-		\newenvironment{experiences}{%
-			\begin{longtable}{R{\leftcolumnlength}|E}
-			}{%
-			\end{longtable}
-		}
-		
-		%% \experience{...} — Entrada de experiencia profesional
-		%%
-		%% Parámetros (en orden):
-		%%   #1: Fecha de fin        (ej: "Dic. 2023" o "Actualidad")
-		%%   #2: Título del cargo    (ej: "Economista Senior")
-		%%   #3: Nombre de empresa   (ej: "MEF")
-		%%   #4: País / Ciudad       (ej: "Lima, Perú")
-		%%   #5: Fecha de inicio     (ej: "Mar. 2021")
-		%%   #6: Descripción         (puede contener listas itemize)
-		%%   #7: Lista de tecnologías/herramientas (separadas por comas)
-		%%
-		%% Ejemplo de uso:
-		%%   \experience
-		%%     {Actualidad}   {Docente a tiempo parcial}{UNSCH}{Ayacucho}
-		%%     {2022}         {Descripción de actividades}
-		%%                    {R, Python, LaTeX, Stata}
-		
-		\newcommand\experience[7]{
-			\textbf{#1} & \textbf{#2, \textsc{#3}, #4}                \\*
-			\textbf{#5} & \begin{minipage}[t]{\rightcolumnlength}
-				#6
-			\end{minipage}                               \\*
-			& \footnotesize{\foreach \n in {#7}{\cvtag{\n}}} \\
-		}
-		
-		%% \consultantexperience{...} — Experiencia como consultor en empresa cliente
-		%%
-		%% Parámetros (en orden):
-		%%   #1: Fecha de fin
-		%%   #2: Título como consultor
-		%%   #3: Empresa consultora
-		%%   #4: País / Ciudad
-		%%   #5: Fecha de inicio
-		%%   #6: Título en la empresa cliente
-		%%   #7: Nombre de la unidad de negocio cliente
-		%%   #8: Descripción
-		%%   #9: Lista de tecnologías
-		%%
-		%% Ejemplo de uso:
-		%%   \consultantexperience
-		%%     {2023}{Consultor Económico}{Firma XYZ}{Lima}
-		%%     {2022}{Analista}{Ministerio de Economía}
-		%%     {Descripción del trabajo realizado}
-		%%     {Excel, Python, SIAF}
-		
-		\newcommand\consultantexperience[9]{
-			\textbf{#1} & \textbf{#2, \textsc{#3}, #4}         \\*
-			\textbf{#5} & \emph{#6} pour \textsc{#7}            \\*
-			& \begin{minipage}[t]{\rightcolumnlength}
-				#8
-			\end{minipage}                         \\*
-			& \footnotesize{\foreach \n in {#9}{\cvtag{\n}}} \\
-		}
-		
-		
-		%% =============================================================================
-		%% 31. SEPARADOR VACÍO EN TABLAS DE EXPERIENCIA
-		%% =============================================================================
-		%% Agrega espacio visual entre dos entradas consecutivas de experiencia.
-		%% En modo compacto, el espacio es mínimo; en modo normal, es más generoso.
-		
-		\if@isCompact
-		%% Modo compacto: separador con espacio negativo (muy comprimido)
-		\newcommand\emptySeparator{\multicolumn{2}{c}{}\\[-0.6em]}
-		\else
-		%% Modo normal: separador con espacio estándar
-		\newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
-		\fi
-		
-		
-		%% =============================================================================
-		%% 32. ENTORNO 'projects' — Proyectos personales o académicos
-		%% =============================================================================
-		%% Tabla de una sola columna con longtable.
-		%% Cada proyecto ocupa toda la fila, con nombre, fechas, descripción y tecnologías.
-		
-		\newenvironment{projects}{%
-			\begin{longtable}{l}
-			}{%
-			\end{longtable}
-		}
-		
-		%% \project{...} — Entrada de proyecto
-		%%
-		%% Parámetros (en orden):
-		%%   #1: Nombre del proyecto
-		%%   #2: Período / fechas        (ej: "2022 -- 2023")
-		%%   #3: Enlace(s) al proyecto   (ej: \link{url}{texto})
-		%%   #4: Descripción del proyecto
-		%%   #5: Lista de tecnologías    (separadas por comas)
-		%%
-		%% Ejemplo de uso:
-		%%   \project
-		%%     {Análisis de Pobreza Regional}{2023}
-		%%     {\link{https://github.com/...}{Ver en GitHub}}
-		%%     {Descripción del proyecto}
-		%%     {R, ggplot2, dplyr, LaTeX}
-		
-		\newcommand\project[5]{
-			\begin{minipage}[t]{\dimexpr(\linewidth) - 1.5em}
-				\textbf{\textsc{#1}} \hfill \textsc{#2}\smallskip\\
-				#3\\
-				#4\smallskip\\
-				\footnotesize{\foreach \n in {#5}{\cvtag{\n}}}\\
-			\end{minipage}
-			\\*
-		}
-		
-		
-		%% =============================================================================
-		%% 33. COMANDO 'twocolumnsection' — Sección en dos columnas
-		%% =============================================================================
-		%% Divide una sección horizontalmente en dos bloques de igual tamaño.
-		%% Útil para presentar dos listas o grupos de información en paralelo.
-		%%
-		%% Uso:
-		%%   \twocolumnsection{
-			%%     \begin{skills}...\end{skills}
-			%%   }{
-			%%     \begin{skills}...\end{skills}
-			%%   }
-		
-		\newcommand*\twocolumnsection[2]{
-			\begin{minipage}[t]{\dimexpr(\linewidth/2) - 3em}
-				#1
-			\end{minipage}
-			\hfill
-			\begin{minipage}[t]{\dimexpr(\linewidth/2) - 3em}
-				#2
-			\end{minipage}
-		}
-		
-		
-		%% =============================================================================
-		%% 34. ENTORNO 'referees' — Referencias profesionales
-		%% =============================================================================
-		%% Contenedor para las tarjetas de referencia.
-		%% No aplica formateo especial al inicio, pero añade espacio al final.
-		
-		\newenvironment{referees}{%
-			%% Inicio: sin formateo adicional
+		} \\
+}
+
+
+%% =============================================================================
+%% 30. ENTORNO 'experiences' — Experiencia profesional
+%% =============================================================================
+%% Tabla de dos columnas con longtable y línea vertical separadora.
+%% Columna izquierda: fechas (alineadas a la derecha)
+%% Columna derecha:   título, empresa, descripción y tecnologías usadas
+
+\newenvironment{experiences}{%
+	\begin{longtable}{R{\leftcolumnlength}|E}
 		}{%
-			\hfill
-			\bigskip
-		}
-		
-		%% \referee{nombre}{cargo}{empresa}{email}{teléfono} — Tarjeta de referencia completa
-		%%
-		%% Uso:
-		%%   \referee{Dr. Juan Pérez}{Jefe de Departamento}{UNSCH}
-		%%           {j.perez@unsch.edu.pe}{+51 987 654 321}
-		
-		\newcommand*\referee[5]{
-			\hspace{1em}
-			\begin{minipage}[t]{\dimexpr(\linewidth/3) - 3em}
-				\begin{tabular}{>{}l >{}l}
-					\multicolumn{2}{l}{\textbf{#1}}             \\  % Nombre completo
-					\multicolumn{2}{l}{\emph{#2}, \textsc{#3}}  \\  % Cargo, Empresa
-					\quad \mailSymbol & \href{mailto:#4}{#4}     \\  % Email clicable
-					\quad \faPhone    & #5                       \\  % Teléfono
-				\end{tabular}
-			\end{minipage}%
-		}
-		
-		%% \refereeMailOnly{nombre}{cargo}{empresa}{email} — Tarjeta de referencia (solo email)
-		%%
-		%% Uso cuando no se dispone del teléfono del referente:
-		%%   \refereeMailOnly{Dra. María López}{Directora}{MEF}{m.lopez@mef.gob.pe}
-		
-		\newcommand*\refereeMailOnly[4]{
-			\hspace{1em}
-			\begin{minipage}[t]{\dimexpr(\linewidth/3) - 3em}
-				\begin{tabular}{>{}l >{}l}
-					\multicolumn{2}{l}{\textbf{#1}}             \\  % Nombre completo
-					\multicolumn{2}{l}{\emph{#2}, \textsc{#3}}  \\  % Cargo, Empresa
-					\quad \mailSymbol & \href{mailto:#4}{#4}     \\  % Email clicable
-				\end{tabular}
-			\end{minipage}%
-		}
-		
-		
-		%% =============================================================================
-		%% 35. ENTORNO 'publications' — Publicaciones académicas
-		%% =============================================================================
-		%% Espacio inicial para la sección de publicaciones bibliográficas.
-		%% Se usa junto con biblatex para listar artículos, libros, conferencias, etc.
-		
-		\newenvironment{publications}{%
-			\vspace{5pt}   % Pequeño espacio antes del listado bibliográfico
-		}{}
-		
-		
-		%% =============================================================================
-		%% 36. CONFIGURACIÓN DE BIBLIOGRAFÍA (biblatex)
-		%% =============================================================================
-		%%
-		%% Se usa biblatex con backend bibtex para gestionar las publicaciones académicas.
-		%% El archivo de referencias se define en el documento principal con:
-		%%   \addbibresource{mi_archivo.bib}
-		%%
-		%% Para compilar con bibliografía:
-		%%   lualatex cv.tex
-		%%   bibtex cv
-		%%   lualatex cv.tex
-		%%   lualatex cv.tex
-		
-		\usepackage[
-		backend = bibtex,    % Motor de procesamiento de la bibliografía
-		style   = numeric,   % Estilo numérico: [1], [2], [3]...
-		natbib  = true       % Compatibilidad con comandos de natbib (\citet, \citep)
-		]{biblatex}
-		
-		%% Opciones comentadas para numeración personalizada de la bibliografía:
-		%% \newcounter{bibitem}
-		%% \AtBeginBibliography{\setcounter{bibitem}{1}}
-		%% \AtEveryBibitem{\hspace{1em}\makebox[1.5em][l]{{\thebibitem}\stepcounter{bibitem}.}}
-		
-		%% Espaciado entre entradas bibliográficas
-		\setlength{\bibitemsep}{1.5ex}
-		
-		%% Sangría de las entradas bibliográficas (útil para formato colgante)
-		\setlength{\bibhang}{2.7em}
-		
-		%% Cadenas de texto personalizadas para entradas bibliográficas
-		\NewBibliographyString{retrieved}   % Para "Recuperado de"
-		\NewBibliographyString{from}        % Para "de" en referencias web
-		
-		%% Estilo de fuente para las URLs en la bibliografía (tipografía de máquina de escribir)
-		\urlstyle{tt}
-		
-		%% --- Subbibliografías (para separar tipos de publicaciones) ---
-		
-		%% Estilo de fuente para los títulos de las subbibliografías
-		\def\@subbibfont{\large\color{accentcolor}}
-		
-		%% \subbibfont{comando-fuente} — Personaliza la fuente del encabezado de subbibliografía
-		\newcommand\subbibfont[1]{\gdef\@subbibfont{#1}}
-		
-		%% Formato del encabezado de subbibliografía
-		\defbibheading{subbibliography}{%
-			\vskip 5pt {\@subbibfont\hspace{0pt}#1}\par
-		}
-		
-		%% Filtro predefinido: selecciona solo libros y capítulos de libro
-		\defbibfilter{booksandchapters}{%
-			( type=book or type=incollection )
-		}
-		
-		%% =============================================================================
-		%% FIN DE LA CLASE yaac-another-awesome-cv
-		%% =============================================================================
+	\end{longtable}
+}
+
+%% \experience{...} — Entrada de experiencia profesional
+%%
+%% Parámetros (en orden):
+%%   #1: Fecha de fin        (ej: "Dic. 2023" o "Actualidad")
+%%   #2: Título del cargo    (ej: "Economista Senior")
+%%   #3: Nombre de empresa   (ej: "MEF")
+%%   #4: País / Ciudad       (ej: "Lima, Perú")
+%%   #5: Fecha de inicio     (ej: "Mar. 2021")
+%%   #6: Descripción         (puede contener listas itemize)
+%%   #7: Lista de tecnologías/herramientas (separadas por comas)
+%%
+%% Ejemplo de uso:
+%%   \experience
+%%     {Actualidad}   {Docente a tiempo parcial}{UNSCH}{Ayacucho}
+%%     {2022}         {Descripción de actividades}
+%%                    {R, Python, LaTeX, Stata}
+
+\newcommand\experience[7]{
+	\textbf{#1} & \textbf{#2, \textsc{#3}, #4}                \\*
+	\textbf{#5} & \begin{minipage}[t]{\rightcolumnlength}
+		#6
+	\end{minipage}                               \\*
+	& \footnotesize{\foreach \n in {#7}{\cvtag{\n}}} \\
+}
+
+%% \consultantexperience{...} — Experiencia como consultor en empresa cliente
+%%
+%% Parámetros (en orden):
+%%   #1: Fecha de fin
+%%   #2: Título como consultor
+%%   #3: Empresa consultora
+%%   #4: País / Ciudad
+%%   #5: Fecha de inicio
+%%   #6: Título en la empresa cliente
+%%   #7: Nombre de la unidad de negocio cliente
+%%   #8: Descripción
+%%   #9: Lista de tecnologías
+%%
+%% Ejemplo de uso:
+%%   \consultantexperience
+%%     {2023}{Consultor Económico}{Firma XYZ}{Lima}
+%%     {2022}{Analista}{Ministerio de Economía}
+%%     {Descripción del trabajo realizado}
+%%     {Excel, Python, SIAF}
+
+\newcommand\consultantexperience[9]{
+	\textbf{#1} & \textbf{#2, \textsc{#3}, #4}         \\*
+	\textbf{#5} & \emph{#6} pour \textsc{#7}            \\*
+	& \begin{minipage}[t]{\rightcolumnlength}
+		#8
+	\end{minipage}                         \\*
+	& \footnotesize{\foreach \n in {#9}{\cvtag{\n}}} \\
+}
+
+
+%% =============================================================================
+%% 31. SEPARADOR VACÍO EN TABLAS DE EXPERIENCIA
+%% =============================================================================
+%% Agrega espacio visual entre dos entradas consecutivas de experiencia.
+%% En modo compacto, el espacio es mínimo; en modo normal, es más generoso.
+
+\if@isCompact
+	%% Modo compacto: separador con espacio negativo (muy comprimido)
+	\newcommand\emptySeparator{\multicolumn{2}{c}{}\\[-0.6em]}
+\else
+	%% Modo normal: separador con espacio estándar
+	\newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
+\fi
+
+
+%% =============================================================================
+%% 32. ENTORNO 'projects' — Proyectos personales o académicos
+%% =============================================================================
+%% Tabla de una sola columna con longtable.
+%% Cada proyecto ocupa toda la fila, con nombre, fechas, descripción y tecnologías.
+
+\newenvironment{projects}{%
+	\begin{longtable}{l}
+		}{%
+	\end{longtable}
+}
+
+%% \project{...} — Entrada de proyecto
+%%
+%% Parámetros (en orden):
+%%   #1: Nombre del proyecto
+%%   #2: Período / fechas        (ej: "2022 -- 2023")
+%%   #3: Enlace(s) al proyecto   (ej: \link{url}{texto})
+%%   #4: Descripción del proyecto
+%%   #5: Lista de tecnologías    (separadas por comas)
+%%
+%% Ejemplo de uso:
+%%   \project
+%%     {Análisis de Pobreza Regional}{2023}
+%%     {\link{https://github.com/...}{Ver en GitHub}}
+%%     {Descripción del proyecto}
+%%     {R, ggplot2, dplyr, LaTeX}
+
+\newcommand\project[5]{
+	\begin{minipage}[t]{\dimexpr(\linewidth) - 1.5em}
+		\textbf{\textsc{#1}} \hfill \textsc{#2}\smallskip\\
+		#3\\
+		#4\smallskip\\
+		\footnotesize{\foreach \n in {#5}{\cvtag{\n}}}\\
+	\end{minipage}
+	\\*
+}
+
+
+%% =============================================================================
+%% 33. COMANDO 'twocolumnsection' — Sección en dos columnas
+%% =============================================================================
+%% Divide una sección horizontalmente en dos bloques de igual tamaño.
+%% Útil para presentar dos listas o grupos de información en paralelo.
+%%
+%% Uso:
+%%   \twocolumnsection{
+%%     \begin{skills}...\end{skills}
+%%   }{
+%%     \begin{skills}...\end{skills}
+%%   }
+
+\newcommand*\twocolumnsection[2]{
+	\begin{minipage}[t]{\dimexpr(\linewidth/2) - 3em}
+		#1
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{\dimexpr(\linewidth/2) - 3em}
+		#2
+	\end{minipage}
+}
+
+
+%% =============================================================================
+%% 34. ENTORNO 'referees' — Referencias profesionales
+%% =============================================================================
+%% Contenedor para las tarjetas de referencia.
+%% No aplica formateo especial al inicio, pero añade espacio al final.
+
+\newenvironment{referees}{%
+	%% Inicio: sin formateo adicional
+}{%
+	\hfill
+	\bigskip
+}
+
+%% \referee{nombre}{cargo}{empresa}{email}{teléfono} — Tarjeta de referencia completa
+%%
+%% Uso:
+%%   \referee{Dr. Juan Pérez}{Jefe de Departamento}{UNSCH}
+%%           {j.perez@unsch.edu.pe}{+51 987 654 321}
+
+\newcommand*\referee[5]{
+	\hspace{1em}
+	\begin{minipage}[t]{\dimexpr(\linewidth/3) - 3em}
+		\begin{tabular}{>{}l >{}l}
+			\multicolumn{2}{l}{\textbf{#1}}            \\  % Nombre completo
+			\multicolumn{2}{l}{\emph{#2}, \textsc{#3}} \\  % Cargo, Empresa
+			\quad \mailSymbol & \href{mailto:#4}{#4}   \\  % Email clicable
+			\quad \faPhone    & #5                     \\  % Teléfono
+		\end{tabular}
+	\end{minipage}%
+}
+
+%% \refereeMailOnly{nombre}{cargo}{empresa}{email} — Tarjeta de referencia (solo email)
+%%
+%% Uso cuando no se dispone del teléfono del referente:
+%%   \refereeMailOnly{Dra. María López}{Directora}{MEF}{m.lopez@mef.gob.pe}
+
+\newcommand*\refereeMailOnly[4]{
+	\hspace{1em}
+	\begin{minipage}[t]{\dimexpr(\linewidth/3) - 3em}
+		\begin{tabular}{>{}l >{}l}
+			\multicolumn{2}{l}{\textbf{#1}}            \\  % Nombre completo
+			\multicolumn{2}{l}{\emph{#2}, \textsc{#3}} \\  % Cargo, Empresa
+			\quad \mailSymbol & \href{mailto:#4}{#4}   \\  % Email clicable
+		\end{tabular}
+	\end{minipage}%
+}
+
+
+%% =============================================================================
+%% 35. ENTORNO 'publications' — Publicaciones académicas
+%% =============================================================================
+%% Espacio inicial para la sección de publicaciones bibliográficas.
+%% Se usa junto con biblatex para listar artículos, libros, conferencias, etc.
+
+\newenvironment{publications}{%
+	\vspace{5pt}   % Pequeño espacio antes del listado bibliográfico
+}{}
+
+
+%% =============================================================================
+%% 36. CONFIGURACIÓN DE BIBLIOGRAFÍA (biblatex)
+%% =============================================================================
+%%
+%% Se usa biblatex con backend bibtex para gestionar las publicaciones académicas.
+%% El archivo de referencias se define en el documento principal con:
+%%   \addbibresource{mi_archivo.bib}
+%%
+%% Para compilar con bibliografía:
+%%   lualatex cv.tex
+%%   bibtex cv
+%%   lualatex cv.tex
+%%   lualatex cv.tex
+
+\usepackage[
+	backend = bibtex,    % Motor de procesamiento de la bibliografía
+	style   = numeric,   % Estilo numérico: [1], [2], [3]...
+	natbib  = true       % Compatibilidad con comandos de natbib (\citet, \citep)
+]{biblatex}
+
+%% Opciones comentadas para numeración personalizada de la bibliografía:
+%% \newcounter{bibitem}
+%% \AtBeginBibliography{\setcounter{bibitem}{1}}
+%% \AtEveryBibitem{\hspace{1em}\makebox[1.5em][l]{{\thebibitem}\stepcounter{bibitem}.}}
+
+%% Espaciado entre entradas bibliográficas
+\setlength{\bibitemsep}{1.5ex}
+
+%% Sangría de las entradas bibliográficas (útil para formato colgante)
+\setlength{\bibhang}{2.7em}
+
+%% Cadenas de texto personalizadas para entradas bibliográficas
+\NewBibliographyString{retrieved}   % Para "Recuperado de"
+\NewBibliographyString{from}        % Para "de" en referencias web
+
+%% Estilo de fuente para las URLs en la bibliografía (tipografía de máquina de escribir)
+\urlstyle{tt}
+
+%% --- Subbibliografías (para separar tipos de publicaciones) ---
+
+%% Estilo de fuente para los títulos de las subbibliografías
+\def\@subbibfont{\large\color{accentcolor}}
+
+%% \subbibfont{comando-fuente} — Personaliza la fuente del encabezado de subbibliografía
+\newcommand\subbibfont[1]{\gdef\@subbibfont{#1}}
+
+%% Formato del encabezado de subbibliografía
+\defbibheading{subbibliography}{%
+	\vskip 5pt {\@subbibfont\hspace{0pt}#1}\par
+}
+
+%% Filtro predefinido: selecciona solo libros y capítulos de libro
+\defbibfilter{booksandchapters}{%
+	( type=book or type=incollection )
+}
+
+%% =============================================================================
+%% FIN DE LA CLASE yaac-another-awesome-cv
+%% =============================================================================
