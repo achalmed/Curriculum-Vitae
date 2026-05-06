@@ -103,6 +103,52 @@ start cv.pdf     # Windows
 
 ---
 
+## 🔨 Compilación con Script Universal
+
+Este proyecto incluye soporte para el script `compilar_latex.sh`, un compilador
+universal de LaTeX con soporte para múltiples motores, bibliografía y modo watch.
+
+### Comando de compilación
+
+Desde cualquier lugar, ejecuta:
+
+```bash
+cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -e lualatex -p 3 --biber -o ../output index
+```
+
+El PDF se genera en `output/index.pdf`.
+
+### Opciones usadas
+
+| Opción    | Valor       | Descripción                                       |
+| --------- | ----------- | ------------------------------------------------- |
+| `-e`      | `lualatex`  | Motor de compilación (requerido por la plantilla) |
+| `-p`      | `3`         | Tres pasadas para resolver referencias cruzadas   |
+| `--biber` | —           | Procesa bibliografía con Biber (biblatex)         |
+| `-o`      | `../output` | Guarda el PDF en la carpeta `output/`             |
+
+### Otras variantes útiles
+
+```bash
+# Sin bibliografía (compilación rápida)
+cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -e lualatex -p 2 -o ../output index
+
+# Modo silencioso (solo errores en pantalla)
+cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -e lualatex -p 3 --biber -s -o ../output index
+
+# Modo watch (recompila al guardar cambios)
+cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -e lualatex -p 3 --biber -w index
+
+# Solo limpiar auxiliares
+cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -c index
+```
+
+> **Nota:** El script requiere permisos de ejecución. Si da error, ejecuta una vez:
+>
+> ```bash
+> chmod +x /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh
+> ```
+
 ## 📚 Uso Básico
 
 ### Generar CV para un área específica
@@ -973,8 +1019,8 @@ Funcionalidades planificadas:
 
 **¡Éxito en tu búsqueda laboral! 🚀**
 
-_Última actualización: Enero 2026_  
-_Versión del sistema: 1.0_  
+_Última actualización: mayo 2026_  
+_Versión del sistema: 2.0_  
 _Basado en YAAC: Another Awesome CV_
 
 ---
