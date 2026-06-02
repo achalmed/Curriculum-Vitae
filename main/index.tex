@@ -148,7 +148,9 @@
 % Puedes comentar/descomentar secciones según necesites
 % usando % al inicio de la línea para comentar
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 1. Declaración / Perfil profesional (Obligatorio)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\input{sections/declaraciones/1_declaracion_consultoria}
 %\input{sections/declaraciones/1_declaracion_data_science}
 %\input{sections/declaraciones/1_declaracion_docencia}
@@ -156,50 +158,73 @@
 %\input{sections/declaraciones/1_declaracion_sector_financiero}
 %\input{sections/declaraciones/1_declaracion_sector_publico}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 2. Experiencia profesional (Obligatorio)
-%\input{sections/experiencias/3_experiencias_corta}
-%\input{sections/experiencias/3_experiencias_data_science}
-\input{sections/experiencias/3_experiencias_docencia}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{sections/experiencias/2_experiencias_data_science}
+%\input{sections/experiencias/2_experiencias_docencia}
+%\input{sections/experiencias/2_experiencias_sector_financiero}
+\input{sections/experiencias/2_experiencias_sector_publico}
+%\input{sections/experiencias/2_experiencias_corta}
+%\input{sections/experiencias/2_experiencias_larga}
 
-% Versión extendida de experiencias (Opcional - usar si necesitas más detalle)
-%\input{sections/experiencias/3_experiencias_larga}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 3. Formación académica (Obligatorio)
-\input{sections/otros/4_formacion_academica}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{sections/otros/3_formacion_academica}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 4. Cursos y estudios complementarios (Recomendado)
-\input{sections/otros/9_certificados}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{sections/otros/4_certificados}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 5. Idiomas y habilidades destacadas (Recomendado)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{sections/otros/5_idiomas_habilidades}
 
-% 6. Logros y reconocimientos (Opcional)
-% Descomentar si tienes premios, becas o reconocimientos relevantes
-%\input{6_logros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 6. Logros y reconocimientos (Opcional) premios, becas o reconocimientos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{sections/otros/6_logros}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 7. Competencias técnicas (Obligatorio para perfiles técnicos)
-%\input{sections/competencias/2_competencias_data_science}
-%\input{sections/competencias/2_competencias_docencia}
-\input{sections/competencias/2_competencias_economia}
-%\input{sections/competencias/2_competencias_sector_financiero}
-%\input{sections/competencias/2_competencias_sector_publico}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{sections/competencias/7_competencias_data_science}
+%\input{sections/competencias/7_competencias_docencia}
+%\input{sections/competencias/7_competencias_economia}
+%\input{sections/competencias/7_competencias_sector_financiero}
+\input{sections/competencias/7_competencias_sector_publico}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 8. Proyectos (Recomendado para perfiles técnicos)
-\input{sections/otros/7_proyectos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{sections/otros/8_proyectos}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 9. Voluntariado y actividades extracurriculares (Opcional)
-%\input{8_voluntariado}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{sections/otros/9_voluntariado}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 10. Referencias (Opcional - muchas empresas lo solicitan por separado)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{sections/otros/10_referencias}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 11. Publicaciones académicas (Opcional - para perfiles académicos)
-% Descomentar si tienes publicaciones en revistas o conferencias
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\input{11_publicaciones}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 12. Anexos — Certificados y Constancias
-\input{sections/otros/12_anexos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{sections/anexos/12_anexos_all}
+%\input{sections/anexos/12_anexos_docencia}
+%\input{sections/anexos/12_anexos_data_science}
+\input{sections/anexos/12_anexos_sector_publico}
+%\input{sections/anexos/12_anexos_sector_financiero}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % NOTAS PARA PERSONALIZACIÓN
@@ -244,7 +269,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Compilar con LuaLaTeX:
-%   lualatex index.tex
+%   cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -e lualatex -p 3 --biber -o ../output index
 %
 % Si usas bibliografía:
 %   lualatex index.tex
