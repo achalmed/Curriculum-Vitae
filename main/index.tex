@@ -1,10 +1,10 @@
-% This template has been downloaded from:
+% Plantilla basada en:
 % https://github.com/darwiin/awesome-neue-latex-cv
 %
-% Author:
+% Autor:
 % Edison Achalma (achalmaedison)
 %
-% Template license:
+% Licencia de plantilla:
 % CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 % Indicar que el programa a utilizar es luatex
@@ -39,7 +39,7 @@
 
 % Definir el lema del autor (Obligatorio)
 % Uso: \tagline{<lema>}
-\tagline{Economista | Data Science | Investigación}
+\tagline{Economista | Docente | Análisis de Datos | Sector Público}
 
 % Definir foto del autor (Opcional)
 % Uso: \photo[<forma: circular, square, roundedsquare, squircle>]{<diámetro>}{<archivo>}
@@ -128,158 +128,139 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% GENERAR ENCABEZADO
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\makecvheader
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% GENERAR PIE DE PÁGINA
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\makecvfooter
-{\textsc{\today}}                              % Fecha (izquierda)
-{\textsc{Elmer Edison Achalma Mendoza - CV}}  % Nombre (centro)
-{\thepage}                                     % Número de página (derecha)
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SECCIONES DEL CV
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Puedes comentar/descomentar secciones según necesites
-% usando % al inicio de la línea para comentar
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 1. Declaración / Perfil profesional (Obligatorio)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{sections/declaraciones/1_declaracion_consultoria}
-%\input{sections/declaraciones/1_declaracion_data_science}
-%\input{sections/declaraciones/1_declaracion_docencia}
-\input{sections/declaraciones/1_declaracion_economia}
-%\input{sections/declaraciones/1_declaracion_sector_financiero}
-%\input{sections/declaraciones/1_declaracion_sector_publico}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 2. Experiencia profesional (Obligatorio)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{sections/experiencias/2_experiencias_data_science}
-%\input{sections/experiencias/2_experiencias_docencia}
-%\input{sections/experiencias/2_experiencias_sector_financiero}
-\input{sections/experiencias/2_experiencias_sector_publico}
-%\input{sections/experiencias/2_experiencias_corta}
-%\input{sections/experiencias/2_experiencias_larga}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 3. Formación académica (Obligatorio)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{sections/otros/3_formacion_academica}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 4. Cursos y estudios complementarios (Recomendado)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{sections/otros/4_certificados}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 5. Idiomas y habilidades destacadas (Recomendado)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{sections/otros/5_idiomas_habilidades}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 6. Logros y reconocimientos (Opcional) premios, becas o reconocimientos
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{sections/otros/6_logros}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 7. Competencias técnicas (Obligatorio para perfiles técnicos)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{sections/competencias/7_competencias_data_science}
-%\input{sections/competencias/7_competencias_docencia}
-%\input{sections/competencias/7_competencias_economia}
-%\input{sections/competencias/7_competencias_sector_financiero}
-\input{sections/competencias/7_competencias_sector_publico}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 8. Proyectos (Recomendado para perfiles técnicos)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{sections/otros/8_proyectos}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 9. Voluntariado y actividades extracurriculares (Opcional)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{sections/otros/9_voluntariado}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 10. Referencias (Opcional - muchas empresas lo solicitan por separado)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{sections/otros/10_referencias}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 11. Publicaciones académicas (Opcional - para perfiles académicos)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{11_publicaciones}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 12. Anexos — Certificados y Constancias
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{sections/anexos/12_anexos_all}
-%\input{sections/anexos/12_anexos_docencia}
-%\input{sections/anexos/12_anexos_data_science}
-\input{sections/anexos/12_anexos_sector_publico}
-%\input{sections/anexos/12_anexos_sector_financiero}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% NOTAS PARA PERSONALIZACIÓN
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% PARA DOCENCIA:
-% - Activa: 1_declaracion_docencia.tex, 3_experiencias_docencia.tex
-% - Descomentar: 6_logros.tex (si tienes reconocimientos docentes)
-% - Descomentar: 11_publicaciones.tex (si tienes papers)
-%
-% PARA DATA SCIENCE:
-% - Activa: 1_declaracion_data_science.tex, 3_experiencias_data_science.tex
-% - Enfatiza: 7_proyectos.tex (proyectos en GitHub)
-% - Asegúrate que 2_competencias.tex muestre tu stack técnico
-%
-% PARA ECONOMÍA:
-% - Activa: 1_declaracion_economia.tex
-% - Enfatiza: experiencias de análisis económico
-% - Incluye: estudios e informes técnicos en proyectos
-%
-% PARA SECTOR PÚBLICO:
-% - Activa: 1_declaracion_sector_publico.tex
-% - Menciona: conocimiento de SIAF, SIGA, SEACE en competencias
-% - Enfatiza: compromiso con servicio público
-%
-% PARA SECTOR FINANCIERO:
-% - Activa: 1_declaracion_sector_financiero.tex
-% - Enfatiza: análisis cuantitativo, gestión de riesgos
-% - Incluye: conocimiento de normativa SBS en competencias
-%
-% PARA CONSULTORÍA:
-% - Activa: 1_declaracion_consultoria.tex
-% - Enfatiza: versatilidad y proyectos diversos
-% - Muestra: capacidad de adaptación en experiencias
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% GENERAR ENCABEZADO
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\makecvheader
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% GENERAR PIE DE PÁGINA
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\makecvfooter
+	{\textsc{\today}}                              % Fecha (izquierda)
+	{\textsc{Elmer Edison Achalma Mendoza --- CV}} % Nombre (centro)
+	{\thepage}                                     % Número de página (derecha)
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% SECCIONES DEL CV
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Puedes comentar/descomentar secciones según necesites
+	% usando % al inicio de la línea para comentar
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% 1. Declaración / Perfil profesional (Obligatorio)
+	%    Activa UNO según el área de postulación
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%\input{sections/declaraciones/1_declaracion_consultoria}
+	%\input{sections/declaraciones/1_declaracion_data_science}
+	%\input{sections/declaraciones/1_declaracion_docencia}
+	%\input{sections/declaraciones/1_declaracion_economia}
+	%\input{sections/declaraciones/1_declaracion_sector_financiero}
+	\input{sections/declaraciones/1_declaracion_sector_publico}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% 2. Experiencia profesional (Obligatorio)
+	%    Activa UNO según el área de postulación
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%\input{sections/experiencias/2_experiencias_data_science}
+	%\input{sections/experiencias/2_experiencias_docencia}
+	%\input{sections/experiencias/2_experiencias_sector_financiero}
+	\input{sections/experiencias/2_experiencias_sector_publico}
+	%\input{sections/experiencias/2_experiencias_corta}
+	%\input{sections/experiencias/2_experiencias_larga}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% 3. Formación académica (Obligatorio)
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\input{sections/otros/3_formacion_academica}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% 4. Cursos y estudios complementarios (Recomendado)
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\input{sections/otros/4_certificados}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% 5. Idiomas y habilidades destacadas (Recomendado)
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\input{sections/otros/5_idiomas_habilidades}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% 6. Logros y reconocimientos (Opcional)
+	%    Activa si tienes premios, becas o reconocimientos relevantes
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\input{sections/otros/6_logros}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% 7. Competencias técnicas (Obligatorio para perfiles técnicos)
+	%    Activa UNO según el área de postulación
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%\input{sections/competencias/7_competencias_data_science}
+	%\input{sections/competencias/7_competencias_docencia}
+	%\input{sections/competencias/7_competencias_economia}
+	%\input{sections/competencias/7_competencias_sector_financiero}
+	\input{sections/competencias/7_competencias_sector_publico}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% 8. Proyectos (Recomendado para perfiles técnicos)
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%\input{sections/otros/8_proyectos}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% 9. Voluntariado y actividades extracurriculares (Opcional)
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\input{sections/otros/9_voluntariado}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% 10. Referencias (Opcional - muchas entidades lo solicitan por separado)
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\input{sections/otros/10_referencias}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% 11. Publicaciones académicas (Opcional - para perfiles académicos)
+	%     Requiere compilar con biber
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%\input{sections/otros/11_publicaciones}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% 12. Anexos — Certificados y Constancias
+	%     Activa UNO según el área de postulación
+	%     o usa el _all para incluir todos
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\input{sections/anexos/12_anexos_all}
+	%\input{sections/anexos/12_anexos_docencia}
+	%\input{sections/anexos/12_anexos_data_science}
+	%\input{sections/anexos/12_anexos_sector_publico}
+	%\input{sections/anexos/12_anexos_sector_financiero}
+	
 \end{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % GUÍA RÁPIDA DE COMPILACIÓN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Compilar con LuaLaTeX:
-%   cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -e lualatex -p 3 --biber -o ../output index
+% Compilar con LuaLaTeX (sin bibliografía):
+%   lualatex index.tex
 %
-% Si usas bibliografía:
+% Compilar con LuaLaTeX (con bibliografía/publicaciones):
 %   lualatex index.tex
 %   biber index
 %   lualatex index.tex
 %   lualatex index.tex
 %
-% Si usas Make:
-%   make docencia      # CV para docencia
-%   make datascience   # CV para data science
-%   make clean         # Limpiar archivos temporales
+% Script personalizado:
+%   cd ~/Documents/Curriculum-Vitae/main
+%   compilar_latex.sh -e lualatex -p 3 --biber -o ../output index
+% o
+%   cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -e lualatex -p 3 --biber -o ../output index
+%
+% PARA CADA PERFIL — activa la declaración, experiencia, competencias y anexo correspondiente:
+%
+%   SECTOR PÚBLICO   → 1_declaracion_sector_publico   | 2_experiencias_sector_publico   | 7_competencias_sector_publico   | 12_anexos_sector_publico
+%   DOCENCIA         → 1_declaracion_docencia         | 2_experiencias_docencia         | 7_competencias_docencia         | 12_anexos_docencia
+%   DATA SCIENCE     → 1_declaracion_data_science     | 2_experiencias_data_science     | 7_competencias_data_science     | 12_anexos_data_science
+%   SECTOR FINANCIERO→ 1_declaracion_sector_financiero| 2_experiencias_sector_financiero| 7_competencias_sector_financiero| 12_anexos_sector_financiero
+%   ECONOMÍA         → 1_declaracion_economia         | 2_experiencias_larga            | 7_competencias_economia         | 12_anexos_all
+%   CONSULTORÍA      → 1_declaracion_consultoria      | 2_experiencias_larga            | 7_competencias_economia         | 12_anexos_all
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
