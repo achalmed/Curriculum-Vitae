@@ -3,6 +3,9 @@
 %
 % Autor:
 % Edison Achalma (achalmaedison)
+% 
+% EJECUTAR
+% compilar -e lualatex -p 3 --biber -o ../output index
 %
 % Licencia de plantilla:
 % CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
@@ -248,10 +251,14 @@
 %   lualatex index.tex
 %   lualatex index.tex
 %
-% Script personalizado:
-%   cd ~/Documents/Curriculum-Vitae/main
-%   compilar_latex.sh -e lualatex -p 3 --biber -o ../output index
-% o
+% Script personalizado (recomendado):
+%   cd ~/Documents/doc_cv/main
+%   compilar -e lualatex -p 3 --biber -o ../output index
+%
+% o con ruta absoluta (sin cd previo):
+%   compilar -e lualatex -p 3 --biber -o ../output ~/Documents/doc_cv/main/index
+% 
+% o 
 %   cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -e lualatex -p 3 --biber -o ../output index
 %
 % PARA CADA PERFIL — activa la declaración, experiencia, competencias y anexo correspondiente:
