@@ -799,6 +799,17 @@
 	\end{longtable}
 }
 
+%% \entradaExperiencia{<archivo>} — Inserta una entrada de experiencia desde
+%% sections/experiencias/entradas/<archivo>.tex (sin extensión).
+%%
+%% IMPORTANTE: usa el primitivo \@@input (expandible) y NO el \input de LaTeX.
+%% El entorno 'experiences' es una longtable: tras el \\ que cierra la última
+%% fila de la entrada, TeX busca el \omit del siguiente \emptySeparator y el
+%% \input de LaTeX interrumpe ese escaneo al cerrar el archivo (error
+%% "Misplaced \omit"). El primitivo hace la frontera de archivo transparente.
+%% Los nombres de archivo no deben contener espacios.
+\newcommand{\entradaExperiencia}[1]{\@@input sections/experiencias/entradas/#1.tex }
+
 %% \experience{...} — Entrada de experiencia profesional
 %%
 %% Parámetros (en orden):

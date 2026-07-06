@@ -1,0 +1,118 @@
+% =============================================================================
+% CATÁLOGO DE ANEXOS — Certificados y Constancias
+% Archivo: sections/anexos/catalogo.tex
+% =============================================================================
+% Fuente única de los documentos anexables: cada certificado/constancia se
+% define UNA sola vez aquí (ruta + orientación). Los archivos por área
+% (12_anexos_*.tex) cargan este catálogo y llaman a los macros que necesitan.
+%
+% PARA AGREGAR UN NUEVO CERTIFICADO:
+%   1. Guarda el PDF en assets/anexos/ con formato: YYYYMMDD descripcion.pdf
+%   2. Define aquí su macro (\providecommand, orden cronológico descendente):
+%        portrait  → \includepdf[pages=-]{...}
+%        landscape → \includepdf[pages=-, landscape]{...}
+%   3. Llama al macro en los 12_anexos_*.tex de las áreas donde aplique
+%      y agrega la entrada correspondiente en sections/otros/4_certificados.tex
+%
+% Se usa \providecommand para que cargar el catálogo dos veces sea inocuo.
+% =============================================================================
+
+% ----------------------------- AÑO 2026 --------------------------------------
+
+% Constancia Prestación de Servicios — Segunda Elección Presidencial 2026, ONPE (19/06/2026)
+\providecommand{\anexoOnpeSegundaEleccionPresidencial}{%
+	\includepdf[pages=-]{../assets/anexos/20260619 constancia prestacion de servicios segunda eleccion presidencial 2026 onpe.pdf}}
+
+% Constancia Prestación de Servicios — Elecciones Generales 2026, ONPE (17/04/2026)
+\providecommand{\anexoOnpeEleccionesGenerales}{%
+	\includepdf[pages=-]{../assets/anexos/20260417 constancia prestacion de servicios elecciones generales 2026 onpe.pdf}}
+
+% Constancia de Trabajo — CAU/UNSCH (07/03/2026)
+\providecommand{\anexoCauConstanciaTrabajo}{%
+	\includepdf[pages=-]{../assets/anexos/20260307 constancia de trabajo cau unsch.pdf}}
+
+% Constancia Prestación de Servicios — Censos 2025, INEI (09/02/2026)
+\providecommand{\anexoIneiCensos}{%
+	\includepdf[pages=-]{../assets/anexos/20260209 constancia prestacion de servicios censos 2025 inei.pdf}}
+
+% Certificado Curso Coordinador de Centro Poblado — ONPE (26/01/2026)
+\providecommand{\anexoOnpeCursoCoordinadorCcpp}{%
+	\includepdf[pages=-, landscape]{../assets/anexos/20260126 certificado cordinador de ccpp onpe.pdf}}
+
+% Certificado de Trabajo — Corporación Educativa Sofía (13/01/2026)
+\providecommand{\anexoSofiaCertificadoTrabajo}{%
+	\includepdf[pages=-]{../assets/anexos/20260113 certificado de trabajo sofia.pdf}}
+
+% Constancia de Egresado — UNSCH Economía (09/01/2026)
+\providecommand{\anexoUnschConstanciaEgresado}{%
+	\includepdf[pages=-]{../assets/anexos/20260109 constancia de egresado unsch economia.pdf}}
+
+% ----------------------------- AÑO 2025 --------------------------------------
+
+% Constancia de Trabajo — CAU/UNSCH, versión anterior (03/04/2025)
+\providecommand{\anexoCauConstanciaTrabajoAnterior}{%
+	\includepdf[pages=-]{../assets/anexos/20250403 constancia de trabajo cau unsch.pdf}}
+
+% ----------------------------- AÑO 2024 --------------------------------------
+
+% Certificado Econometría I — CAF (25/12/2024)
+\providecommand{\anexoCafEconometria}{%
+	\includepdf[pages=-, landscape]{../assets/anexos/20241225 certificado econometria i caf.pdf}}
+
+% Constancia Foro Perspectivas e Impacto Logístico del Megapuerto de Chancay (13/06/2024)
+\providecommand{\anexoForoPuertoChancay}{%
+	\includepdf[pages=-, landscape]{../assets/anexos/20240613 constancia perspectivas e impacto logistico del mega puerto de chancay.pdf}}
+
+% Certificado Macroeconomía II (30/04/2024)
+\providecommand{\anexoMacroeconomiaDos}{%
+	\includepdf[pages=-, landscape]{../assets/anexos/20240430 certificado macroeconomia ii ed2.pdf}}
+
+% ----------------------------- AÑO 2023 --------------------------------------
+
+% Certificado Linux (19/11/2023)
+\providecommand{\anexoCertificadoLinux}{%
+	\includepdf[pages=-, landscape]{../assets/anexos/20231119 certificado linux.pdf}}
+
+% Certificado Conéctate (18/11/2023)
+\providecommand{\anexoCertificadoConectate}{%
+	\includepdf[pages=-, landscape]{../assets/anexos/20231118 certificado conectate.pdf}}
+
+% ----------------------------- AÑO 2022 --------------------------------------
+
+% Constancia Prácticas Pre-profesionales — DRA Ayacucho (27/07/2022)
+\providecommand{\anexoDraPracticasPreprofesionales}{%
+	\includepdf[pages=-]{../assets/anexos/20220727 constancia de practicas pre-profesionales dra ayacucho.pdf}}
+
+% Diploma de Especialización en Ofimática Profesional (27/05/2022)
+\providecommand{\anexoDiplomaOfimatica}{%
+	\includepdf[pages=-, landscape]{../assets/anexos/20220527 diploma de especializacion en ofimatica profesional.pdf}}
+
+% Diploma de Especialización en Sistemas Gubernamentales (29/04/2022)
+\providecommand{\anexoDiplomaSistemasGubernamentales}{%
+	\includepdf[pages=-, landscape]{../assets/anexos/20220429 diploma de especializacion en sistemas gubernamentales.pdf}}
+
+% Constancia Curso de Redacción de Documentos Académicos (11/04/2022)
+\providecommand{\anexoRedaccionAcademica}{%
+	\includepdf[pages=-]{../assets/anexos/20220411 constancia curso de redaccion de documentos academicos.pdf}}
+
+% ------------------------ AÑO 2021 Y ANTERIORES ------------------------------
+
+% Certificado Foro Regional de Alto Desarrollo Lima y Callao (24/05/2021)
+\providecommand{\anexoForoAltoDesarrollo}{%
+	\includepdf[pages=-, landscape]{../assets/anexos/20210524 certificado foro regional de alto desarrollo lima y callao.pdf}}
+
+% Certificado Finanzas Básicas y Planeamiento Estratégico (19/08/2020)
+\providecommand{\anexoFinanzasBasicas}{%
+	\includepdf[pages=-, landscape]{../assets/anexos/20200819 certificado finanzas basicas y planeamiento estrategico.pdf}}
+
+% Certificado CONEE Ica (09/12/2019)
+\providecommand{\anexoConeeIca}{%
+	\includepdf[pages=-, landscape]{../assets/anexos/20191209 certificado conee ica.pdf}}
+
+% Constancia Programa Parlamento Joven (07/04/2018)
+\providecommand{\anexoParlamentoJoven}{%
+	\includepdf[pages=-, landscape]{../assets/anexos/20180407 constancia programa parlamento joven.pdf}}
+
+% Certificado Google (12/05/2017)
+\providecommand{\anexoCertificadoGoogle}{%
+	\includepdf[pages=-, landscape]{../assets/anexos/20170512 certificado google.pdf}}

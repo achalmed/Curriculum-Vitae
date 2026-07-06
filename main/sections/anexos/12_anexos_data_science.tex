@@ -1,84 +1,30 @@
 % =============================================================================
-% SECCIÓN: ANEXOS — Certificados y Constancias | PERFIL: DATA SCIENCE
+% ANEXOS — DATA SCIENCE / ANÁLISIS DE DATOS
+% Usado por: profiles/data-science.tex
+% -----------------------------------------------------------------------------
+% Cada documento se define UNA vez en catalogo.tex (ruta + orientación);
+% aquí solo se selecciona y ordena. Orden: cronológico descendente.
 % =============================================================================
-% Uso: activar en index.tex descomentando:
-%   \input{sections/otros/12_anexos_data_science}
-%
-% Requiere en yaac-another-awesome-cv.cls:
-%   \RequirePackage{pdfpages}
-%
-% Criterio de selección:
-%   Se incluyen certificados de formación en herramientas tecnológicas,
-%   análisis de datos, econometría, ofimática avanzada, Linux y redes,
-%   y constancias de trabajo con componente analítico de datos relevante
-%   para el perfil de Data Science / Análisis de Datos.
-%
-% Orden: Cronológico descendente (más reciente primero).
-%
-% Opciones de \includepdf:
-%   pages=-      → incluye todas las páginas del PDF
-%   landscape    → orientación horizontal (certificados apaisados)
-%   (sin opción) → orientación vertical (constancias tipo carta/oficio)
-% =============================================================================
+
+\input{sections/anexos/catalogo}
 
 \clearpage
 
-% -----------------------------------------------------------------------------
-% AÑO 2026
-% -----------------------------------------------------------------------------
+% ------------------------------- AÑO 2026 ------------------------------------
+\anexoIneiCensos
 
-% Anexo | 09 febrero 2026 | portrait
-% Constancia de Prestación de Servicios — Censista INEI / ODEI Ayacucho
-\includepdf[pages=-]{../assets/anexos/20260209 constancia prestacion de servicios censos 2025 inei.pdf}
+% ------------------------------- AÑO 2024 ------------------------------------
+\anexoCafEconometria
+\anexoMacroeconomiaDos
 
-% -----------------------------------------------------------------------------
-% AÑO 2024
-% -----------------------------------------------------------------------------
+% ------------------------------- AÑO 2023 ------------------------------------
+\anexoCertificadoLinux
+\anexoCertificadoConectate
 
-% Anexo | 25 diciembre 2024 | landscape
-% Certificado Econometría I — CAF
-\includepdf[pages=-, landscape]{../assets/anexos/20241225 certificado econometria i caf.pdf}
+% ------------------------------- AÑO 2022 ------------------------------------
+\anexoDiplomaOfimatica
+\anexoRedaccionAcademica
 
-% Anexo | 30 abril 2024 | landscape
-% Certificado Macroeconomía II (2.ª edición) — MiriadaX / CAF
-\includepdf[pages=-, landscape]{../assets/anexos/20240430 certificado macroeconomia ii ed2.pdf}
-
-% -----------------------------------------------------------------------------
-% AÑO 2023
-% -----------------------------------------------------------------------------
-
-% Anexo | 19 noviembre 2023 | landscape
-% Certificado NDG Linux Unhatched — Cisco Networking Academy
-\includepdf[pages=-, landscape]{../assets/anexos/20231119 certificado linux.pdf}
-
-% Anexo | 18 noviembre 2023 | landscape
-% Certificado Get Connected (Conéctate) — Cisco Networking Academy
-\includepdf[pages=-, landscape]{../assets/anexos/20231118 certificado conectate.pdf}
-
-% -----------------------------------------------------------------------------
-% AÑO 2022
-% -----------------------------------------------------------------------------
-
-% Anexo | 27 mayo 2022 | landscape
-% Diploma de Especialización en Ofimática Profesional — ESNAP
-\includepdf[pages=-, landscape]{../assets/anexos/20220527 diploma de especializacion en ofimatica profesional.pdf}
-
-% Anexo | 11 abril 2022 | portrait
-% Constancia Curso de Redacción de Documentos Académicos — CCA
-\includepdf[pages=-]{../assets/anexos/20220411 constancia curso de redaccion de documentos academicos.pdf}
-
-% -----------------------------------------------------------------------------
-% AÑO 2020
-% -----------------------------------------------------------------------------
-
-% Anexo | 19 agosto 2020 | landscape
-% Certificado Finanzas Básicas y Planeamiento Estratégico — Grupo IDDEA
-\includepdf[pages=-, landscape]{../assets/anexos/20200819 certificado finanzas basicas y planeamiento estrategico.pdf}
-
-% -----------------------------------------------------------------------------
-% AÑO 2017
-% -----------------------------------------------------------------------------
-
-% Anexo | 12 mayo 2017 | landscape
-% Certificado Plataformas de Marketing Digital & Social Media Business — Google for Education
-\includepdf[pages=-, landscape]{../assets/anexos/20170512 certificado google.pdf}
+% -------------------------- AÑO 2021 Y ANTERIORES ----------------------------
+\anexoFinanzasBasicas
+\anexoCertificadoGoogle

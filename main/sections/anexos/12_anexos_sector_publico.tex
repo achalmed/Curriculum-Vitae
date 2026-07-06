@@ -1,120 +1,37 @@
 % =============================================================================
-% SECCIÓN: ANEXOS — Certificados y Constancias | PERFIL: SECTOR PÚBLICO
+% ANEXOS — SECTOR PÚBLICO
+% Usado por: profiles/sector-publico.tex
+% -----------------------------------------------------------------------------
+% Cada documento se define UNA vez en catalogo.tex (ruta + orientación);
+% aquí solo se selecciona y ordena. Orden: cronológico descendente.
 % =============================================================================
-% Uso: activar en index.tex descomentando:
-%   \input{sections/otros/12_anexos_sector_publico}
-%
-% Requiere en yaac-another-awesome-cv.cls:
-%   \RequirePackage{pdfpages}
-%
-% Criterio de selección:
-%   Se priorizan constancias de servicios prestados a entidades del Estado
-%   (ONPE, INEI), diploma en sistemas gubernamentales (SIAF/SIGA/SEACE),
-%   formación en políticas públicas y participación en espacios institucionales
-%   relevantes para el perfil de Sector Público / Gestión Pública.
-%
-% Orden: Cronológico descendente (más reciente primero).
-%
-% Opciones de \includepdf:
-%   pages=-      → incluye todas las páginas del PDF
-%   landscape    → orientación horizontal (certificados apaisados)
-%   (sin opción) → orientación vertical (constancias tipo carta/oficio)
-% =============================================================================
+
+\input{sections/anexos/catalogo}
 
 \clearpage
 
-% -----------------------------------------------------------------------------
-% AÑO 2026
-% -----------------------------------------------------------------------------
+% ------------------------------- AÑO 2026 ------------------------------------
+\anexoOnpeSegundaEleccionPresidencial
+\anexoOnpeEleccionesGenerales
+\anexoOnpeCursoCoordinadorCcpp
+\anexoCauConstanciaTrabajo
+\anexoIneiCensos
+\anexoCauConstanciaTrabajoAnterior
+\anexoSofiaCertificadoTrabajo
+\anexoUnschConstanciaEgresado
 
-% Anexo | 19 junio 2026 | portrait
-% Constancia de Prestación de Servicios — Capacitador ONPE / ODPE Andahuaylas
-\includepdf[pages=-]{../assets/anexos/20260619 constancia prestacion de servicios segunda eleccion presidencial 2026 onpe.pdf}
+% ------------------------------- AÑO 2024 ------------------------------------
+\anexoForoPuertoChancay
+%\anexoCafEconometria
+%\anexoMacroeconomiaDos
 
-% Anexo | 17 abril 2026 | portrait
-% Constancia de Prestación de Servicios — Coordinador de Centro Poblado ONPE / ODPE Parinacochas
-\includepdf[pages=-]{../assets/anexos/20260417 constancia prestacion de servicios elecciones generales 2026 onpe.pdf}
+% ------------------------------- AÑO 2022 ------------------------------------
+\anexoDraPracticasPreprofesionales
+\anexoDiplomaSistemasGubernamentales
+\anexoDiplomaOfimatica
+\anexoRedaccionAcademica
 
-% Anexo | 26 enero 2026 | landscape
-% Certificado Coordinador de Centro Poblado — ONPE / Elecciones Generales 2026
-\includepdf[pages=-, landscape]{../assets/anexos/20260126 certificado cordinador de ccpp onpe.pdf}
-
-% Anexo 5 | 07 marzo 2026 | portrait
-% Constancia de Trabajo CAU — UNSCH
-\includepdf[pages=-]{../assets/anexos/20260307 constancia de trabajo cau unsch.pdf}
-
-% Anexo | 09 febrero 2026 | portrait
-% Constancia de Prestación de Servicios por Locación — Censista INEI / ODEI Ayacucho
-\includepdf[pages=-]{../assets/anexos/20260209 constancia prestacion de servicios censos 2025 inei.pdf}
-
-% Anexo 5 | 04 abril 2025 | portrait
-% Constancia de Trabajo CAU — UNSCH
-\includepdf[pages=-]{../assets/anexos/20250403 constancia de trabajo cau unsch.pdf}
-
-% Anexo | 13 enero 2026 | portrait
-% Certificado de Trabajo — Corporación Educativa Sofía
-\includepdf[pages=-]{../assets/anexos/20260113 certificado de trabajo sofia.pdf}
-
-% Anexo | 09 enero 2026 | portrait
-% Constancia de Egresado — Escuela Profesional de Economía UNSCH
-\includepdf[pages=-]{../assets/anexos/20260109 constancia de egresado unsch economia.pdf}
-
-% -----------------------------------------------------------------------------
-% AÑO 2024
-% -----------------------------------------------------------------------------
-
-% Anexo | 13 junio 2024 | landscape
-% Constancia: Perspectivas e Impacto Logístico del Mega Puerto de Chancay — IPN
-\includepdf[pages=-, landscape]{../assets/anexos/20240613 constancia perspectivas e impacto logistico del mega puerto de chancay.pdf}
-
-% Anexo | 25 diciembre 2024 | landscape
-% Certificado Econometría I — CAF
-%\includepdf[pages=-, landscape]{../assets/anexos/20241225 certificado econometria i caf.pdf}
-
-% Anexo | 30 abril 2024 | landscape
-% Certificado Macroeconomía II (2.ª edición) — MiriadaX / CAF
-%\includepdf[pages=-, landscape]{../assets/anexos/20240430 certificado macroeconomia ii ed2.pdf}
-
-% -----------------------------------------------------------------------------
-% AÑO 2022
-% -----------------------------------------------------------------------------
-
-% Anexo | 27 julio 2022 | portrait
-% Constancia de Prácticas Pre-Profesionales — DRA Ayacucho
-\includepdf[pages=-]{../assets/anexos/20220727 constancia de practicas pre-profesionales dra ayacucho.pdf}
-
-% Anexo | 29 abril 2022 | landscape
-% Diploma de Especialización en Sistemas Gubernamentales: SIAF, SIGA y SEACE — IIAAE
-\includepdf[pages=-, landscape]{../assets/anexos/20220429 diploma de especializacion en sistemas gubernamentales.pdf}
-
-% Anexo | 27 mayo 2022 | landscape
-% Diploma de Especialización en Ofimática Profesional — ESNAP
-\includepdf[pages=-, landscape]{../assets/anexos/20220527 diploma de especializacion en ofimatica profesional.pdf}
-
-% Anexo | 11 abril 2022 | portrait
-% Constancia Curso de Redacción de Documentos Académicos — CCA
-\includepdf[pages=-]{../assets/anexos/20220411 constancia curso de redaccion de documentos academicos.pdf}
-
-% -----------------------------------------------------------------------------
-% AÑO 2021
-% -----------------------------------------------------------------------------
-
-% Anexo | 24 mayo 2021 | landscape
-% Certificado Foro Regional de Alto Desarrollo — Lima y Callao — CAENE
-\includepdf[pages=-, landscape]{../assets/anexos/20210524 certificado foro regional de alto desarrollo lima y callao.pdf}
-
-% -----------------------------------------------------------------------------
-% AÑO 2019
-% -----------------------------------------------------------------------------
-
-% Anexo | 09 diciembre 2019 | landscape
-% Certificado XXIX Congreso Nacional de Estudiantes de Economía — CONEE Ica 2019
-%\includepdf[pages=-, landscape]{../assets/anexos/20191209 certificado conee ica.pdf}
-
-% -----------------------------------------------------------------------------
-% AÑO 2018
-% -----------------------------------------------------------------------------
-
-% Anexo | 07 abril 2018 | landscape
-% Constancia Programa Parlamento Joven 2018 — Congreso de la República
-\includepdf[pages=-, landscape]{../assets/anexos/20180407 constancia programa parlamento joven.pdf}
+% -------------------------- AÑO 2021 Y ANTERIORES ----------------------------
+\anexoForoAltoDesarrollo
+%\anexoConeeIca
+\anexoParlamentoJoven
