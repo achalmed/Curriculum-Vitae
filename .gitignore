@@ -76,3 +76,20 @@ _minted*/
 svg-inkscape/
 sympy-plots-for-*.tex/
 pythontex-files-*/
+
+# =============================================================================
+# SALIDAS GENERADAS (los PDF compilados NUNCA se versionan;
+# se distribuyen vía GitHub Releases)
+# =============================================================================
+build/
+output/
+main/*.pdf
+
+# =============================================================================
+# BORRADORES Y ARCHIVOS LOCALES DE LA MÁQUINA
+# =============================================================================
+drafts/
+.Rhistory
+.directory
+*.sav
+*.sdr/
