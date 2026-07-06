@@ -1,0 +1,73 @@
+% =============================================================================
+% CONFIGURACIÓN: Información personal y de contacto
+% Archivo: config/personal.tex
+% Descripción: Fuente única de los datos personales del autor. Todos los
+%              perfiles (profiles/*.tex) comparten esta configuración;
+%              un cambio aquí se propaga a todas las variantes del CV.
+% =============================================================================
+
+% Nombre completo (usado en el pie de página y disponible para otras secciones)
+\newcommand{\authorFullName}{Elmer Edison Achalma Mendoza}
+
+% Definir el nombre del autor (Obligatorio)
+% Uso: \name{<nombre>}{<apellido>}
+\name{Elmer Edison}{Achalma Mendoza}
+
+% Definir el lema del autor (Obligatorio)
+% Uso: \tagline{<lema>}
+\tagline{Economista | Docente | Análisis de Datos | Sector Público}
+
+% Definir foto del autor (Opcional)
+% Uso: \photo[<forma: circular, square, roundedsquare, squircle>]{<diámetro>}{<archivo>}
+% La forma por defecto es circular
+\photo{2.5cm}{../assets/images/profile/profile2}
+
+% -----------------------------------------------------------------------------
+% Redes sociales e información de contacto
+% -----------------------------------------------------------------------------
+\socialinfo{
+	% LinkedIn (Opcional)
+	\linkedin{achalmaedison}
+
+	% GitHub (Opcional)
+	\github{achalmed}\\
+
+	% ORCID (Opcional) - Identificador único de investigador
+	%\orcid{0000-0000-0000-0000}
+
+	% Google Scholar (Opcional)
+	%\googlescholar{<ID-google-scholar>}{Tu Nombre}
+
+	% Sitio web personal (Opcional)
+	\personalLink{achalmaedison.netlify.app}
+
+	% Teléfono (Opcional)
+	\smartphone{+51 934 179 301}\\
+
+	% Email (Opcional)
+	\email{elmer.achalma.09@unsch.edu.pe}
+
+	% Email alternativo (Opcional)
+	%\email{achalmaedison@gmail.com}\\
+
+	% Dirección (Opcional)
+	%\address{<dirección completa>}
+
+	% Ubicación (Opcional)
+	\infos{Ayacucho - Perú}
+
+	% Redes sociales adicionales disponibles:
+	% \viadeo{<usuario-viadeo>}
+	% \stackoverflow{<id-stackoverflow>}
+	% \stackexchange{<id-stackexchange>}
+	% \twitter{<usuario-twitter>}
+	% \skype{<usuario-skype>}
+	% \researchgate{<usuario-researchgate>}
+	% \medium{<usuario-medium>}
+	% \kaggle{<usuario-kaggle>}
+}
+
+% -----------------------------------------------------------------------------
+% Bibliografía (solo se imprime si el perfil activa la sección publicaciones)
+% -----------------------------------------------------------------------------
+\addbibresource{../bibliography/my_publications.bib}

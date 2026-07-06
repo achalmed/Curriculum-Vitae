@@ -1,0 +1,48 @@
+% =============================================================================
+% cv.tex — DOCUMENTO MAESTRO
+% =============================================================================
+% Plantilla basada en:
+% https://github.com/darwiin/awesome-neue-latex-cv
+%
+% Autor: Edison Achalma (achalmaedison)
+% Licencia de plantilla: CC BY-SA 4.0
+%
+% Este archivo NO se edita para cambiar de perfil profesional. El perfil se
+% selecciona con la macro \CVprofile, definida antes de cargar este archivo:
+%
+%   lualatex --jobname=cv-docencia "\def\CVprofile{docencia}\input{cv.tex}"
+%
+% o, desde la raíz del repositorio, con el Makefile (forma recomendada):
+%
+%   make docencia          # un perfil
+%   make all               # los 6 perfiles → build/cv-<perfil>.pdf
+%
+% Perfiles disponibles (ver profiles/):
+%   sector-publico | docencia | data-science | sector-financiero
+%   economia       | consultoria
+%
+% Si \CVprofile no está definida se usa el perfil por defecto:
+\ifdefined\CVprofile\else\def\CVprofile{sector-publico}\fi
+
+% Debe compilarse con LuaLaTeX (la clase usa fontspec/fuentes OpenType)
+\documentclass[localFont,alternative,10pt]{yaac-another-awesome-cv}
+
+% -----------------------------------------------------------------------------
+% Configuración compartida por todos los perfiles
+% -----------------------------------------------------------------------------
+\input{config/personal}   % datos personales, contacto, foto, bibliografía
+\input{config/settings}   % ajustes de diseño
+
+\begin{document}
+
+	% Encabezado y pie de página
+	\makecvheader
+	\makecvfooter
+	{\textsc{\today}}                        % Fecha (izquierda)
+	{\textsc{\authorFullName{} --- CV}}      % Nombre (centro)
+	{\thepage}                               % Número de página (derecha)
+
+	% Cuerpo del CV: el perfil activo decide qué secciones se incluyen
+	\input{profiles/\CVprofile}
+
+\end{document}
