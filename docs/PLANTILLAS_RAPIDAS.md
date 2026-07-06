@@ -1,83 +1,41 @@
 # 🚀 Plantillas de Generación Rápida
 
-## Scripts de Bash para Generar CVs
+## Generación de CVs con el Makefile
 
-### Para Linux/Mac
+El repositorio incluye un `Makefile` real en la raíz — ya no hay que copiar
+archivos ni mantener scripts auxiliares:
 
-Guarda estos scripts en `cv_versions/scripts/`
-
-#### `generar_cv_docencia.sh`
 ```bash
-#!/bin/bash
-# Script para generar CV enfocado en Docencia
-
-echo "🎓 Generando CV para Docencia..."
-
-cd ..
-cp cv_versions/1_declaracion_docencia.tex 1_declaracion_cv.tex
-cp cv_versions/2_competencias_docencia.tex 2_competencias.tex
-cp cv_versions/3_experiencias_docencia.tex 3_experiencias_corta.tex
-cp cv_versions/7_proyectos_completo.tex 7_proyectos.tex
-cp cv_versions/9_certificados_completo.tex 9_certificados.tex
-
-echo "✅ Archivos copiados"
-echo "📝 Compiling..."
-
-lualatex cv.tex
-lualatex cv.tex  # Segunda pasada para referencias
-
-echo "✅ CV generado: cv.pdf"
-xdg-open cv.pdf  # Abre el PDF (Linux)
-# open cv.pdf  # Descomentar para Mac
+make sector-publico      # → build/cv-sector-publico.pdf (perfil por defecto)
+make docencia            # → build/cv-docencia.pdf
+make data-science        # → build/cv-data-science.pdf
+make sector-financiero   # → build/cv-sector-financiero.pdf
+make economia            # → build/cv-economia.pdf (trayectoria completa)
+make consultoria         # → build/cv-consultoria.pdf
+make all                 # los 6 perfiles de una vez
+make economia BIBER=1    # con bibliografía (sección publicaciones activa)
+make clean               # eliminar build/
 ```
 
-#### `generar_cv_data_science.sh`
+### One-liners útiles
+
 ```bash
-#!/bin/bash
-echo "📊 Generando CV para Data Science..."
+# Compilar y abrir
+make docencia && xdg-open build/cv-docencia.pdf
 
-cd ..
-cp cv_versions/1_declaracion_data_science.tex 1_declaracion_cv.tex
-cp cv_versions/2_competencias_data_science.tex 2_competencias.tex
-cp cv_versions/3_experiencias_data_science.tex 3_experiencias_corta.tex
-
-lualatex cv.tex
-lualatex cv.tex
-
-echo "✅ CV generado: cv.pdf"
-xdg-open cv.pdf
+# Copia con nombre de envío
+make docencia && cp build/cv-docencia.pdf ~/CV_Edison_Achalma_EMPRESA_PUESTO.pdf
 ```
 
-#### `generar_cv_economia.sh`
-```bash
-#!/bin/bash
-echo "💼 Generando CV para Economía..."
+### Publicar una versión (GitHub Releases)
 
-cd ..
-cp cv_versions/1_declaracion_economia.tex 1_declaracion_cv.tex
-cp cv_versions/2_competencias_economia.tex 2_competencias.tex
-
-lualatex cv.tex
-lualatex cv.tex
-
-echo "✅ CV generado: cv.pdf"
-```
-
----
-
-## Comandos One-Liner
-
-Para copiar rápido sin scripts:
+Cada tag `v*` dispara la compilación en GitHub Actions y publica los 6 PDFs
+como Release — sin subir PDFs al repositorio:
 
 ```bash
-# Docencia
-cp cv_versions/{1_declaracion_docencia.tex,2_competencias_docencia.tex,3_experiencias_docencia.tex} . && lualatex cv.tex
-
-# Data Science
-cp cv_versions/{1_declaracion_data_science.tex,2_competencias_data_science.tex,3_experiencias_data_science.tex} . && lualatex cv.tex
-
-# Economía
-cp cv_versions/{1_declaracion_economia.tex,2_competencias_economia.tex} . && lualatex cv.tex
+git tag v3.1.1
+git push origin v3.1.1
+# → https://github.com/achalmed/Curriculum-Vitae/releases
 ```
 
 ---
@@ -88,15 +46,15 @@ Antes de enviar cada CV, verifica:
 
 ```
 [ ] Declaración personalizada para el área
-[ ] Máximo 3-5 experiencias más relevantes activas
+[ ] Máximo 3-5 experiencias más relevantes activas en el selector
 [ ] Proyectos filtrados (solo relevantes)
 [ ] Certificados actualizados y relevantes
 [ ] Sin errores de compilación LaTeX
 [ ] PDF generado correctamente
 [ ] Nombre de archivo descriptivo: CV_Edison_Achalma_[EMPRESA]_[PUESTO].pdf
-[ ] Tamaño del CV: 1-2 páginas máximo
+[ ] Tamaño del CV: 1-2 páginas máximo (sin contar anexos)
 [ ] Revisión ortográfica final
-[ ] Info de contacto actualizada
+[ ] Info de contacto actualizada (main/config/personal.tex)
 ```
 
 ---
@@ -175,100 +133,41 @@ DNI: [TU DNI]
 
 ## Gestión de Versiones con Git
 
-### Configuración Inicial
+### Workflow para una postulación con ajustes específicos
 
 ```bash
-cd ~/Documents/cv-sistema/
-git init
-git add .
-git commit -m "Initial CV system setup"
-```
-
-### Workflow para cada postulación
-
-```bash
-# Crear rama para postulación específica
+# Crear rama para la postulación
 git checkout -b postulacion-empresa-puesto-fecha
 
-# Hacer cambios específicos
-# ... editar archivos ...
+# Ajustar selectores/declaración, compilar y verificar
+make docencia
 
 # Commit de cambios
-git add .
-git commit -m "CV personalizado para [Empresa] - [Puesto]"
+git add . && git commit -m "CV personalizado para [Empresa] - [Puesto]"
 
-# Volver a master para siguiente postulación
+# Volver a master para la siguiente postulación
 git checkout master
-
-# Ver historial
-git log --oneline --graph --all
 ```
 
-### Recuperar versión antigua
+### Recuperar una versión antigua
 
 ```bash
-# Ver commits anteriores
-git log --oneline
-
-# Ver cambios de un commit específico
-git show [COMMIT_HASH]
-
-# Recuperar archivo de versión anterior
-git checkout [COMMIT_HASH] -- 1_declaracion_cv.tex
-```
-
----
-
-## Automatización con Makefile
-
-Crea un `Makefile` en tu directorio principal:
-
-```makefile
-.PHONY: docencia datascience economia publico finanzas consultoria clean
-
-docencia:
-	cp cv_versions/1_declaracion_docencia.tex 1_declaracion_cv.tex
-	cp cv_versions/2_competencias_docencia.tex 2_competencias.tex
-	cp cv_versions/3_experiencias_docencia.tex 3_experiencias_corta.tex
-	lualatex cv.tex
-	@echo "✅ CV Docencia generado"
-
-datascience:
-	cp cv_versions/1_declaracion_data_science.tex 1_declaracion_cv.tex
-	cp cv_versions/2_competencias_data_science.tex 2_competencias.tex
-	cp cv_versions/3_experiencias_data_science.tex 3_experiencias_corta.tex
-	lualatex cv.tex
-	@echo "✅ CV Data Science generado"
-
-economia:
-	cp cv_versions/1_declaracion_economia.tex 1_declaracion_cv.tex
-	cp cv_versions/2_competencias_economia.tex 2_competencias.tex
-	lualatex cv.tex
-	@echo "✅ CV Economía generado"
-
-clean:
-	rm -f *.aux *.log *.out *.toc *.bbl *.blg
-	@echo "✅ Archivos temporales eliminados"
-```
-
-Uso:
-```bash
-make docencia      # Genera CV para docencia
-make datascience   # Genera CV para data science
-make clean         # Limpia archivos temporales
+git log --oneline                          # ver commits anteriores
+git show [COMMIT_HASH]                     # ver cambios de un commit
+git checkout [HASH] -- main/sections/...   # recuperar un archivo puntual
 ```
 
 ---
 
 ## Tips de Productividad
 
-### 1. Snippets para VS Code
+### 1. Snippet para VS Code (nueva entrada de experiencia)
 
 Crea `.vscode/latex.code-snippets`:
 
 ```json
 {
-  "Nueva Experiencia": {
+  "Nueva Entrada de Experiencia": {
     "prefix": "exp",
     "body": [
       "\\experience",
@@ -281,56 +180,37 @@ Crea `.vscode/latex.code-snippets`:
       "\t\\end{itemize}",
       "}",
       "{\\footnotesize{\\emph{${9:Tecnologías:}} ${10:Lista}}}",
-      "\\emptySeparator",
       ""
     ]
   }
 }
 ```
 
+Guarda la entrada como archivo propio en
+`main/sections/experiencias/entradas/<fecha>_<empleo>.tex` y refiérela con
+`\entradaExperiencia{<fecha>_<empleo>}` desde los selectores de área.
+
 ### 2. Alias de Bash
 
 Agrega a tu `~/.bashrc` o `~/.zshrc`:
 
 ```bash
-alias cv-docencia='cd ~/Documents/cv-sistema && make docencia'
-alias cv-data='cd ~/Documents/cv-sistema && make datascience'
-alias cv-clean='cd ~/Documents/cv-sistema && make clean'
-alias cv-view='xdg-open ~/Documents/cv-sistema/cv.pdf'
+alias cv='cd ~/Documents/git_cv'
+alias cv-docencia='cd ~/Documents/git_cv && make docencia'
+alias cv-all='cd ~/Documents/git_cv && make all'
+alias cv-view='xdg-open ~/Documents/git_cv/build/*.pdf'
 ```
 
-### 3. Watchdog para Compilación Automática
+### 3. Modo watch (recompilación automática)
+
+Con el script universal local:
 
 ```bash
-# Instalar watchdog
-pip install watchdog
-
-# Script watch_cv.py
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
-import subprocess
-import time
-
-class CVCompiler(FileSystemEventHandler):
-    def on_modified(self, event):
-        if event.src_path.endswith('.tex'):
-            print(f"Compilando {event.src_path}...")
-            subprocess.run(['lualatex', 'cv.tex'])
-
-observer = Observer()
-observer.schedule(CVCompiler(), path='.', recursive=False)
-observer.start()
-print("Watching for changes...")
-try:
-    while True:
-        time.sleep(1)
-except KeyboardInterrupt:
-    observer.stop()
-observer.join()
+cd main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -e lualatex -w index
 ```
 
 ---
 
-**Última actualización:** Enero 2026  
-**Autor:** Edison Achalma  
+**Última actualización:** Julio 2026
+**Autor:** Edison Achalma
 **Contribuciones bienvenidas!**

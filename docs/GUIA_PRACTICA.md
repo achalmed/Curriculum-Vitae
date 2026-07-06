@@ -1,162 +1,80 @@
-# 🎯 Guía Práctica de Uso - Sistema Modular de CV
+# 🎯 Guía Práctica de Uso — Sistema de CV Multi-Perfil
 
 ## 📖 ¿Qué es esto?
 
-Es tu arsenal completo de CVs personalizados. En lugar de tener 10 archivos de Word diferentes, tienes UN sistema organizado donde:
-
-- ✅ **Toda tu historia está en un solo lugar**
-- ✅ **Comentas/descoméntas según el puesto**
-- ✅ **Generas CVs profesionales en minutos**
-- ✅ **Nunca pierdes información**
+Un sistema donde **un solo repositorio de contenido** genera seis CVs
+adaptados a áreas profesionales distintas. No se copian archivos ni se
+comentan líneas en el documento principal: el perfil se elige al compilar
+(`make <perfil>`) y cada perfil es un archivo en `main/profiles/` que
+selecciona secciones y redacciones.
 
 ## 🚀 Casos de Uso Reales
 
 ### Caso 1: Postulación a Universidad (Docente)
 
-**Paso a paso:**
-
-1. **Copia archivos base:**
 ```bash
-cp 1_declaracion_docencia.tex ../1_declaracion_cv.tex
-cp 2_competencias_docencia.tex ../2_competencias.tex
-cp 3_experiencias_docencia.tex ../3_experiencias_corta.tex
+make docencia
+xdg-open build/cv-docencia.pdf
 ```
 
-2. **En `1_declaracion_cv.tex`:** Usa la versión principal (ya está descomentada)
+Si quieres afinar antes de enviar:
 
-3. **En `3_experiencias_corta.tex`:** 
-   - ✅ Deja activas las experiencias docentes
-   - ❌ Comenta experiencias muy técnicas si las hay
-
-4. **En `9_certificados_completo.tex`:**
-   - ✅ Activa: Diplomado en Docencia, cursos de metodología
-   - ❌ Comenta: Certificaciones muy técnicas de programación
-
-**Resultado:** CV enfocado en docencia e investigación.
-
----
+1. **Declaración** → `main/sections/declaraciones/1_declaracion_docencia.tex`
+2. **Qué experiencias aparecen y en qué orden** →
+   `main/sections/experiencias/2_experiencias_docencia.tex` (reordena o
+   comenta las líneas `\entradaExperiencia{...}`)
+3. **El texto de una experiencia** → su archivo en
+   `main/sections/experiencias/entradas/` (la variante `--docencia` si existe)
+4. Recompila: `make docencia`
 
 ### Caso 2: Postulación a Startup Tech (Data Analyst)
 
-**Paso a paso:**
-
-1. **Copia archivos base:**
 ```bash
-cp 1_declaracion_data_science.tex ../1_declaracion_cv.tex
-cp 2_competencias_data_science.tex ../2_competencias.tex
-cp 3_experiencias_data_science.tex ../3_experiencias_corta.tex
+make data-science
 ```
 
-2. **En `1_declaracion_cv.tex`:**
-   - Si es puesto junior: descomentar versión "Data Analyst entry-level"
-   - Si es puesto mid-level: dejar versión principal
-
-3. **En `3_experiencias_corta.tex`:**
-   - ✅ Activa proyectos personales de GitHub
-   - ✅ Activa experiencias con análisis de datos
-   - ❌ Comenta experiencias de docencia (salvo que sean relevantes)
-
-4. **En `7_proyectos.tex`:**
-   - ✅ Activa: Dashboard, web scraper, análisis con Python/R
-   - ❌ Comenta: Proyectos académicos no técnicos
-
-**Resultado:** CV técnico enfocado en datos.
-
----
+Consejos para este perfil: activa la sección de proyectos descomentando
+`\input{sections/otros/8_proyectos}` en `main/profiles/data-science.tex`,
+y revisa que el selector de experiencias muestre primero el trabajo freelance
+de análisis de datos.
 
 ### Caso 3: Postulación a Ministerio (Analista Económico)
 
-**Paso a paso:**
-
-1. **Copia archivos base:**
 ```bash
-cp 1_declaracion_sector_publico.tex ../1_declaracion_cv.tex
-cp 2_competencias_economia.tex ../2_competencias.tex  # Mezcla!
-cp 3_experiencias_corta.tex ../3_experiencias_corta.tex  # Personalizar
+make sector-publico
 ```
 
-2. **En `1_declaracion_cv.tex`:**
-   - Usar versión con enfoque en servicio público
+Este perfil incluye la redacción de experiencias con énfasis en gestión
+pública (variantes `--sector-publico`) y los anexos del área
+(`main/sections/anexos/12_anexos_sector_publico.tex`).
 
-3. **En `3_experiencias_corta.tex`:**
-   - ✅ Si tienes experiencia en sector público: activarla
-   - ✅ Enfatizar análisis económico, políticas públicas
-   - ❌ Minimizar experiencias del sector privado
+### Caso 4: Proceso que pide trayectoria completa (becas, CTI Vitae)
 
-4. **En `9_certificados.tex`:**
-   - ✅ Activar: SIAF, SIGA, SEACE, gestión pública
-   - ✅ Mantener: Cursos económicos relevantes
-
-**Resultado:** CV de economista para sector público.
-
----
-
-### Caso 4: Postulación a Consultora (Consultor Junior)
-
-**Paso a paso:**
-
-1. **Archivos base:**
 ```bash
-cp 1_declaracion_consultoria.tex ../1_declaracion_cv.tex
+make economia      # usa la versión LARGA de experiencias y TODOS los anexos
 ```
-
-2. **Competencias:**
-   - Combina: herramientas de economía + algo de data science
-   - Enfatiza: versatilidad, Excel, comunicación
-
-3. **Experiencias:**
-   - ✅ Muestra diversidad: docencia + análisis + proyectos
-   - ✅ Enfatiza adaptabilidad y trabajo bajo presión
-
-4. **Proyectos:**
-   - ✅ Estudios de factibilidad
-   - ✅ Evaluaciones de impacto
-   - ✅ Proyectos con múltiples stakeholders
-
-**Resultado:** CV versátil para consultoría.
-
----
 
 ## 🛠️ Comandos Útiles
 
-### Generar CV rápido para una posición
-
 ```bash
-# 1. Ir a tu carpeta de CVs
-cd ~/cv-sistema/
+make               # perfil por defecto (sector-publico)
+make all           # los 6 perfiles de una vez
+make clean         # limpiar build/
 
-# 2. Copiar archivos para área específica
-cp cv_versions/1_declaracion_[AREA].tex 1_declaracion_cv.tex
-cp cv_versions/2_competencias_[AREA].tex 2_competencias.tex
-cp cv_versions/3_experiencias_[AREA].tex 3_experiencias_corta.tex
+# Buscar en qué entradas aparece una palabra clave del puesto:
+grep -ril "econometría\|python\|siaf" main/sections/
 
-# 3. Compilar
-lualatex cv.tex
-
-# 4. Ver resultado
-xdg-open cv.pdf  # Linux
-open cv.pdf      # Mac
-```
-
-### Búsqueda rápida de bloques
-
-```bash
-# Buscar todas las experiencias disponibles
-grep -n "\\experience" cv_versions/3_*.tex
-
-# Buscar proyectos específicos
-grep -n "Dashboard\|Machine Learning\|Web" cv_versions/7_proyectos_completo.tex
+# Auditar que ningún anexo referencie un PDF inexistente:
+cd main && grep -h includepdf sections/anexos/catalogo.tex | \
+  grep -oP '\{\K[^}]+' | while read f; do [ -f "$f" ] || echo "FALTA: $f"; done
 ```
 
 ## 📝 Tips para Personalización Rápida
 
 ### 1. Usa búsqueda de palabras clave
 
-Cuando leas la descripción del puesto, identifica 5-7 palabras clave y busca en tus archivos:
-
-```bash
-grep -i "machine learning\|python\|sql" cv_versions/*.tex
-```
+Cuando leas la descripción del puesto, identifica 5-7 palabras clave y busca
+en el contenido: `grep -i "palabra" main/sections/**/*.tex`.
 
 ### 2. Matriz de relevancia
 
@@ -164,15 +82,15 @@ Para cada postulación, haz una tabla mental:
 
 | Elemento | ¿Relevante? | Acción |
 |----------|-------------|---------|
-| Experiencia docente | ✅ Alta | Descomentar, ponerla primera |
-| Experiencia Python | ⚠️ Media | Descomentar si hay espacio |
-| Proyecto chatbot | ❌ Baja | Dejar comentado |
+| Experiencia docente | ✅ Alta | Activarla y ponerla primera en el selector |
+| Experiencia Python | ⚠️ Media | Activar si hay espacio |
+| Proyecto chatbot | ❌ Baja | Dejar comentada |
 
 ### 3. Regla 70-20-10
 
-- **70%** - Contenido directamente relevante al puesto
-- **20%** - Contenido que muestra versatilidad
-- **10%** - Contenido "extra" que te diferencia
+- **70%** — Contenido directamente relevante al puesto
+- **20%** — Contenido que muestra versatilidad
+- **10%** — Contenido "extra" que te diferencia
 
 ### 4. Coherencia narrativa
 
@@ -199,106 +117,61 @@ Experiencia #3: Proyecto de dashboard económico
 
 ```
 1. [ ] Leer descripción del puesto (5 min)
-2. [ ] Identificar área principal (1 min)
-3. [ ] Copiar archivos base (1 min)
-4. [ ] Personalizar declaración (5 min)
-5. [ ] Activar experiencias relevantes (5 min)
-6. [ ] Activar proyectos relevantes (3 min)
-7. [ ] Revisar certificados (2 min)
-8. [ ] Compilar y revisar PDF (3 min)
-9. [ ] Ajustar si es necesario (5 min)
-10. [ ] ¡Enviar! 
+2. [ ] Identificar perfil principal (1 min)
+3. [ ] Compilar: make <perfil> (2 min)
+4. [ ] Ajustar declaración si hace falta (5 min)
+5. [ ] Reordenar/activar experiencias en el selector del área (5 min)
+6. [ ] Revisar anexos incluidos (2 min)
+7. [ ] Recompilar y revisar PDF (3 min)
+8. [ ] Renombrar: CV_Edison_Empresa_Fecha.pdf y ¡enviar!
 
-Total: ~30 minutos por postulación
-```
-
-## 🎨 Ejemplos de Personalización Fina
-
-### Ejemplo 1: Cambiar énfasis de declaración
-
-**Original:**
-> Economista con sólida formación en análisis macroeconómico...
-
-**Para startup:**
-> Economista con fuerte orientación hacia la ciencia de datos...
-
-**Para banco:**
-> Economista con sólida formación en finanzas y análisis cuantitativo...
-
-### Ejemplo 2: Reordenar experiencias
-
-**Para docencia (más relevante primero):**
-```latex
-\experience{...}{Docente Metodología}...
-\experience{...}{Docente Gestión Proyectos}...
-\experience{...}{Analista de datos}...  % Menos prioridad
-```
-
-**Para data science:**
-```latex
-\experience{...}{Analista de datos}...
-\experience{...}{Proyectos personales GitHub}...
-\experience{...}{Docente}...  % Menos prioridad pero muestra comunicación
+Total: ~25 minutos por postulación
 ```
 
 ## 🔧 Solución de Problemas Comunes
 
-### Problema 1: "Mi CV tiene 3 páginas"
+### "Mi CV tiene demasiadas páginas"
 
-**Solución:**
-- Comenta experiencias menos relevantes
-- Reduce bullets de 5 a 3 por experiencia
-- Comenta proyectos antiguos
-- Meta: Máximo 2 páginas
+- Comenta líneas `\entradaExperiencia{...}` menos relevantes en el selector
+- Usa las variantes `--corta` de las entradas (o crea una)
+- Reduce los anexos incluidos en `12_anexos_<perfil>.tex`
 
-### Problema 2: "No tengo experiencia en X área"
+### "No tengo experiencia en X área"
 
-**Solución:**
 - Enfatiza habilidades transferibles
-- Usa proyectos académicos
-- Menciona cursos relevantes
-- Destaca capacidad de aprendizaje rápido
+- Usa proyectos académicos (`sections/otros/8_proyectos.tex`)
+- Menciona cursos relevantes y capacidad de aprendizaje rápido
 
-### Problema 3: "El formato se ve raro"
+### "La compilación falla"
 
-**Solución:**
-```bash
-# Verificar que todos los bloques estén bien cerrados
-grep -n "\\begin{" 3_experiencias_corta.tex
-grep -n "\\end{" 3_experiencias_corta.tex
-# Deben tener mismo número de resultados
-```
+- Compila el perfil afectado y revisa `build/cv-<perfil>.log`
+- Si el error es `Cannot find file ...assets/anexos/...`, un anexo del
+  catálogo referencia un PDF renombrado/eliminado: corrige
+  `sections/anexos/catalogo.tex`
+- Si el error es `Misplaced \omit` en experiencias, usa
+  `\entradaExperiencia{...}` (nunca `\input`) dentro de `\begin{experiences}`
 
 ## 📊 Métricas de Éxito
 
 Después de cada postulación, registra:
 
-| Puesto | Área usada | Ajustes principales | ¿Respuesta? |
-|--------|------------|---------------------|-------------|
-| Data Analyst - Startup | Data Science | +Proyectos GitHub | ✅ Sí |
-| Docente - Universidad | Docencia | +Certificados pedagógicos | ✅ Sí |
-| Analista - Ministerio | Sector Público | +SIAF/SIGA | ❌ No |
+| Puesto | Perfil usado | Ajustes principales | ¿Respuesta? |
+|--------|--------------|---------------------|-------------|
+| Data Analyst - Startup | data-science | +Proyectos GitHub | ✅ Sí |
+| Docente - Universidad | docencia | +Certificados pedagógicos | ✅ Sí |
+| Analista - Ministerio | sector-publico | +SIAF/SIGA | ❌ No |
 
-Esto te ayuda a:
-- Identificar qué versiones funcionan mejor
-- Ajustar contenido con el tiempo
-- Entender qué valoran diferentes empleadores
+Esto te ayuda a identificar qué versiones funcionan mejor y qué valoran
+diferentes empleadores.
 
 ## 🎓 Filosofía Final
 
-> "No es tener 100 versiones de CV.  
+> "No es tener 100 versiones de CV.
 > Es tener UN sistema que genera el CV perfecto para CADA oportunidad."
-
-Este sistema te permite:
-- ✅ Mantener toda tu historia profesional
-- ✅ Adaptarte rápidamente a cada puesto
-- ✅ No perder información valiosa
-- ✅ Mejorar continuamente tu presentación
 
 ---
 
-**¿Preguntas?** Revisa el README.md principal o contacta a Edison en:
-- Email: elmer.achalma.09@unsch.edu.pe
-- LinkedIn: linkedin.com/in/achalmaedison
+**¿Preguntas?** Revisa el README.md de la raíz o el índice en
+`docs/INDICE.md`.
 
 **¡Éxito en tus postulaciones! 🚀**

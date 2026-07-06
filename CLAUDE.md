@@ -50,9 +50,18 @@ macro is undefined. Do not put content or per-profile logic here.
   copy one, adjust the `\input`s, and add its name to `PROFILES` in the [Makefile](Makefile).
 - `main/sections/` — **content**, grouped by category:
   - `declaraciones/` — profile/summary statement, one per area
-  - `experiencias/` — work experience per area, plus `_corta`/`_larga` length variants
+  - `experiencias/entradas/` — **the experience content library**: one file per wording of each
+    job (base file + `--<perfil>` variants where the text is tailored; `_banco-*.tex` hold
+    commented-out template entries with generic employers — not real experience). The
+    `2_experiencias_*.tex` files are pure selectors: lists of `\entradaExperiencia{<archivo>}`
+    calls (never `\input` — LaTeX's `\input` breaks longtable row scanning inside the
+    `experiences` environment and errors with "Misplaced \omit"; `\entradaExperiencia` uses the
+    expandable `\@@input` primitive, defined in the class).
   - `competencias/` — technical skills per area
-  - `anexos/` — appendix embedding certificate PDFs via `\includepdf` (pdfpages), per area plus `_all`
+  - `anexos/` — `catalogo.tex` defines each certificate PDF exactly once
+    (`\anexo<Nombre>` macro = path + orientation); the per-area `12_anexos_*.tex` are lists of
+    those macro calls. To add a certificate: PDF into `assets/anexos/`, one macro in the catalog,
+    one call per relevant area, one entry in `otros/4_certificados.tex`.
   - `otros/` — shared area-agnostic sections (formación, certificados, idiomas, logros, proyectos,
     voluntariado, referencias, publicaciones)
 
@@ -62,14 +71,16 @@ requires the biber pass, `BIBER=1`).
 
 **Assets:** `assets/anexos/` (canonical certificate PDFs, named `YYYYMMDD descripcion.pdf`),
 `assets/images/profile/` (headshots), `assets/images/preview/` (page previews for docs). When a
-certificate is superseded (new version of the same document), update every
-`sections/anexos/12_anexos_*.tex` that references the old filename — a stale reference breaks
-`\includepdf` at compile time. Audit with:
-`cd main && grep -h includepdf sections/anexos/*.tex | grep -oP '\{\K[^}]+' | while read f; do [ -f "$f" ] || echo "FALTA: $f"; done`
+certificate is superseded (new version of the same document), update its macro in
+`sections/anexos/catalogo.tex` — a stale path breaks `\includepdf` at compile time. Audit with:
+`cd main && grep -h includepdf sections/anexos/catalogo.tex | grep -oP '\{\K[^}]+' | while read f; do [ -f "$f" ] || echo "FALTA: $f"; done`
 
-**`docs/`** contains extensive Spanish-language usage guides. Parts still describe the pre-3.0
-layout (flat files, no profiles) — when in doubt, trust the actual file tree, `main/cv.tex` and the
-root `README.md` over the docs.
+**CI/CD:** `.github/workflows/build.yml` compiles all 6 profiles on every push to master and PR
+(container `texlive/texlive:latest`); pushing a `v*` tag additionally publishes the PDFs as a
+GitHub Release. This is the distribution channel for compiled CVs.
+
+**`docs/`** contains Spanish-language usage guides, rewritten in v3.1 to match the profile
+system (`INDICE.md` is the map). `docs/README.md` keeps the full YAAC macro reference.
 
 **`drafts/`**, **`output/`** exist only locally (gitignored) — superseded reference files and
 legacy build output; not part of the repo.

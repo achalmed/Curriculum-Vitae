@@ -92,106 +92,70 @@ Descargar [MiKTeX](https://miktex.org/download) o [TeX Live](https://www.tug.org
 git clone https://github.com/achalmed/Curriculum-Vitae.git
 cd Curriculum-Vitae
 
-# Compilar CV básico
-lualatex cv.tex
+# Compilar el perfil por defecto (sector-publico)
+make
 
 # Ver el resultado
-xdg-open cv.pdf  # Linux
-open cv.pdf      # macOS
-start cv.pdf     # Windows
+xdg-open build/cv-sector-publico.pdf  # Linux
+open build/cv-sector-publico.pdf      # macOS
 ```
+
+Requisitos: **LuaLaTeX** (obligatorio; la clase usa fontspec y fuentes OpenType
+incluidas en `main/fonts/`) y `biber` solo para la sección de publicaciones.
 
 ---
 
-## 🔨 Compilación con Script Universal
+## 🔨 Compilación
 
-Este proyecto incluye soporte para el script `compilar_latex.sh`, un compilador
-universal de LaTeX con soporte para múltiples motores, bibliografía y modo watch.
-
-### Comando de compilación
-
-Desde cualquier lugar, ejecuta:
+El `Makefile` de la raíz es la forma canónica de compilar (dos pasadas de
+LuaLaTeX; salida en `build/cv-<perfil>.pdf`):
 
 ```bash
-cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -e lualatex -p 3 --biber -o ../output index
+make sector-publico      # CV para sector público (perfil por defecto)
+make docencia            # CV para docencia
+make data-science        # CV para data science
+make sector-financiero   # CV para sector financiero
+make economia            # CV para economía (versión completa)
+make consultoria         # CV para consultoría
+make all                 # los 6 perfiles
+make economia BIBER=1    # con pasada de biber (sección publicaciones activa)
+make clean               # eliminar build/
 ```
 
-El PDF se genera en `output/index.pdf`.
-
-### Opciones usadas
-
-| Opción    | Valor       | Descripción                                       |
-| --------- | ----------- | ------------------------------------------------- |
-| `-e`      | `lualatex`  | Motor de compilación (requerido por la plantilla) |
-| `-p`      | `3`         | Tres pasadas para resolver referencias cruzadas   |
-| `--biber` | —           | Procesa bibliografía con Biber (biblatex)         |
-| `-o`      | `../output` | Guarda el PDF en la carpeta `output/`             |
-
-### Otras variantes útiles
+También funciona el flujo clásico, que compila el perfil por defecto:
 
 ```bash
-# Sin bibliografía (compilación rápida)
-cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -e lualatex -p 2 -o ../output index
-
-# Modo silencioso (solo errores en pantalla)
-cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -e lualatex -p 3 --biber -s -o ../output index
-
-# Modo watch (recompila al guardar cambios)
-cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -e lualatex -p 3 --biber -w index
-
-# Solo limpiar auxiliares
-cd ~/Documents/doc_cv/main && /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh -c index
+cd main && lualatex index.tex        # wrapper de compatibilidad → cv.tex
 ```
 
-> **Nota:** El script requiere permisos de ejecución. Si da error, ejecuta una vez:
->
-> ```bash
-> chmod +x /home/achalmaedison/Documents/scripts_for_latex/script_compilar_latex/compilar_latex.sh
-> ```
+o el script universal local (`compilar_latex.sh ... index`). En GitHub, cada
+push a `master` compila los 6 perfiles automáticamente (GitHub Actions) y cada
+tag `v*` publica los PDFs como Release — los PDFs generados nunca se versionan.
 
 ## 📚 Uso Básico
 
 ### Generar CV para un área específica
 
-#### Opción 1: Copiar archivos manualmente
+No se copian archivos ni se comenta/descomenta nada: el perfil se elige al
+compilar. Cada perfil es un archivo en `main/profiles/` que selecciona qué
+secciones y qué redacción de cada experiencia se incluyen.
 
 ```bash
-# Para Docencia
-cp 1_declaracion_docencia.tex 1_declaracion_cv.tex
-cp 2_competencias_docencia.tex 2_competencias.tex
-cp 3_experiencias_docencia.tex 3_experiencias_corta.tex
-
-# Para Data Science
-cp 1_declaracion_data_science.tex 1_declaracion_cv.tex
-cp 2_competencias_data_science.tex 2_competencias.tex
-cp 3_experiencias_data_science.tex 3_experiencias_corta.tex
-
-# Compilar
-lualatex cv.tex
-```
-
-#### Opción 2: Usar Makefile (más rápido)
-
-```bash
-make docencia      # CV para docencia
-make datascience   # CV para data science
-make economia      # CV para economía
-make publico       # CV para sector público
-make finanzas      # CV para sector financiero
-make consultoria   # CV para consultoría
-make clean         # Limpiar archivos temporales
+make docencia    # → build/cv-docencia.pdf
 ```
 
 ### Flujo de trabajo típico
 
 ```
-1. Leer descripción del puesto → Identificar área
-2. Copiar archivos del área correspondiente
-3. Editar y personalizar contenido
-4. Comentar/descomentar secciones relevantes
-5. Compilar: lualatex cv.tex
-6. Revisar PDF y ajustar si es necesario
-7. Guardar versión: CV_Edison_Empresa_Fecha.pdf
+1. Leer descripción del puesto → identificar área/perfil
+2. Ajustar contenido si hace falta:
+   - datos personales        → main/config/personal.tex
+   - selección de secciones  → main/profiles/<perfil>.tex
+   - texto de una experiencia→ main/sections/experiencias/entradas/<entrada>.tex
+   - anexos incluidos        → main/sections/anexos/12_anexos_<perfil>.tex
+3. Compilar: make <perfil>
+4. Revisar build/cv-<perfil>.pdf y ajustar si es necesario
+5. Renombrar para envío: CV_Edison_Empresa_Fecha.pdf
 ```
 
 ---

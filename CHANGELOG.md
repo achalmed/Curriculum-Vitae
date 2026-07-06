@@ -3,6 +3,35 @@
 Todos los cambios notables de este proyecto se documentan en este archivo.
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 
+## [3.1.0] — 2026-07-06
+
+Des-duplicación de contenido y automatización CI/CD.
+
+### Añadido
+- `main/sections/experiencias/entradas/`: biblioteca de entradas de
+  experiencia — un archivo por redacción (base + variantes `--<perfil>`
+  donde el texto está adaptado). Los archivos `2_experiencias_*.tex`
+  quedan como selectores puros.
+- Macro `\entradaExperiencia{<archivo>}` en la clase: inserta una entrada
+  dentro del entorno `experiences` usando el primitivo `\@@input` (el
+  `\input` de LaTeX rompe el escaneo de filas de la longtable y produce
+  "Misplaced \omit").
+- `main/sections/anexos/catalogo.tex`: cada certificado/constancia se
+  define una sola vez (ruta + orientación); los `12_anexos_*.tex` son
+  ahora listas de macros.
+- `.github/workflows/build.yml`: cada push a master compila los 6
+  perfiles; cada tag `v*` publica los PDFs como GitHub Release.
+
+### Cambiado
+- `docs/` reescrita contra la estructura real: `INDICE.md`,
+  `GUIA_PRACTICA.md` y `PLANTILLAS_RAPIDAS.md` ya no describen el flujo
+  antiguo de copiar archivos; `docs/README.md` y `GUIA_PUBLICACIONES.md`
+  actualizan compilación y rutas al sistema multi-perfil.
+
+### Verificado
+- El texto extraído de los 6 PDFs es idéntico antes y después de la
+  refactorización (verificación con pdftotext contra línea base).
+
 ## [3.0.0] — 2026-07-06
 
 Reestructuración arquitectónica: de "CV con variantes comentadas" a

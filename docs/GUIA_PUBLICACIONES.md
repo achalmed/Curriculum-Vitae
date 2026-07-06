@@ -21,30 +21,36 @@ Esta guía te ayudará a gestionar tus publicaciones académicas en LaTeX usando
 
 ## ⚙️ Configuración Inicial
 
-### Paso 1: Activar publicaciones en cv.tex
+### Paso 1: Activar publicaciones en el perfil
 
-En tu archivo `cv.tex`, asegúrate de tener:
+La bibliografía ya está cargada para todos los perfiles en
+`main/config/personal.tex`:
 
 ```latex
-% En el preámbulo (antes de \begin{document})
-\addbibresource{my_publications.bib}
-
-% En el documento (descomenta la línea)
-\input{11_publicaciones}
+\addbibresource{../bibliography/my_publications.bib}
 ```
 
-### Paso 2: Crear archivo .bib
+Solo falta activar la sección en el perfil que la necesite — en
+`main/profiles/<perfil>.tex`, descomenta:
 
-Crea un archivo `my_publications.bib` en la misma carpeta que `cv.tex`.
+```latex
+% 11. Publicaciones académicas (requiere pasada de biber)
+\input{sections/otros/11_publicaciones}
+```
+
+### Paso 2: Mantener el archivo .bib
+
+Las publicaciones viven en `bibliography/my_publications.bib`
+(ruta única para todos los perfiles).
 
 ### Paso 3: Compilar correctamente
 
 ```bash
-lualatex cv.tex
-biber cv          # ← Importante: genera la bibliografía
-lualatex cv.tex   # ← Primera pasada
-lualatex cv.tex   # ← Segunda pasada (referencias cruzadas)
+make <perfil> BIBER=1     # ej.: make economia BIBER=1
 ```
+
+`BIBER=1` inserta la pasada de biber entre las dos pasadas de LuaLaTeX.
+Sin la sección de publicaciones activa, biber no es necesario.
 
 ---
 

@@ -61,9 +61,16 @@ También sigue funcionando el flujo clásico: `cd main && lualatex index.tex`
   `\input` y añade su nombre a `PROFILES` en el `Makefile`.
 - **¿Actualizar datos de contacto?** Solo en `main/config/personal.tex`
   (se propaga a todos los perfiles).
+- **¿Editar una experiencia?** Cada redacción vive una sola vez en
+  `main/sections/experiencias/entradas/` (variantes `--<perfil>` cuando el
+  texto está adaptado); los archivos `2_experiencias_*.tex` solo seleccionan
+  y ordenan entradas con `\entradaExperiencia{...}`.
 - **¿Añadir un certificado?** Guarda el PDF en `assets/anexos/` con el formato
-  `YYYYMMDD descripcion.pdf`, agrégalo a los `sections/anexos/12_anexos_*.tex`
-  pertinentes y a `sections/otros/4_certificados.tex`.
+  `YYYYMMDD descripcion.pdf`, define su macro una sola vez en
+  `sections/anexos/catalogo.tex`, llámalo en los `12_anexos_*.tex` de las
+  áreas pertinentes y agrégalo a `sections/otros/4_certificados.tex`.
+- **¿Publicar una versión?** `git tag v3.x.y && git push origin v3.x.y` —
+  GitHub Actions compila los 6 perfiles y publica los PDFs como Release.
 
 Guías completas en [docs/](docs/INDICE.md).
 
