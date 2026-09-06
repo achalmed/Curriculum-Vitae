@@ -93,3 +93,20 @@ drafts/
 .directory
 *.sav
 *.sdr/
+
+# 09 trabajo = carpeta de trabajo fusionada con el repo git-cv el 2026-09-06.
+# Solo se versiona lo que era del CV; todo lo demás (expedientes, despacho, ONPE, INEI…) queda fuera.
+/*
+!/.gitignore
+!/.github/
+!/AGENTS.md
+!/assets
+!/bibliography
+!/CHANGELOG.md
+!/CLAUDE.md
+!/Curriculum-Vitae.code-workspace
+!/docs
+!/LICENSE
+!/main
+!/Makefile
+!/README.md
