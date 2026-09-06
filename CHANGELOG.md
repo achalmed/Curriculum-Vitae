@@ -3,6 +3,27 @@
 Todos los cambios notables de este proyecto se documentan en este archivo.
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 
+## [Sin publicar]
+
+### Añadido
+- Versión "solo descriptivo" del CV: `make <perfil> ANEXOS=0` compila
+  cualquier perfil **sin** las constancias/certificados adjuntos y genera
+  `build/cv-<perfil>-sin-anexos.pdf` (no sobrescribe la versión completa).
+  Mecanismo: macro `\inputAnexos` en `cv.tex` (omite la carga si
+  `\CVsinAnexos` está definida); los 6 perfiles cargan sus anexos con ella.
+
+### Cambiado
+- Fechas de ingreso/cese de experiencias sincronizadas con el Legajo
+  Virtual: Sofía dic 2023–dic 2024 (estaba corrida un año) y CAU
+  Metodología e IA nov 2025–ene 2026 (variantes unificadas; deja de
+  figurar como trabajo actual).
+- Referencias actualizadas desde el legajo: contacto directo del director
+  CAU y cuatro referentes nuevos (ONPE ×2, INEI, Corporación Educativa
+  Sofía).
+- `README.md` reescrito como manual completo: compilación manual sin
+  Makefile, 9 recetas de edición paso a paso, tabla de errores frecuentes
+  y referencia de macros.
+
 ## [3.1.0] — 2026-07-06
 
 Des-duplicación de contenido y automatización CI/CD.

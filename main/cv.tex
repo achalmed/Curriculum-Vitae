@@ -21,6 +21,13 @@
 %   sector-publico | docencia | data-science | sector-financiero
 %   economia       | consultoria
 %
+% VERSIÓN SIN ANEXOS (solo descriptivo): definiendo \CVsinAnexos se omiten
+% las constancias/certificados adjuntos al final del CV:
+%
+%   make docencia ANEXOS=0     → build/cv-docencia-sin-anexos.pdf
+%   lualatex --jobname=cv-docencia-sin-anexos
+%     "\def\CVsinAnexos{1}\def\CVprofile{docencia}\input{cv.tex}"
+%
 % Si \CVprofile no está definida se usa el perfil por defecto:
 \ifdefined\CVprofile\else\def\CVprofile{sector-publico}\fi
 
@@ -32,6 +39,10 @@
 % -----------------------------------------------------------------------------
 \input{config/personal}   % datos personales, contacto, foto, bibliografía
 \input{config/settings}   % ajustes de diseño
+
+% Carga condicional de la sección de anexos: los perfiles la invocan con
+% \inputAnexos{...}; no hace nada si \CVsinAnexos está definida (ANEXOS=0).
+\newcommand{\inputAnexos}[1]{\ifdefined\CVsinAnexos\else\input{#1}\fi}
 
 \begin{document}
 
