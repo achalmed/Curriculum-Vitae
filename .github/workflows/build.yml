@@ -29,18 +29,18 @@ jobs:
         run: apt-get update -qq && apt-get install -y -qq make
 
       - name: Compilar los 6 perfiles
-        run: make all
+        run: make -C cv all
 
       - name: Subir PDFs como artifact
         uses: actions/upload-artifact@v4
         with:
           name: cv-pdfs
-          path: build/*.pdf
+          path: cv/build/*.pdf
           retention-days: 30
 
       - name: Publicar Release con los PDFs (solo tags v*)
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
-          files: build/*.pdf
+          files: cv/build/*.pdf
           generate_release_notes: true

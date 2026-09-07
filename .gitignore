@@ -83,7 +83,7 @@ pythontex-files-*/
 # =============================================================================
 build/
 output/
-main/*.pdf
+cv/main/*.pdf
 
 # =============================================================================
 # BORRADORES Y ARCHIVOS LOCALES DE LA MÁQUINA
@@ -95,18 +95,11 @@ drafts/
 *.sdr/
 
 # 09 trabajo = carpeta de trabajo fusionada con el repo git-cv el 2026-09-06.
-# Solo se versiona lo que era del CV; todo lo demás (expedientes, despacho, ONPE, INEI…) queda fuera.
+# El CV vive en cv/; todo lo demás (expedientes, despacho, ONPE, INEI, repos anidados)
+# queda fuera del repo. Lista blanca: se ignora todo y solo se re-incluye lo del CV.
 /*
 !/.gitignore
 !/.github/
-!/AGENTS.md
-!/assets
-!/bibliography
-!/CHANGELOG.md
 !/CLAUDE.md
-!/Curriculum-Vitae.code-workspace
-!/docs
-!/LICENSE
-!/main
-!/Makefile
-!/README.md
+!/AGENTS.md
+!/cv/
