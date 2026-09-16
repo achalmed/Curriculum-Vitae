@@ -1,3 +1,8 @@
+---
+tipo: doc
+titulo: "🚀 Plantillas de Generación Rápida"
+estado: activo
+---
 # 🚀 Plantillas de Generación Rápida
 
 ## Generación de CVs con el Makefile

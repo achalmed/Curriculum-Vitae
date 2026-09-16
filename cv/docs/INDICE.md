@@ -1,3 +1,8 @@
+---
+tipo: doc
+titulo: "📚 Índice General del Sistema de CV Multi-Perfil"
+estado: activo
+---
 # 📚 Índice General del Sistema de CV Multi-Perfil
 
 ## 🎯 Visión general

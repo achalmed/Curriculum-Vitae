@@ -1,3 +1,8 @@
+---
+tipo: doc
+titulo: "🎯 Guía Práctica de Uso — Sistema de CV Multi-Perfil"
+estado: activo
+---
 # 🎯 Guía Práctica de Uso — Sistema de CV Multi-Perfil
 
 ## 📖 ¿Qué es esto?

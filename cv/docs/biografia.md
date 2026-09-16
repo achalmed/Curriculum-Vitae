@@ -1,3 +1,8 @@
+---
+tipo: doc
+titulo: "LinkedIn"
+estado: activo
+---
 #redaccion #biografia
 
 # LinkedIn

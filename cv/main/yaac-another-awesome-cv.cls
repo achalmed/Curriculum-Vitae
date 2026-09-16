@@ -1,3 +1,4 @@
+% cv/main/yaac-another-awesome-cv.cls — clase LaTeX del CV
 %% =============================================================================
 %% YAAC: Another Awesome CV — Clase de documento LaTeX
 %% =============================================================================

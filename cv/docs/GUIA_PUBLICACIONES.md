@@ -1,3 +1,8 @@
+---
+tipo: doc
+titulo: "📚 Guía de Gestión de Publicaciones Académicas"
+estado: activo
+---
 # 📚 Guía de Gestión de Publicaciones Académicas
 
 ## 🎯 Propósito de este archivo
