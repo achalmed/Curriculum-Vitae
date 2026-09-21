@@ -405,8 +405,8 @@ Entornos y macros definidos por la clase (referencia completa en
 - **Los PDF no están en git**: se descargan de las Releases o se compilan; `04 index/resources/cv.pdf`
   del hub es una copia manual, no se regenera desde aquí.
 - **El contenido es personal**: la plantilla se reutiliza; los textos, anexos e imágenes no.
-- **`docs/PULL_REQUEST_TEMPLATE.md` no lo lee GitHub desde aquí** (busca en la raíz del repo, en `.github`
-  o en `docs` de la raíz, y la raíz es `09 trabajo`): se conserva como plantilla de referencia.
+- **La plantilla de pull request vive en `../.github/PULL_REQUEST_TEMPLATE.md`** (la raíz del repo es `09 trabajo`,
+  que es donde GitHub la lee; se movió allí el 2026-09-20).
 
 ## Licencia
 

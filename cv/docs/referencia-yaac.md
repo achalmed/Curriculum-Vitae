@@ -651,7 +651,6 @@ doc_cv/
 │   ├── GUIA_PRACTICA.md
 │   ├── GUIA_PUBLICACIONES.md
 │   ├── PLANTILLAS_RAPIDAS.md
-│   └── PULL_REQUEST_TEMPLATE.md
 │
 ├── 🗃️ drafts/                          # Borradores y versiones anteriores
 │

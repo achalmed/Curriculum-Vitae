@@ -6,8 +6,7 @@ estado: activo
 
 Orden de lectura, tipo y estado de cada documento (NORMATIVA §15.6); el bloque lo genera
 `core/docs.py indice`. La puerta del CV es `../README.md` (compilación, mapa, recetas de edición,
-errores frecuentes); aquí están las guías largas. `PULL_REQUEST_TEMPLATE.md` conserva su nombre en
-mayúsculas y va sin frontmatter porque lo impone GitHub (plantilla de pull request).
+errores frecuentes); aquí están las guías largas. La plantilla de pull request está en `../../.github/`.
 
 <!-- docs:inicio -->
 | documento | tipo | estado | qué es |
@@ -15,7 +14,6 @@ mayúsculas y va sin frontmatter porque lo impone GitHub (plantilla de pull requ
 | [GUIA_PRACTICA.md](GUIA_PRACTICA.md) | `doc` | `activo` | 🎯 Guía Práctica de Uso — Sistema de CV Multi-Perfil |
 | [GUIA_PUBLICACIONES.md](GUIA_PUBLICACIONES.md) | `doc` | `activo` | 📚 Guía de Gestión de Publicaciones Académicas |
 | [PLANTILLAS_RAPIDAS.md](PLANTILLAS_RAPIDAS.md) | `doc` | `activo` | 🚀 Plantillas de Generación Rápida |
-| [PULL_REQUEST_TEMPLATE.md](PULL_REQUEST_TEMPLATE.md) | `—` | `—` | Description |
 | [biografia.md](biografia.md) | `doc` | `activo` | LinkedIn |
 | [decisiones.md](decisiones.md) | `decision` | `activo` | Decisiones de diseño del CV multiperfil, por tema y con fecha |
 | [referencia-yaac.md](referencia-yaac.md) | `doc` | `activo` | Referencia de la plantilla YAAC y sus macros (sistema modular de CV) |
