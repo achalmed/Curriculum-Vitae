@@ -176,7 +176,6 @@ diferentes empleadores.
 
 ---
 
-**¿Preguntas?** Revisa el README.md de la raíz o el índice en
-`docs/INDICE.md`.
+**¿Preguntas?** Revisa el README.md de la raíz o el índice de esta carpeta (`README.md`).
 
 **¡Éxito en tus postulaciones! 🚀**

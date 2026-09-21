@@ -1,4 +1,8 @@
-# Curriculum Vitae — Edison Achalma
+---
+tipo: readme
+estado: activo
+---
+# cv/ — Curriculum Vitae de Edison Achalma: CV multiperfil en LaTeX (repo Curriculum-Vitae)
 
 Sistema de CV multi-perfil en LaTeX, construido sobre un fork en español de la clase
 [YAAC: Another Awesome CV](https://github.com/darwiin/yaac-another-awesome-cv).
@@ -10,8 +14,8 @@ o descomentando líneas.
 
 - [Perfiles disponibles](#perfiles-disponibles)
 - [Requisitos](#requisitos)
-- [Compilación](#compilación)
-- [Mapa del repositorio](#mapa-del-repositorio)
+- [Uso: compilación](#uso-compilación)
+- [Estructura: mapa del repositorio](#estructura-mapa-del-repositorio)
 - [Recetas de edición manual](#recetas-de-edición-manual)
   1. [Actualizar datos personales o de contacto](#1-actualizar-datos-personales-o-de-contacto)
   2. [Editar una experiencia existente (texto o fechas)](#2-editar-una-experiencia-existente-texto-o-fechas)
@@ -27,6 +31,7 @@ o descomentando líneas.
 - [Errores frecuentes](#errores-frecuentes)
 - [Referencia rápida de macros](#referencia-rápida-de-macros)
 - [Documentación adicional](#documentación-adicional)
+- [Límite honesto](#límite-honesto)
 - [Licencia](#licencia)
 
 ## Perfiles disponibles
@@ -49,7 +54,7 @@ o descomentando líneas.
 - **`biber`** solo si activas la sección de publicaciones
   (ver [receta 9](#9-activar-la-sección-de-publicaciones)).
 
-## Compilación
+## Uso: compilación
 
 ### Con el Makefile (recomendado)
 
@@ -104,7 +109,7 @@ cd main && lualatex index.tex   # wrapper obsoleto, mismo resultado
 
 Los PDF sueltos en `main/` están gitignorados; prefiere el Makefile.
 
-## Mapa del repositorio
+## Estructura: mapa del repositorio
 
 ```
 ├── Makefile                   ← compilación; la lista PROFILES vive aquí
@@ -132,7 +137,7 @@ Los PDF sueltos en `main/` están gitignorados; prefiere el Makefile.
 │   ├── anexos/                ← PDF de certificados: "YYYYMMDD descripcion.pdf"
 │   └── images/profile/        ← fotos de perfil
 ├── bibliography/              ← my_publications.bib (BibLaTeX)
-├── docs/                      ← guías detalladas (empezar por INDICE.md)
+├── docs/                      ← guías detalladas (índice en README.md)
 └── .github/workflows/build.yml← CI: compila los 6 perfiles; tag v* → Release
 ```
 
@@ -368,7 +373,7 @@ push a `master` y cada PR también compilan todo como verificación continua.
 ## Referencia rápida de macros
 
 Entornos y macros definidos por la clase (referencia completa en
-[docs/README.md](docs/README.md)):
+[docs/referencia-yaac.md](docs/referencia-yaac.md)):
 
 | Macro / entorno | Para qué |
 | --- | --- |
@@ -386,11 +391,22 @@ Entornos y macros definidos por la clase (referencia completa en
 
 | Documento | Contenido |
 | --- | --- |
-| [docs/INDICE.md](docs/INDICE.md) | mapa general del sistema |
+| [docs/README.md](docs/README.md) | índice de las guías (generado) |
+| [docs/decisiones.md](docs/decisiones.md) | decisiones de diseño, con fecha |
 | [docs/GUIA_PRACTICA.md](docs/GUIA_PRACTICA.md) | casos de uso reales por tipo de postulación |
 | [docs/PLANTILLAS_RAPIDAS.md](docs/PLANTILLAS_RAPIDAS.md) | one-liners útiles (compilar y abrir, copias con nombre de envío) |
 | [docs/GUIA_PUBLICACIONES.md](docs/GUIA_PUBLICACIONES.md) | gestión de la bibliografía |
-| [docs/README.md](docs/README.md) | referencia completa de macros de la clase YAAC |
+| [docs/referencia-yaac.md](docs/referencia-yaac.md) | referencia completa de macros de la clase YAAC |
+
+## Límite honesto
+
+- **Solo LuaLaTeX** (o XeLaTeX): pdfLaTeX no compila la clase; `latexmk` no se usa.
+- **Sin pruebas automáticas**: la verificación es compilar (`make all`), mirar el PDF y auditar los anexos.
+- **Los PDF no están en git**: se descargan de las Releases o se compilan; `04 index/resources/cv.pdf`
+  del hub es una copia manual, no se regenera desde aquí.
+- **El contenido es personal**: la plantilla se reutiliza; los textos, anexos e imágenes no.
+- **`docs/PULL_REQUEST_TEMPLATE.md` no lo lee GitHub desde aquí** (busca en la raíz del repo, en `.github`
+  o en `docs` de la raíz, y la raíz es `09 trabajo`): se conserva como plantilla de referencia.
 
 ## Licencia
 

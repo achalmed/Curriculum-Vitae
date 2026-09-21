@@ -1,3 +1,7 @@
+---
+tipo: changelog
+estado: activo
+---
 # Changelog
 
 Todos los cambios notables de este proyecto se documentan en este archivo.
@@ -13,6 +17,10 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
   `\CVsinAnexos` está definida); los 6 perfiles cargan sus anexos con ella.
 
 ### Cambiado
+- Documentación bajo NORMATIVA §15 (DOC7, 2026-09-20): `CLAUDE.md` en español;
+  `docs/README.md` pasa a ser el índice generado de las guías y la referencia de
+  la clase YAAC vive en `docs/referencia-yaac.md`; `docs/INDICE.md` eliminado (su
+  contenido ya estaba en el README); `docs/decisiones.md` nuevo.
 - Fechas de ingreso/cese de experiencias sincronizadas con el Legajo
   Virtual: Sofía dic 2023–dic 2024 (estaba corrida un año) y CAU
   Metodología e IA nov 2025–ene 2026 (variantes unificadas; deja de
