@@ -17,10 +17,14 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
   `\CVsinAnexos` está definida); los 6 perfiles cargan sus anexos con ella.
 
 ### Cambiado
-- Documentación bajo NORMATIVA §15 (DOC7, 2026-09-20): `CLAUDE.md` en español;
-  `docs/README.md` pasa a ser el índice generado de las guías y la referencia de
-  la clase YAAC vive en `docs/referencia-yaac.md`; `docs/INDICE.md` eliminado (su
-  contenido ya estaba en el README); `docs/decisiones.md` nuevo.
+- Documentación reorganizada por función: `README.md` es la puerta (perfiles,
+  uso, estructura, licencia); las guías viven en `docs/` —`edicion.md` (las
+  recetas de edición y los errores frecuentes), `postular.md`, `publicar.md`,
+  `referencia-yaac.md` (solo la referencia de la clase) y `decisiones.md`—, con
+  un índice generado en `docs/README.md`. Eliminados `docs/INDICE.md`,
+  `GUIA_PRACTICA.md`, `PLANTILLAS_RAPIDAS.md`, `GUIA_PUBLICACIONES.md`,
+  `biografia.md` y la plantilla de pull request; la guía del asistente es una
+  sola, en la raíz del repo.
 - Fechas de ingreso/cese de experiencias sincronizadas con el Legajo
   Virtual: Sofía dic 2023–dic 2024 (estaba corrida un año) y CAU
   Metodología e IA nov 2025–ene 2026 (variantes unificadas; deja de
@@ -28,9 +32,6 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 - Referencias actualizadas desde el legajo: contacto directo del director
   CAU y cuatro referentes nuevos (ONPE ×2, INEI, Corporación Educativa
   Sofía).
-- `README.md` reescrito como manual completo: compilación manual sin
-  Makefile, 9 recetas de edición paso a paso, tabla de errores frecuentes
-  y referencia de macros.
 
 ## [3.1.0] — 2026-07-06
 

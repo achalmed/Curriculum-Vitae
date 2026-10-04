@@ -1,7 +1,31 @@
+# .gitignore — repo Curriculum-Vitae (raíz: 09 trabajo); clases según NORMATIVA_ARCHIVOS §5
+
 # =============================================================================
-# LATEX Y DOCUMENTOS
+# LISTA BLANCA DE LA RAÍZ
 # =============================================================================
-# Core LaTeX
+# La raíz del repo es una carpeta de trabajo: se ignora todo lo que cuelga de
+# ella y solo se re-incluye el CV y los archivos del repo. Las demás carpetas
+# (repos propios y material de trabajo) quedan fuera de git a propósito: el
+# remoto es público.
+/*
+!/.gitignore
+!/.github/
+!/CLAUDE.md
+!/AGENTS.md
+!/README.md
+!/cv/
+
+# =============================================================================
+# SECRETOS Y ENTORNO (nunca en git)
+# =============================================================================
+# Variables de entorno y credenciales, por si alguna vez aparecen dentro de cv/.
+.env
+.env.*
+
+# =============================================================================
+# ARTEFACTOS DE CONSTRUCCIÓN (clase artefacto: los regenera el compilador)
+# =============================================================================
+# Auxiliares del núcleo de LaTeX.
 *.aux
 *.lof
 *.log
@@ -14,13 +38,11 @@
 *.cb
 *.cb2
 .*.lb
-
-# Intermediate
+# Salidas intermedias (DVI, XDV, conversiones de imágenes).
 *.dvi
 *.xdv
 *-converted-to.*
-
-# Bibliography
+# Bibliografía (biblatex, biber, bibtex).
 *.bbl
 *.bbl-SAVE-ERROR
 *.bcf
@@ -29,8 +51,7 @@
 *-blx.aux
 *-blx.bib
 *.run.xml
-
-# Build tools
+# Herramientas de compilación y sincronización con el editor.
 *.fdb_latexmk
 *.synctex
 *.synctex(busy)
@@ -40,9 +61,7 @@
 *.rubbercache
 rubber.cache
 latex.out/
-build/
-
-# Package-specific
+# Paquetes concretos (algoritmos, beamer, índices, glosarios, minitoc, todonotes…).
 *.alg
 *.loa
 *.thm
@@ -68,8 +87,7 @@ build/
 *.xcp
 *.xdy
 *.listing
-
-# Otros LaTeX
+# minted, pythontex, sympy y svg (cachés de paquetes que ejecutan código).
 _minted*/
 *.data.minted
 *.pyg
@@ -78,29 +96,23 @@ sympy-plots-for-*.tex/
 pythontex-files-*/
 
 # =============================================================================
-# SALIDAS GENERADAS (los PDF compilados NUNCA se versionan;
-# se distribuyen vía GitHub Releases)
+# PRODUCTO (los PDF compilados): no se versionan, se publican como Release
 # =============================================================================
+# Salida del Makefile (cv/build/) y de flujos anteriores (cv/output/).
 build/
 output/
+# PDF que deja la compilación directa dentro de cv/main/.
 cv/main/*.pdf
 
 # =============================================================================
-# BORRADORES Y ARCHIVOS LOCALES DE LA MÁQUINA
+# TEMPORAL Y LOCAL DE LA MÁQUINA
 # =============================================================================
+# Borradores locales: contienen documentos de terceros que no se publican.
 drafts/
-.Rhistory
+# Ajustes locales de asistentes y editores.
+.claude/
 .directory
+# Restos de R y SPSS, y metadatos del lector de libros.
+.Rhistory
 *.sav
 *.sdr/
-
-# 09 trabajo = carpeta de trabajo fusionada con el repo git-cv el 2026-09-06.
-# El CV vive en cv/; todo lo demás (expedientes, despacho, ONPE, INEI, repos anidados)
-# queda fuera del repo. Lista blanca: se ignora todo y solo se re-incluye lo del CV.
-/*
-!/.gitignore
-!/.github/
-!/CLAUDE.md
-!/AGENTS.md
-!/README.md
-!/cv/

@@ -2,21 +2,20 @@
 tipo: readme
 estado: activo
 ---
-# docs/ — las guías del CV multiperfil: casos de uso, plantillas, publicaciones y la referencia YAAC
+# docs/ — las guías del CV multiperfil: editar, postular, publicar, la referencia de la clase y las decisiones
 
 Orden de lectura, tipo y estado de cada documento (NORMATIVA §15.6); el bloque lo genera
-`core/docs.py indice`. La puerta del CV es `../README.md` (compilación, mapa, recetas de edición,
-errores frecuentes); aquí están las guías largas. La plantilla de pull request está en `../../.github/`.
+`core/docs.py indice`. La puerta del CV es `../README.md` (perfiles, compilación, estructura,
+licencia); aquí están las guías.
 
 <!-- docs:inicio -->
 | documento | tipo | estado | qué es |
 |---|---|---|---|
-| [GUIA_PRACTICA.md](GUIA_PRACTICA.md) | `doc` | `activo` | 🎯 Guía Práctica de Uso — Sistema de CV Multi-Perfil |
-| [GUIA_PUBLICACIONES.md](GUIA_PUBLICACIONES.md) | `doc` | `activo` | 📚 Guía de Gestión de Publicaciones Académicas |
-| [PLANTILLAS_RAPIDAS.md](PLANTILLAS_RAPIDAS.md) | `doc` | `activo` | 🚀 Plantillas de Generación Rápida |
-| [biografia.md](biografia.md) | `doc` | `activo` | LinkedIn |
 | [decisiones.md](decisiones.md) | `decision` | `activo` | Decisiones de diseño del CV multiperfil, por tema y con fecha |
-| [referencia-yaac.md](referencia-yaac.md) | `doc` | `activo` | Referencia de la plantilla YAAC y sus macros (sistema modular de CV) |
+| [edicion.md](edicion.md) | `doc` | `activo` | Cómo editar el contenido del CV: datos, experiencias, anexos, secciones y perfiles |
+| [postular.md](postular.md) | `doc` | `activo` | Cómo preparar el CV para una postulación: perfil, ajustes, copia de envío y correo |
+| [publicar.md](publicar.md) | `doc` | `activo` | Cómo publicar una versión del CV (Release) y la copia que consume el sitio web |
+| [referencia-yaac.md](referencia-yaac.md) | `doc` | `activo` | Referencia de la clase YAAC adaptada: opciones, macros y entornos |
 
-<sub>Bloque generado por `core/docs.py indice` desde el frontmatter de docs/ (2026-09-20); no se edita a mano.</sub>
+<sub>Bloque generado por `core/docs.py indice` desde el frontmatter de docs/ (2026-10-04); no se edita a mano.</sub>
 <!-- docs:fin -->
