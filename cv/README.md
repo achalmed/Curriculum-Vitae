@@ -86,6 +86,10 @@ lualatex --interaction=nonstopmode --halt-on-error --output-directory=../build \
 
 ## Licencia
 
-`LICENSE` contiene la LaTeX Project Public License 1.3c, que es la de la clase YAAC original. La
-cabecera de `main/yaac-another-awesome-cv.cls` declara la adaptación bajo CC BY-SA 4.0. El contenido
-del CV (textos, anexos, imágenes) es personal y no se ofrece para reutilizar.
+Tres partes, tres regímenes:
+
+| parte | licencia |
+|---|---|
+| la plantilla: la clase `main/yaac-another-awesome-cv.cls` (adaptación de YAAC), `main/cv.tex` como esqueleto, `Makefile` | LaTeX Project Public License 1.3c o superior, la de la clase original (`LICENSE`, en la raíz del repositorio) |
+| la fuente Source Sans Pro de `main/fonts/` | SIL Open Font License 1.1, de Adobe (`main/fonts/LICENSE`) |
+| el contenido: textos de `main/sections/` y `main/profiles/`, `assets/` (anexos e imágenes), `bibliography/` | personal, sin licencia: no se ofrece para reutilizar |

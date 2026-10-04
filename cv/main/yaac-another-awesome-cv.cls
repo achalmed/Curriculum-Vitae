@@ -9,8 +9,8 @@
 %%                 https://www.latex-project.org/lppl.txt
 %%
 %% Adaptado y comentado en español por: Edison Achalma (achalmaedison)
-%% Licencia de adaptación: CC BY-SA 4.0
-%%                         https://creativecommons.org/licenses/by-sa/4.0/
+%% Licencia de la adaptación: la misma de la original, LPPL v1.3c o superior
+%%                            (LICENSE en la raíz del repositorio)
 %%
 %% MOTOR REQUERIDO: LuaLaTeX o XeLaTeX
 %%   Compilar con ene terminal:  

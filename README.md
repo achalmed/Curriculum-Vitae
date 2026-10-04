@@ -27,6 +27,7 @@ Perfiles, requisitos y la orden sin `make`: `cv/README.md`. Publicar una versió
 |---|---|---|
 | `cv/` | el CV multiperfil en LaTeX (clase YAAC en español, seis perfiles, anexos) | sí |
 | `.github/workflows/build.yml` | CI: compila los seis perfiles en cada push y pull request; una etiqueta `v*` publica los PDF como Release | sí |
+| `LICENSE` | LPPL 1.3c de la plantilla; el contenido personal no se licencia (`cv/README.md` §Licencia) | sí |
 | `.gitignore` | la lista blanca y los artefactos de LaTeX | sí |
 | `CLAUDE.md` (+ `AGENTS.md`) | reglas para el asistente | sí |
 | el resto de carpetas | carpetas no versionadas (repos propios y material de trabajo), cada una con su `README.md` local | no |

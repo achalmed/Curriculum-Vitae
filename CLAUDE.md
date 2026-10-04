@@ -47,8 +47,8 @@ Es la única guía del repo: también manda dentro de `cv/`.
 
 ### Dónde va cada cosa nueva
 
-Raíz del repo admitida: `README.md`, `CLAUDE.md`, `AGENTS.md`, `.gitignore`, `.github/workflows/`.
-En `cv/`: `README.md`, `CHANGELOG.md`, `LICENSE`, `Makefile`, el `.code-workspace` y las carpetas del
+Raíz del repo admitida: `README.md`, `CLAUDE.md`, `AGENTS.md`, `LICENSE`, `.gitignore`, `.github/workflows/`.
+En `cv/`: `README.md`, `CHANGELOG.md`, `Makefile`, el `.code-workspace` y las carpetas del
 proyecto. Ningún otro `.md` fuera de `cv/docs/`.
 
 | lo que apareció | va a | nunca a |
@@ -98,8 +98,8 @@ Si se tocaron anexos, la auditoría de rutas de `cv/docs/edicion.md` (receta 5).
 - **`cv/docs/README.md` es un índice generado**; se regenera, no se edita entre sus marcas.
 - **`04 index/resources/cv.pdf` es una copia manual** de un PDF de `cv/build/`
   (`cv/docs/publicar.md`).
-- **La licencia está sin decidir del todo**: `cv/LICENSE` es la LPPL 1.3c de la clase original y la
-  `.cls` declara la adaptación CC BY-SA 4.0. No se elige ni se mueve sin el autor.
+- **Licencias por partes** (`cv/README.md` §Licencia): la plantilla, LPPL 1.3c (`LICENSE` en la raíz);
+  la fuente, OFL 1.1 (`cv/main/fonts/LICENSE`); el contenido personal, sin licencia.
 
 ## Dónde está cada cosa
 
