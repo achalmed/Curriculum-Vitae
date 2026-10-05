@@ -29,8 +29,10 @@ jobs:
       - name: Instalar make
         run: apt-get update -qq && apt-get install -y -qq make
 
-      - name: Compilar los 6 perfiles
-        run: make all
+      - name: Compilar los 6 perfiles (versión pública, sin anexos)
+        # Puerta P5-4 (2026-10-05): lo que se publica no lleva las constancias anexas, que traen datos de
+        # contacto institucionales; la versión completa se compila en local con `make all`.
+        run: make all ANEXOS=0
 
       - name: Subir PDFs como artifact
         uses: actions/upload-artifact@v4
