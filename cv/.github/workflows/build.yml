@@ -1,10 +1,11 @@
-# =============================================================================
-# CI/CD — Compilación de los 6 perfiles del CV y publicación en Releases
+# .github/workflows/build.yml — CI del CV: compila los 6 perfiles y publica los PDF en Releases
 # =============================================================================
 # - En cada push a master y en cada pull request: compila los 6 perfiles
 #   (verificación de que nada rompe la compilación) y los sube como artifact.
 # - En cada tag v* (ej. v3.1.0): además publica los PDFs como GitHub Release.
 #   Los PDFs NUNCA se versionan en el repositorio; se distribuyen por aquí.
+# - La raíz del repo es la carpeta del CV (desde 2026-10-05): el Makefile está
+#   en la raíz y los PDF salen en build/.
 # =============================================================================
 
 name: Compilar CV
@@ -29,18 +30,18 @@ jobs:
         run: apt-get update -qq && apt-get install -y -qq make
 
       - name: Compilar los 6 perfiles
-        run: make -C cv all
+        run: make all
 
       - name: Subir PDFs como artifact
         uses: actions/upload-artifact@v4
         with:
           name: cv-pdfs
-          path: cv/build/*.pdf
+          path: build/*.pdf
           retention-days: 30
 
       - name: Publicar Release con los PDFs (solo tags v*)
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
-          files: cv/build/*.pdf
+          files: build/*.pdf
           generate_release_notes: true

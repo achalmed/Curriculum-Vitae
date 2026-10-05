@@ -1,24 +1,13 @@
-# .gitignore — repo Curriculum-Vitae (raíz: 09 trabajo); clases según NORMATIVA_ARCHIVOS §5
-
-# =============================================================================
-# LISTA BLANCA DE LA RAÍZ
-# =============================================================================
-# La raíz del repo es una carpeta de trabajo: se ignora todo lo que cuelga de
-# ella y solo se re-incluye el CV y los archivos del repo. Las demás carpetas
-# (repos propios y material de trabajo) quedan fuera de git a propósito: el
-# remoto es público.
-/*
-!/.gitignore
-!/.github/
-!/CLAUDE.md
-!/AGENTS.md
-!/README.md
-!/cv/
+# .gitignore — repo Curriculum-Vitae (raíz: cv); clases según NORMATIVA_ARCHIVOS §5
+#
+# La raíz del repo es la carpeta del CV: ya no hay lista blanca. Siguen fuera de git
+# los secretos, los productos de compilación y los borradores con documentos de
+# terceros (el remoto es público).
 
 # =============================================================================
 # SECRETOS Y ENTORNO (nunca en git)
 # =============================================================================
-# Variables de entorno y credenciales, por si alguna vez aparecen dentro de cv/.
+# Variables de entorno y credenciales, por si alguna vez aparecen en el repo.
 .env
 .env.*
 
@@ -98,11 +87,11 @@ pythontex-files-*/
 # =============================================================================
 # PRODUCTO (los PDF compilados): no se versionan, se publican como Release
 # =============================================================================
-# Salida del Makefile (cv/build/) y de flujos anteriores (cv/output/).
+# Salida del Makefile (build/) y de flujos anteriores (output/).
 build/
 output/
-# PDF que deja la compilación directa dentro de cv/main/.
-cv/main/*.pdf
+# PDF que deja la compilación directa dentro de main/.
+/main/*.pdf
 
 # =============================================================================
 # TEMPORAL Y LOCAL DE LA MÁQUINA
