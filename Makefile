@@ -9,6 +9,8 @@
 #                             constancias/certificados adjuntos)
 #   make economia BIBER=1   → incluye pasada de biber (sección publicaciones)
 #   make clean              → elimina la carpeta build/
+#   make docencia MARCA="…" → escribe el texto en el Subject del PDF (lo usa
+#                             scripts/construir-pdf.sh para marcar el derivado)
 #
 # Salida: build/cv-<perfil>.pdf  (con ANEXOS=0: build/cv-<perfil>-sin-anexos.pdf)
 #
@@ -21,6 +23,7 @@ PROFILES := sector-publico docencia data-science sector-financiero economia cons
 BUILDDIR := build
 BIBER    ?= 0
 ANEXOS   ?= 1
+MARCA    ?=
 
 ENGINE := lualatex --interaction=nonstopmode --halt-on-error
 
@@ -32,6 +35,11 @@ TEXDEFS  = \def\CVsinAnexos{1}\def\CVprofile{$@}
 else
 SUFIJO  :=
 TEXDEFS  = \def\CVprofile{$@}
+endif
+
+# Marca de derivado en los metadatos del PDF (normativa documental 4.5).
+ifneq ($(MARCA),)
+TEXDEFS += \AtBeginDocument{\hypersetup{pdfsubject={$(MARCA)}}}
 endif
 
 .DEFAULT_GOAL := sector-publico
