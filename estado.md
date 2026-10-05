@@ -30,10 +30,9 @@ siguiente paso: `git push origin master` y comprobar la CI en GitHub.
 - 2026-10-04 · dueño: el autor · Qué perfil se publica en `04 index/resources/cv.pdf` (P084). El hub invocará `scripts/construir-pdf.sh` en la ola 6 del programa; hasta entonces su copia es manual y no se toca desde aquí.
 - 2026-10-04 · dueño: el autor · limite: 2026-10-18 · `bibliography/my_publications.bib` y la «opción 3» de `main/sections/otros/11_publicaciones.tex` traen publicaciones de ejemplo atribuidas al autor, con DOI inexistentes, en un repo público: sustituirlas o vaciarlas (P082).
 - 2026-10-04 · dueño: el autor · `make … BIBER=1` falla: la clase carga biblatex con `backend = bibtex` y el `Makefile` llama a `biber`; pasar la clase a `backend = biber` o cambiar el `Makefile`.
+- 2026-10-05 · dueño: el programa (ola 10) · Falta el documento F «tokens» de la fila 18 (generado desde el manifiesto de identidad, compartido con `identidad-visual`): no hay generador, así que no se escribe a mano (normativa documental 2.4).
 - 2026-10-04 · dueño: el autor · Un anexo PDF lleva una ruta local de la máquina en sus metadatos: limpiar los metadatos de los anexos versionados (P085).
 
 ## Futuro
 
 - Pruebas automáticas: comprobar en la CI que ningún PDF contiene correos distintos del del autor.
-- Tokens de identidad (nombre, colores) generados desde un manifiesto común con `identidad-visual`
-  (normativa documental 2.3, fila 18).
