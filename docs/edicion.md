@@ -1,37 +1,37 @@
 ---
 tipo: doc
 estado: activo
+forma: guia
 titulo: "Cómo editar el contenido del CV: datos, experiencias, anexos, secciones y perfiles"
 ---
 # Cómo editar el contenido del CV
 
 Para quien mantiene el CV. Cada receta dice qué archivo tocar y qué perfiles compilar después. Las
-rutas se dan desde la raíz del repo; las órdenes `make` se ejecutan dentro de `cv/` (o desde la raíz
-con `make -C cv …`). Las macros que aparecen se describen en [referencia-yaac.md](referencia-yaac.md).
+rutas se dan desde la raíz del repo, que es la carpeta del CV; las órdenes `make` se ejecutan en ella. Las macros que aparecen se describen en [referencia-yaac.md](referencia-yaac.md).
 
-**Regla de oro:** los perfiles (`cv/main/profiles/`) y los selectores solo eligen y ordenan; el
-contenido vive una sola vez en `cv/main/sections/`. Si el mismo texto aparece en dos archivos, hay un
+**Regla de oro:** los perfiles (`main/profiles/`) y los selectores solo eligen y ordenan; el
+contenido vive una sola vez en `main/sections/`. Si el mismo texto aparece en dos archivos, hay un
 lugar mejor para él.
 
 ## 1. Datos personales o de contacto
 
-Todo está en `cv/main/config/personal.tex` y llega a los seis perfiles: `\name`, `\tagline`,
+Todo está en `main/config/personal.tex` y llega a los seis perfiles: `\name`, `\tagline`,
 `\photo`, el bloque `\socialinfo{…}` y `\authorFullName` (el nombre del pie). Después: `make all`.
 
 ## 2. Texto o fechas de una experiencia
 
-Cada empleo tiene un archivo **base** en `cv/main/sections/experiencias/entradas/` y, cuando la
+Cada empleo tiene un archivo **base** en `main/sections/experiencias/entradas/` y, cuando la
 redacción cambia por área, **variantes** `--<perfil>` (`--sector-publico`, `--docencia`, `--corta`…).
 
-1. Localiza todos los archivos del empleo: `ls cv/main/sections/experiencias/entradas/ | grep <empleo>`.
-2. Mira qué variante carga cada perfil: `grep -n <empleo> cv/main/sections/experiencias/2_experiencias_*.tex`.
+1. Localiza todos los archivos del empleo: `ls main/sections/experiencias/entradas/ | grep <empleo>`.
+2. Mira qué variante carga cada perfil: `grep -n <empleo> main/sections/experiencias/2_experiencias_*.tex`.
 3. Edita. Las **fechas están repetidas** en la base y en todas sus variantes, y a veces también en el
    pie «Período: …»: una fecha se cambia en todos los archivos del paso 1.
 4. Compila los perfiles afectados (`make all` si tocaste la base).
 
 ## 3. Experiencia nueva
 
-1. Crea `cv/main/sections/experiencias/entradas/AAAA-MM_slug.tex` (fecha de **inicio**, para que el
+1. Crea `main/sections/experiencias/entradas/AAAA-MM_slug.tex` (fecha de **inicio**, para que el
    listado quede cronológico) con la estructura de `\experience`; lo más simple es copiar una entrada
    parecida.
 2. Regístrala en los selectores de las áreas donde deba aparecer, en la posición deseada:
@@ -51,9 +51,9 @@ real: no se activan.
 
 ## 4. Certificado nuevo (anexo)
 
-1. Guarda el PDF en `cv/assets/anexos/` como `AAAAMMDD descripcion en minusculas.pdf` (fecha de
+1. Guarda el PDF en `assets/anexos/` como `AAAAMMDD descripcion en minusculas.pdf` (fecha de
    emisión primero: así se ordena solo).
-2. Define su macro **una sola vez** en `cv/main/sections/anexos/catalogo.tex`, en orden cronológico
+2. Define su macro **una sola vez** en `main/sections/anexos/catalogo.tex`, en orden cronológico
    descendente:
 
    ```latex
@@ -63,20 +63,20 @@ real: no se activan.
    ```
 
    Un documento apaisado lleva `\includepdf[pages=-, landscape]{…}`.
-3. Llama a la macro en los `cv/main/sections/anexos/12_anexos_*.tex` de las áreas que la necesiten.
-4. Añade la línea correspondiente en `cv/main/sections/otros/4_certificados.tex` (la lista textual que
+3. Llama a la macro en los `main/sections/anexos/12_anexos_*.tex` de las áreas que la necesiten.
+4. Añade la línea correspondiente en `main/sections/otros/4_certificados.tex` (la lista textual que
    ven todos los perfiles).
 
 ## 5. Reemplazar un certificado
 
-1. Guarda el PDF nuevo en `cv/assets/anexos/` con su propio nombre `AAAAMMDD …pdf`.
+1. Guarda el PDF nuevo en `assets/anexos/` con su propio nombre `AAAAMMDD …pdf`.
 2. En `catalogo.tex`, cambia la ruta **dentro de la macro existente** (y la fecha del comentario); no
    dupliques la macro.
 3. Si el PDF antiguo ya no lo usa ninguna macro, puede borrarse.
 4. Audita las rutas: una ruta inexistente rompe `\includepdf` al compilar.
 
    ```bash
-   cd cv/main && grep -h includepdf sections/anexos/catalogo.tex | grep -oP '\{\K[^}]+' \
+   cd main && grep -h includepdf sections/anexos/catalogo.tex | grep -oP '\{\K[^}]+' \
      | while read f; do [ -f "$f" ] || echo "FALTA: $f"; done
    ```
 
@@ -85,7 +85,7 @@ real: no se activan.
 
 ## 6. Formación, idiomas, logros, proyectos, voluntariado, referencias
 
-Son secciones compartidas por todos los perfiles, en `cv/main/sections/otros/`:
+Son secciones compartidas por todos los perfiles, en `main/sections/otros/`:
 `3_formacion_academica.tex`, `4_certificados.tex`, `5_idiomas_habilidades.tex`, `6_logros.tex`,
 `8_proyectos.tex`, `9_voluntariado.tex`, `10_referencias.tex` y `11_publicaciones.tex`. Tras editarlas:
 `make all`. La sección de proyectos está comentada en los seis perfiles; se activa descomentando su
@@ -93,23 +93,23 @@ Son secciones compartidas por todos los perfiles, en `cv/main/sections/otros/`:
 
 ## 7. Declaración o competencias de un área
 
-Un archivo por área en `cv/main/sections/declaraciones/` (el párrafo inicial) y en
-`cv/main/sections/competencias/`. Solo afectan a su perfil: basta `make <perfil>`.
+Un archivo por área en `main/sections/declaraciones/` (el párrafo inicial) y en
+`main/sections/competencias/`. Solo afectan a su perfil: basta `make <perfil>`.
 
 ## 8. Perfil nuevo
 
-1. Copia el perfil más parecido: `cp cv/main/profiles/docencia.tex cv/main/profiles/<nuevo>.tex`.
+1. Copia el perfil más parecido: `cp main/profiles/docencia.tex main/profiles/<nuevo>.tex`.
 2. Ajusta sus líneas `\input` (declaración, selector de experiencias, competencias) y
    `\inputAnexos{…}` (los anexos). Un perfil **solo** contiene esas líneas.
-3. Añade el nombre a `PROFILES` en `cv/Makefile`.
+3. Añade el nombre a `PROFILES` en `Makefile`.
 4. `make <nuevo>`. La CI no se toca: ejecuta `make all`, que lee `PROFILES`.
 
 ## 9. Publicaciones
 
-La sección existe (`cv/main/sections/otros/11_publicaciones.tex`, comentada en todos los perfiles) pero
+La sección existe (`main/sections/otros/11_publicaciones.tex`, comentada en todos los perfiles) pero
 **hoy no se puede activar**:
 
-- `cv/bibliography/my_publications.bib` solo contiene **entradas de ejemplo** atribuidas al autor; si
+- `bibliography/my_publications.bib` solo contiene **entradas de ejemplo** atribuidas al autor; si
   se activa tal cual, el CV las imprime. Antes hay que sustituirlas por publicaciones reales.
 - `make <perfil> BIBER=1` falla («Cannot find … .bcf»): el Makefile ejecuta `biber`, y la clase carga
   biblatex con `backend = bibtex`.
@@ -122,15 +122,15 @@ sección se activa descomentando `\input{sections/otros/11_publicaciones}` en el
 
 1. Compila lo afectado: `make <perfil>`, o `make all` si tocaste `config/`, `otros/`, el catálogo o
    una entrada base.
-2. Revisa el PDF en `cv/build/` (fechas, saltos de página, anexos al final).
+2. Revisa el PDF en `build/` (fechas, saltos de página, anexos al final).
 3. Si tocaste anexos, corre la auditoría de la receta 5.
-4. No confirmes artefactos: `cv/build/`, `cv/output/` y los PDF de `cv/main/` están ignorados; los PDF
+4. No confirmes artefactos: `build/`, `output/` y los PDF de `main/` están ignorados; los PDF
    se distribuyen por Releases ([publicar.md](publicar.md)).
-5. Un cambio estructural (perfil o sección nueva, reorganización) se anota en `cv/CHANGELOG.md`.
+5. Un cambio estructural (perfil o sección nueva, reorganización) se anota en `CHANGELOG.md`.
 
 ## Si la compilación falla
 
-El registro está en `cv/build/cv-<perfil>.log`.
+El registro está en `build/cv-<perfil>.log`.
 
 | síntoma | causa | solución |
 |---|---|---|

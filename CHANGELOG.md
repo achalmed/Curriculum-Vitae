@@ -7,9 +7,12 @@ estado: activo
 Todos los cambios notables de este proyecto se documentan en este archivo.
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 
-## [Sin publicar]
+## [Unreleased]
 
 ### Añadido
+- `scripts/construir-pdf.sh`: genera el derivado `cv.pdf` de un perfil para
+  otro repo (simula por defecto; `--aplicar` compila y copia) y lo marca en
+  los metadatos del PDF con la variable `MARCA` del `Makefile`.
 - Versión "solo descriptivo" del CV: `make <perfil> ANEXOS=0` compila
   cualquier perfil **sin** las constancias/certificados adjuntos y genera
   `build/cv-<perfil>-sin-anexos.pdf` (no sobrescribe la versión completa).
@@ -17,6 +20,11 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
   `\CVsinAnexos` está definida); los 6 perfiles cargan sus anexos con ella.
 
 ### Cambiado
+- La raíz del repo pasa a ser la carpeta del CV (`~/Documents/cv`): `.git`
+  trasladado sin reescribir el historial, README único, `.gitignore` sin lista
+  blanca y CI que compila con `make all` desde la raíz (PDF en `build/`).
+- Referencias sin correos ni teléfonos de terceros: nueva macro
+  `\refereeSinContacto` y nota «disponibles a solicitud».
 - Documentación reorganizada por función: `README.md` es la puerta (perfiles,
   uso, estructura, licencia); las guías viven en `docs/` —`edicion.md` (las
   recetas de edición y los errores frecuentes), `postular.md`, `publicar.md`,
@@ -33,7 +41,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
   CAU y cuatro referentes nuevos (ONPE ×2, INEI, Corporación Educativa
   Sofía).
 
-## [3.1.0] — 2026-07-06
+## [3.1.0] - 2026-07-06
 
 Des-duplicación de contenido y automatización CI/CD.
 
@@ -62,7 +70,7 @@ Des-duplicación de contenido y automatización CI/CD.
 - El texto extraído de los 6 PDFs es idéntico antes y después de la
   refactorización (verificación con pdftotext contra línea base).
 
-## [3.0.0] — 2026-07-06
+## [3.0.0] - 2026-07-06
 
 Reestructuración arquitectónica: de "CV con variantes comentadas" a
 **sistema multi-perfil compilable**.

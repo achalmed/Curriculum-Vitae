@@ -1,6 +1,7 @@
 ---
 tipo: doc
 estado: activo
+forma: guia
 titulo: "Cómo publicar una versión del CV (Release) y la copia que consume el sitio web"
 ---
 # Cómo publicar una versión del CV
@@ -10,12 +11,12 @@ copia se publica en el sitio web del ecosistema.
 
 ## Release en GitHub
 
-La CI (`.github/workflows/build.yml`) compila los seis perfiles con `make -C cv all` en cada push a
+La CI (`.github/workflows/build.yml`) compila los seis perfiles con `make all` en cada push a
 `master` y en cada pull request, y guarda los PDF como *artifact* durante 30 días. Una etiqueta `v*`
-además publica los PDF de `cv/build/` como Release, con notas generadas por GitHub.
+además publica los PDF de `build/` como Release, con notas generadas por GitHub.
 
-1. Anota los cambios de la versión en `cv/CHANGELOG.md` (la sección «Sin publicar» pasa a
-   `[X.Y.Z] — AAAA-MM-DD`).
+1. Anota los cambios de la versión en `CHANGELOG.md` (la sección `[Unreleased]` pasa a
+   `[X.Y.Z] - AAAA-MM-DD`, formato Keep a Changelog).
 2. Confirma y etiqueta desde la raíz del repo:
 
    ```bash
@@ -30,26 +31,29 @@ funciones nuevas (un perfil, una sección), parche para correcciones.
 
 ## Copia para el sitio web
 
-El sitio académico publica el CV como `04 index/resources/cv.pdf`. **Es una copia manual**: nada la
-regenera desde aquí.
+El sitio académico publica el CV como `04 index/resources/cv.pdf`. Ese archivo es un **derivado**: lo
+produce `scripts/construir-pdf.sh`, que compila el perfil con `make` y escribe en los metadatos del PDF
+(Subject) la marca «GENERADO por cv/scripts/construir-pdf.sh …». Sin `--aplicar` solo simula.
 
-1. Compila el perfil que se publica (`make -C cv <perfil>`).
-2. Copia el PDF sobre el del sitio, desde `~/Documents`:
+1. Mira qué haría (las rutas salen de `core/env.sh`: `DOCS_ROOT` es `~/Documents`, `INDEX_DIR` el hub):
 
    ```bash
-   cp "09 trabajo/cv/build/cv-<perfil>.pdf" "04 index/resources/cv.pdf"
+   . ~/Documents/core/env.sh
+   "$DOCS_ROOT/cv/scripts/construir-pdf.sh" --perfil <perfil> --salida "$INDEX_DIR/resources/cv.pdf"
    ```
 
+2. Repite con `--aplicar` para compilar y copiar; `pdfinfo "$INDEX_DIR/resources/cv.pdf"` muestra la marca.
 3. Publica el sitio según su propia documentación (`04 index/README.md`).
 
-Qué perfil se publica en el sitio está pendiente de decidir (ver [decisiones.md](decisiones.md)).
+Mientras el hub no invoque el generador por sí mismo (ola 6 del programa), la orden la lanza el autor.
+Qué perfil se publica en el sitio está pendiente de decidir (`../estado.md`).
 
 ## Consumidores
 
 | consumidor | qué toma | cómo | quién lo actualiza |
 |---|---|---|---|
-| `04 index` (sitio académico) | un PDF compilado, como `04 index/resources/cv.pdf`; lo enlazan su portada y `_quarto.yml` (recurso) | copia manual (arriba) | el autor, al publicar una versión |
-| GitHub Releases | `cv/build/*.pdf` de los seis perfiles | `.github/workflows/build.yml` en cada etiqueta `v*` | la CI |
+| `04 index` (sitio académico) | un PDF compilado, como `04 index/resources/cv.pdf`; lo enlazan su portada y `_quarto.yml` (recurso) | `scripts/construir-pdf.sh --salida … --aplicar` (arriba) | el autor, hasta que el hub invoque el generador |
+| GitHub Releases | `build/*.pdf` de los seis perfiles | `.github/workflows/build.yml` en cada etiqueta `v*` | la CI |
 
-Si cambian el nombre o la ubicación de los PDF (`cv/build/cv-<perfil>.pdf`), hay que avisar a
-`04 index`, que guarda la copia con nombre fijo.
+Si cambian el nombre o las opciones de `scripts/construir-pdf.sh`, hay que avisar a `04 index`, que
+guarda la copia con nombre fijo.

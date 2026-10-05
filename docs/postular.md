@@ -1,11 +1,12 @@
 ---
 tipo: doc
 estado: activo
+forma: guia
 titulo: "Cómo preparar el CV para una postulación: perfil, ajustes, copia de envío y correo"
 ---
 # Cómo preparar el CV para una postulación
 
-Para el autor, ante una convocatoria concreta. Las órdenes `make` se ejecutan dentro de `cv/`; cómo
+Para el autor, ante una convocatoria concreta. Las órdenes `make` se ejecutan en la raíz del repo; cómo
 editar cada pieza está en [edicion.md](edicion.md).
 
 ## 1. Elegir el perfil
@@ -19,21 +20,21 @@ editar cada pieza está en [edicion.md](edicion.md).
 | trayectoria completa (becas, registros de investigadores) | `make economia` | experiencias en versión larga y **todos** los anexos |
 | consultoría | `make consultoria` | versión larga, competencias de economía y todos los anexos |
 
-El PDF sale en `cv/build/cv-<perfil>.pdf`. Si la convocatoria pide el CV sin documentos adjuntos (o
-estos se presentan aparte), `make <perfil> ANEXOS=0` genera `cv/build/cv-<perfil>-sin-anexos.pdf` sin
+El PDF sale en `build/cv-<perfil>.pdf`. Si la convocatoria pide el CV sin documentos adjuntos (o
+estos se presentan aparte), `make <perfil> ANEXOS=0` genera `build/cv-<perfil>-sin-anexos.pdf` sin
 pisar la versión completa.
 
 ## 2. Ajustar al puesto
 
 1. Lee las bases y anota cinco a siete palabras clave; búscalas en el contenido:
-   `grep -ril "palabra" cv/main/sections/`.
-2. Declaración: `cv/main/sections/declaraciones/1_declaracion_<área>.tex`.
+   `grep -ril "palabra" main/sections/`.
+2. Declaración: `main/sections/declaraciones/1_declaracion_<área>.tex`.
 3. Qué experiencias aparecen y en qué orden: el selector
-   `cv/main/sections/experiencias/2_experiencias_<área>.tex` (reordena o comenta líneas
+   `main/sections/experiencias/2_experiencias_<área>.tex` (reordena o comenta líneas
    `\entradaExperiencia{…}`).
-4. El texto de una experiencia: su archivo en `cv/main/sections/experiencias/entradas/` (la variante
+4. El texto de una experiencia: su archivo en `main/sections/experiencias/entradas/` (la variante
    del área, si existe).
-5. Los anexos: `cv/main/sections/anexos/12_anexos_<área>.tex`.
+5. Los anexos: `main/sections/anexos/12_anexos_<área>.tex`.
 6. Recompila con `make <perfil>` y revisa el PDF.
 
 Si el CV pasa de las páginas que piden: comenta entradas menos pertinentes en el selector, usa
@@ -53,7 +54,7 @@ cp build/cv-docencia.pdf "<carpeta de la postulación>/CV_<Apellido>_<Entidad>_<
 - [ ] Las experiencias más pertinentes, primero.
 - [ ] Anexos vigentes y del área (o versión `ANEXOS=0` si se presentan aparte).
 - [ ] Sin errores de compilación; el PDF abre y la numeración de páginas es correcta.
-- [ ] Contacto al día (`cv/main/config/personal.tex`).
+- [ ] Contacto al día (`main/config/personal.tex`).
 - [ ] Ortografía revisada.
 - [ ] Nombre de archivo descriptivo.
 
